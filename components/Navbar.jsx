@@ -6,7 +6,7 @@ import NavLink from './NavLink';
 import { motion } from 'framer-motion';
 
 const links = [
-  { url: '/', title: 'home' },
+  { url: '/', title: 'Home' },
   { url: '/sites', title: 'Create site' },
   { url: '/promotion', title: "Site's promotion" },
   { url: '/contact', title: 'Contact' },
@@ -77,7 +77,7 @@ const Navbar = () => {
         <Link
           href="/"
           className="text-sm bg-slate-950 rounded-md p-1 pl-3 font-semibold flex items-center justify-center">
-          <span className="text-white pr-3 ">Kot</span>
+          <span className="text-white pr-3 ">KOT</span>
           <span className="w-12 h-8 rounded bg-red-100 text-black flex items-center justify-center">
             .dev
           </span>

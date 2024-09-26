@@ -1,6 +1,15 @@
-const page = () => {
+'use client'
+import { motion } from "framer-motion"
+const Sites = () => {
   return (
+    
+    <motion.div
+    className="h-full"
+    initial={{ y: '-200vh' }}
+    animate={{ y: '0%' }}
+    transition={{ duration: 1 }}>
     <div>page</div>
+    </motion.div>
   )
 }
-export default page
+export default Sites
