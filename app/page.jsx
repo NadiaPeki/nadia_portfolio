@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import About from '@/components/About';
+import Portfolio from '@/components/Portfolio';
 
 const Homepage = () => {
   return (
@@ -12,7 +13,7 @@ const Homepage = () => {
       animate={{ y: '0%' }}
       transition={{ duration: 1 }}
     >
-      <div className="flex flex-col lg:flex-row px-4 lg:px-8 py-10 md:py-20">
+      <div className="flex flex-col lg:flex-row p-4 md:pr-6 lg:pr-20 py-10 md:py-20">
         {/* Контейнер с изображением */}
         <div className="relative w-full h-80 lg:h-auto lg:w-1/2 p-8 flex items-center mt-5">
           <Image
@@ -45,6 +46,7 @@ const Homepage = () => {
       </div>
 
       <About />
+      <Portfolio/>
     </motion.div>
   );
 };
