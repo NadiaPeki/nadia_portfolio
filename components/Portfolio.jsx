@@ -60,7 +60,7 @@ const Portfolio = () => {
       <div className="py-0 md:pt-20">
         <div className="h-full relative flex flex-col items-center">
           <div className="flex h-full py-10 md:py-20 gap-10 items-center justify-center">
-            <div className="absolute top-10 left-4 md:left-10">
+            <div className="absolute top-10 left-5 md:left-10 z-10">
               {' '}
               {/* Adjust the top value as needed */}
               <button
@@ -116,7 +116,7 @@ const Portfolio = () => {
               ))}
             </motion.div>
 
-            <div className="absolute top-10 right-4 md:right-10">
+            <div className="absolute top-10 right-5 md:right-10">
               {' '}
               {/* Adjust the top value as needed */}
               <button
