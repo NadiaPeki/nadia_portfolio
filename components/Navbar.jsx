@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 const links = [
   { url: '/', title: 'Home' },
   { url: '/sites', title: 'Create site' },
+  { url: '/shops', title: 'Create shop' },
+  { url: '/startap', title: 'Create startap' },
   { url: '/promotion', title: "Site's promotion" },
   { url: '/contact', title: 'Contact' },
 ];
@@ -67,8 +69,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" h-24 flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl ">
-      <div className="hidden md:flex gap-4 ">
+    <div className=" h-24 flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl">
+      {/* This will hide the menu links at 920px and below */}
+      <div className="hidden custom-lg:flex gap-4 ">
         {links.map((link) => (
           <NavLink link={link} key={link.title} />
         ))}
@@ -84,7 +87,8 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="md:hidden">
+      {/* The hamburger menu should show from 920px and below */}
+      <div className="custom-lg:hidden">
         <button
           className="w-10 h-8 flex flex-col justify-between z-50 relative"
           onClick={() => setOpen(!open)}>

@@ -20,8 +20,8 @@ const ContactUs = () => {
             />
           </defs>
           <text fill="#000">
-            <textPath xlinkHref="#circlePath" className="text-2xl ">
-              Websites Developing and Promotions
+            <textPath xlinkHref="#circlePath" className=" text-xl font-semibold ">
+              Websites Developing and Promotions.
             </textPath>
           </text>
         </motion.svg>
