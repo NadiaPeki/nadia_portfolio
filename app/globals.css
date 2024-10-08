@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-gradient {
+  background: linear-gradient(270deg, #e11d48, #0284c7); /* Градиент от зелёного к синему */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 300% 300%; /* Размер градиента для анимации */
+}

@@ -6,12 +6,12 @@ import NavLink from './NavLink';
 import { motion } from 'framer-motion';
 
 const links = [
-  { url: '/', title: 'Home' },
-  { url: '/sites', title: 'Create site' },
-  { url: '/shops', title: 'Create shop' },
-  { url: '/startap', title: 'Create startap' },
-  { url: '/promotion', title: "Site's promotion" },
-  { url: '/contact', title: 'Contact' },
+  { url: '/', title: 'Главная' },
+  { url: '/sites', title: 'Сайт-визитка' },
+  { url: '/shops', title: 'Интернет-магазин' },
+  { url: '/startaps', title: 'Стартап' },
+  { url: '/ads', title: "Google Ads" },
+  { url: '/contact', title: 'Контакты' },
 ];
 
 const Navbar = () => {
@@ -69,7 +69,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" h-24 flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl">
+    <div className=" h-24 flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-lg font-semibold">
       {/* This will hide the menu links at 920px and below */}
       <div className="hidden custom-lg:flex gap-4 ">
         {links.map((link) => (
