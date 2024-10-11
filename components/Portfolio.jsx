@@ -65,7 +65,7 @@ const Portfolio = () => {
               {/* Adjust the top value as needed */}
               <button
                 onClick={handlePrev}
-                className="bg-gradient-to-r from-rose-300 via-slate-700 to-slate-800 text-white p-2 rounded flex items-center justify-center">
+                className="ring-2 ring-slate-600 bg-gradient-to-r from-slate-700 via-rose-600 to-slate-700 text-white p-2 rounded flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-8"
@@ -121,7 +121,7 @@ const Portfolio = () => {
               {/* Adjust the top value as needed */}
               <button
                 onClick={handleNext}
-                className="bg-gradient-to-r from-rose-300 via-slate-700 to-slate-800 text-white p-2 rounded flex items-center justify-center">
+                className="ring-2 ring-slate-600 bg-gradient-to-r from-slate-700 via-rose-600 to-slate-700 text-white p-2 rounded flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-8"
