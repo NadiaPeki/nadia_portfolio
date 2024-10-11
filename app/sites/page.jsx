@@ -348,7 +348,7 @@ const text = 'Нужен сайт?'
                   <div className='text-center'>
             {text.split('').map((letter, index) => (
               <motion.span
-                className="pr-3 text-2xl md:text-3xl"
+                className="pr-3 text-2xl md:text-4xl"
                 key={index}
                 initial={{ opacity: 1 }}
                 animate={{ opacity: 0 }}
