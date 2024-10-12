@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
+import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
 
 const Sites = () => {
   const containerRef = useRef();
@@ -92,7 +93,7 @@ const text = 'Нужен сайт?'
               привлекать клиентов.
             </p>
             <div className="flex flex-row gap-4 justify-center">
-              <div className="flex flex-col gap-3 text-center border border-slate-400 p-4 rounded-lg bg-rose-50 w-1/2">
+              <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
                 <motion.p
                   className="text-lg font-semibold text-gradient"
                   animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
@@ -101,7 +102,7 @@ const text = 'Нужен сайт?'
                 </motion.p>
               </div>
 
-              <div className="flex flex-col gap-3 text-center border border-slate-400 p-4 rounded-lg bg-rose-50 w-1/2">
+              <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
                 <motion.p
                   className="text-lg font-semibold text-gradient"
                   animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
@@ -215,9 +216,9 @@ const text = 'Нужен сайт?'
                   </ul>
                 </div>
               </div>
-              <button className="my-5 md:mt-10 p-3 rounded-lg ring-2 ring-slate-600 bg-gradient-to-r from-slate-700 via-rose-700 to-slate-700 text-white text-lg">
-                <Link href="/contact">Заказать сайт-визитку</Link>
-              </button>
+              <Link href="/contact"> <button className="my-5 md:mt-10 p-3 rounded-lg ring-2 ring-slate-800 bg-gradient-to-r from-black via-slate-700 to-black text-white text-lg">
+               Заказать сайт-визитку
+              </button></Link>
             </motion.div>
 
             {/* SCROLL SVG */}
@@ -341,14 +342,14 @@ const text = 'Нужен сайт?'
                 {/* Contact Form - with improved animation */}
                 <motion.div
                   ref={formRef}
-                  className="flex flex-col gap-8 justify-center"
+                  className="flex flex-col justify-center"
                   initial={{ opacity: 0, y: 50 }}
                   animate={isFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                   transition={{ duration: 0.5 }}>
-                  <div className='text-center'>
+                  <div className='text-center mb-8 leading-normal'>
             {text.split('').map((letter, index) => (
               <motion.span
-                className="pr-3 text-2xl md:text-4xl"
+                className="pr-3 text-2xl md:text-4xl "
                 key={index}
                 initial={{ opacity: 1 }}
                 animate={{ opacity: 0 }}
@@ -372,7 +373,7 @@ const text = 'Нужен сайт?'
                       <span className="font-semibold">Опишите ваш будущий сайт:</span>
                       <textarea
                         rows={8}
-                        className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-base min-h-[200px] max-w-full"
+                        className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-sm md:text-base min-h-[200px] max-w-full"
                         name="user_message"
                         placeholder="Пожалуйста, опишите ваши идеи, цели и любые конкретные функции, которые вы хотите."
                       />
@@ -380,12 +381,12 @@ const text = 'Нужен сайт?'
                       <input
                         name="user_contact"
                         type="text"
-                        className="bg-transparent border-b-2 border-b-black outline-none text-base min-h-[40px] max-w-full placeholder-opacity-50"
+                        className="bg-transparent border-b-2 border-b-black outline-none text-sm md:text-base min-h-[40px] max-w-full placeholder-opacity-50"
                         placeholder="Ваш email или номер телефона"
                       />
                       
                       <motion.button 
-                        className="bg-purple-200 rounded font-semibold text-gray-600 p-4"
+                        className="bg-purple-200 rounded font-semibold text-gray-600 p-4 my-3"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -423,8 +424,25 @@ const text = 'Нужен сайт?'
                       )}
                     </motion.form>
                   </div>
+                  <div className="flex flex-col items-center mt-10">
+            <span className="text-lg md:text-xl font-semibold mb-4 ">
+              Напишите нам в соцсетях:
+            </span>
+            <div className="flex space-x-7">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <FaInstagram className="text-2xl text-pink-600 hover:text-pink-400" />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-400" />
+              </a>
+              <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+                <FaTelegramPlane className="text-2xl text-blue-400 hover:text-blue-300" />
+              </a>
+            </div>
+          </div>
                 </motion.div>
               </div>
+             
             </motion.div>
 
             <div className="bg-yellow-100 mb-10 md:mt-10 p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">

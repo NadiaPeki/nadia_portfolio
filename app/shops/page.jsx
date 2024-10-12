@@ -1,20 +1,74 @@
 'use client';
+
 import Brain from '@/components/Brain';
 import { motion, useInView, useScroll } from 'framer-motion';
-import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import Link from 'next/link';
+import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
 
-const Shops = () => {
+export default function Shops() {
   const containerRef = useRef();
-
   const { scrollYProgress } = useScroll({ container: containerRef });
-
   const skillRef = useRef();
-  // const isSkillRefInView = useInView(skillRef, {once:true});
-  const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
-
   const experienceRef = useRef();
+  const formRef = useRef();
+  const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
   const isExperienceRefInView = useInView(experienceRef, { margin: '-100px' });
+  const isFormInView = useInView(formRef, { once: false, margin: '-100px' });
+  const text = 'Нужен интернет-магазин?';
+
+  // Contact form state and functions
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [validationError, setValidationError] = useState('');
+  const form = useRef();
+
+  const validateForm = () => {
+    const contactInfo = form.current.user_contact.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\d\s()+-]+$/;
+
+    if (!contactInfo) {
+      setValidationError('Пожалуйста, укажите email или номер телефона.');
+      return false;
+    }
+
+    if (!emailRegex.test(contactInfo) && !phoneRegex.test(contactInfo)) {
+      setValidationError('Пожалуйста, введите корректный email или номер телефона.');
+      return false;
+    }
+
+    return true;
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setError(false);
+    setSuccess(false);
+    setValidationError('');
+
+    if (!validateForm()) {
+      return;
+    }
+
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        form.current,
+        process.env.NEXT_PUBLIC_PUBLIC_KEY,
+      )
+      .then(
+        () => {
+          setSuccess(true);
+          form.current.reset();
+        },
+        () => {
+          setError(true);
+        },
+      );
+  };
 
   return (
     <motion.div
@@ -31,32 +85,31 @@ const Shops = () => {
             {/* description container */}
             <h1 className="text-4xl md:text-5xl font-bold text-start">Интернет-магазин</h1>
             <p className="text-start md:text-lg">
-              В условиях современного
-              онлайн-ритейла, важнейшими факторами успеха становятся простота взаимодействия с
-              сайтом, оптимизация под поисковые системы и увеличение продаж. Мы создаем
-              интернет-магазины с прицелом на быструю загрузку, адаптивный дизайн и конверсионные
-              элементы, что позволяет не только привлекать трафик, но и эффективно превращать его в
-              реальных покупателей.
+              В условиях современного онлайн-ритейла, важнейшими факторами успеха становятся
+              простота взаимодействия с сайтом, оптимизация под поисковые системы и увеличение
+              продаж. Мы создаем интернет-магазины с прицелом на быструю загрузку, адаптивный дизайн
+              и конверсионные элементы, что позволяет не только привлекать трафик, но и эффективно
+              превращать его в реальных покупателей.
             </p>
             <div className="flex flex-row gap-4 justify-center">
-  <div className="flex flex-col gap-3 text-center border border-slate-400 p-4 rounded-lg bg-rose-50 w-1/2">
-    <motion.p
-      className="text-lg font-semibold text-gradient"
-      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-      Доменное имя в зоне .pl — в подарок.
-    </motion.p>
-  </div>
-  
-  <div className="flex flex-col gap-3 text-center border border-slate-400 p-4 rounded-lg bg-rose-50 w-1/2">
-    <motion.p
-      className="text-lg font-semibold text-gradient"
-      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-      При заказе сайта и Google Ads — 500 PLN скидка.
-    </motion.p>
-  </div>
-</div>
+              <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
+                <motion.p
+                  className="text-lg font-semibold text-gradient"
+                  animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+                  Доменное имя в зоне .pl — в подарок.
+                </motion.p>
+              </div>
+
+              <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
+                <motion.p
+                  className="text-lg font-semibold text-gradient"
+                  animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+                  При заказе сайта и Google Ads — 500 PLN скидка.
+                </motion.p>
+              </div>
+            </div>
 
             {/* BIOGRAPHY SCROLL SVG */}
             <motion.svg
@@ -76,8 +129,7 @@ const Shops = () => {
               <path d="M15 11L12 14L9 11" stroke="#000000" strokeWidth="1"></path>
             </motion.svg>
           </div>
-          {/* базовый сайт-визитка CONTAINER */}
-          {/* базовый сайт-визитка CONTAINER */}
+          {/* STANDARD ONLINE STORE CONTAINER */}
           <div className="flex flex-col gap-8 justify-center" ref={skillRef}>
             {/* TITLE */}
             <motion.h2
@@ -153,10 +205,10 @@ const Shops = () => {
                       кнопках и элементах при взаимодействии.
                     </li>
                     <li>
-                    Персональный видеоурок с обзором настроек и функционала вашего сайта для его дальнейшего самостоятельного управления.
-                   
+                      Персональный видеоурок с обзором настроек и функционала вашего сайта для его
+                      дальнейшего самостоятельного управления.
                     </li>
-                    </ul>
+                  </ul>
                 </div>
 
                 <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
@@ -178,6 +230,9 @@ const Shops = () => {
                   </ul>
                 </div>
               </div>
+              <Link href="/contact"> <button className="my-5 md:mt-10 p-3 rounded-lg ring-2 ring-slate-800 bg-gradient-to-r  from-black via-slate-700 to-black text-white text-lg">
+                Заказать интернет-магазин
+              </button></Link>
             </motion.div>
 
             {/* SCROLL SVG */}
@@ -199,15 +254,13 @@ const Shops = () => {
             </motion.svg>
           </div>
 
-          {/* Pro site CONTAINER */}
-          {/* EXPERIENCE CONTAINER */}
+          {/* PREMIUM ONLINE STORE CONTAINER */}
           <div className="flex flex-col gap-8 justify-center" ref={experienceRef}>
             {/* TITLE */}
             <motion.h2
               initial={{ x: '-300px' }}
               animate={isExperienceRefInView ? { x: 0 } : {}}
-              // Добавлено время анимации
-              className="font-bold text-2xl">
+              className="font-bold  text-2xl">
               ПРЕМИУМ ИНТЕРНЕТ-МАГАЗИН
             </motion.h2>
 
@@ -215,7 +268,6 @@ const Shops = () => {
             <motion.div
               initial={{ x: '-300px' }}
               animate={isExperienceRefInView ? { x: 0 } : {}}
-              // Добавлено время анимации
               className="flex gap-8 flex-wrap">
               <div>
                 <motion.p
@@ -280,7 +332,7 @@ const Shops = () => {
                       опыта.
                     </li>
                     <li className="mb-1">Подключение ссылок на соцсети (Facebook, Instagram).</li>
-                    <li  className="mb-1">
+                    <li className="mb-1">
                       Анимация: Плавные переходы между секциями, анимация при прокрутке, эффекты на
                       кнопках и элементах при взаимодействии.
                     </li>
@@ -310,7 +362,104 @@ const Shops = () => {
                     <li>Node.js для серверной логики и работы с API.</li>
                   </ul>
                 </div>
-                
+              </div>
+            </motion.div>
+            {/* Contact Form */}
+            <motion.div
+              ref={formRef}
+              className="flex flex-col justify-center"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.5 }}>
+              <div className="text-center mb-8  leading-normal">
+                {text.split('').map((letter, index) => (
+                  <motion.span
+                    className="pr-3 text-2xl md:text-4xl"
+                    key={index}
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      delay: index * 0.1,
+                    }}>
+                    {letter}
+                  </motion.span>
+                ))}
+              </div>
+              <div className="flex gap-8 flex-wrap">
+                <motion.form
+                  onSubmit={sendEmail}
+                  ref={form}
+                  className="bg-red-50 rounded-xl text-xl flex flex-col gap-6 p-8 w-full"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={isFormInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}>
+                  <span className="font-semibold">Опишите ваш будущий сайт:</span>
+                  <textarea
+                    rows={8}
+                    className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-sm md:text-base min-h-[200px] max-w-full"
+                    name="user_message"
+                    placeholder="Пожалуйста, опишите ваши идеи, цели и любые конкретные функции, которые вы хотите."
+                  />
+                  <span className="font-semibold">Оставьте ваш email или номер телефона:</span>
+                  <input
+                    name="user_contact"
+                    type="text"
+                    className="bg-transparent border-b-2 border-b-black outline-none text-sm md:text-base min-h-[40px] max-w-full placeholder-opacity-50"
+                    placeholder="Ваш email или номер телефона"
+                  />
+
+                  <motion.button
+                    className="bg-purple-200 rounded font-semibold text-gray-600 p-4 my-3"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}>
+                    Отправить
+                  </motion.button>
+                  {success && (
+                    <motion.span
+                      className="text-green-600 font-semibold"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}>
+                      Ваше сообщение успешно отправлено!
+                    </motion.span>
+                  )}
+                  {error && (
+                    <motion.span
+                      className="text-red-600 font-semibold"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}>
+                      Что-то пошло не так!
+                    </motion.span>
+                  )}
+                  {validationError && (
+                    <motion.span
+                      className="text-red-600 font-semibold"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}>
+                      {validationError}
+                    </motion.span>
+                  )}
+                </motion.form>
+              </div>
+              <div className="flex flex-col items-center mt-10">
+                <span className="text-lg md:text-xl font-semibold mb-4 ">
+                  Напишите нам в соцсетях:
+                </span>
+                <div className="flex space-x-7">
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    <FaInstagram className="text-2xl text-pink-600 hover:text-pink-400" />
+                  </a>
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-400" />
+                  </a>
+                  <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+                    <FaTelegramPlane className="text-2xl text-blue-400 hover:text-blue-300" />
+                  </a>
+                </div>
               </div>
             </motion.div>
             <div className="bg-yellow-100 mb-10 md:mt-10 p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
@@ -331,6 +480,4 @@ const Shops = () => {
       </div>
     </motion.div>
   );
-};
-
-export default Shops;
+}
