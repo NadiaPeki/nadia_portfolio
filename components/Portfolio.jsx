@@ -9,35 +9,35 @@ const items = [
   {
     id: 1,
     color: 'from-red-100 to-blue-500',
-    title: 'React Commerce',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.',
-    img: 'https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    link: 'https://lama.dev',
+    title: 'Блог с админ панелью',
+    desc: 'Удобная блог-платформа с админ-панелью, где можно легко управлять публикациями, редактировать контент и следить за статистикой. Система позволяет эффективно создавать, настраивать и продвигать ваши записи, делая ведение блога простым и продуктивным.',
+    img: '/examples/example3.jpg',
+    link: 'https://www.wroclawtop.pl',
   },
   {
     id: 2,
     color: 'from-blue-300 to-violet-300',
-    title: 'Next.js Medium Blog',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.',
-    img: 'https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    link: 'https://lama.dev',
+    img: '/examples/example2.jpg',
+    title: 'AI платформа',
+    desc: 'Это персональный AI-ассистент для работы с PDF, который анализирует, переводит и отвечает на вопросы по документам мгновенно. Приложение с личным кабинетом и оплатой услуг. Интеграция с OpenAI.',
+    link: 'https://www.yourpdfchat.com/',
   },
-  {
-    id: 3,
-    color: 'from-violet-300 to-purple-300',
-    title: 'Vanilla Book App',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.',
-    img: 'https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    link: 'https://lama.dev',
-  },
-  {
-    id: 4,
-    color: 'from-purple-300 to-red-300',
-    title: 'Spotify Music App',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.',
-    img: 'https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    link: 'https://lama.dev',
-  },
+  // {
+  //   id: 3,
+  //   color: 'from-violet-300 to-purple-300',
+  //   title: 'Vanilla Book App',
+  //   desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.',
+  //   img: 'https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+  //   link: 'https://lama.dev',
+  // },
+  // {
+  //   id: 4,
+  //   color: 'from-purple-300 to-red-300',
+  //   title: 'Spotify Music App',
+  //   desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.',
+  //   img: 'https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  //   link: 'https://lama.dev',
+  // },
 ];
 
 const Portfolio = () => {
@@ -57,15 +57,15 @@ const Portfolio = () => {
       initial={{ y: '-200vh' }}
       animate={{ y: '0%' }}
       transition={{ duration: 1 }}>
-      <div className="py-0 md:pt-20">
+      <div className="pt-10 md:pt-20">
         <div className="h-full relative flex flex-col items-center">
           <div className="flex h-full py-10 md:py-20 gap-10 items-center justify-center">
-            <div className="absolute top-10 left-5 md:left-10 z-10">
+            <div className="absolute top-10 left-0 md:left-10 z-10">
               {' '}
               {/* Adjust the top value as needed */}
               <button
                 onClick={handlePrev}
-                className="ring-2 ring-slate-600 bg-gradient-to-r from-black via-slate-700 to-black text-white p-2 rounded flex items-center justify-center">
+                className=" bg-black text-white p-2 rounded flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-8"
@@ -95,20 +95,20 @@ const Portfolio = () => {
                     index === currentIndex ? 'block' : 'hidden'
                   }`}
                   key={item.id}>
-                  <div className="flex flex-col gap-8 text-slate-950 items-center justify-center">
+                  <div className="flex flex-col gap-10 md:gap-12 text-slate-950 items-center justify-center px-2">
                     <h1 className="text-base font-bold md:text-xl lg:text-2xl xl:text-4xl text-center">
                       {item.title}
                     </h1>
                     <div className="relative w-80 h-56 md:w-96 md:h-64 lg:w-[700px] lg:h-[380px] xl:w-[800px] xl:h-[450px]">
                       <Image src={item.img} alt={item.title} fill objectFit="cover" />
                     </div>
-                    <p className="w-80 md:w-96 lg:w-[700px] lg:text-lg xl:w-[800px] text-center">
+                    <p className="w-72 md:w-96 lg:w-[700px] lg:text-lg xl:w-[800px] text-center">
                       {item.desc}
                     </p>
 
-                    <Link href={item.link} className="flex justify-center">
-                      <button className="p-2 text-sm md:p-4 md:text-md lg:p-4 lg:text-lg bg-white text-gray-600 font-semibold m-4 rounded">
-                        See Demo
+                    <Link href={item.link} target="blank" className="flex justify-center">
+                      <button className="p-2 text-sm md:p-4 md:text-md lg:p-4 lg:text-lg bg-white text-gray-600 font-semibold rounded">
+                        Посмотреть
                       </button>
                     </Link>
                   </div>
@@ -116,12 +116,12 @@ const Portfolio = () => {
               ))}
             </motion.div>
 
-            <div className="absolute top-10 right-5 md:right-10">
+            <div className="absolute top-10 right-0 md:right-10">
               {' '}
               {/* Adjust the top value as needed */}
               <button
                 onClick={handleNext}
-                className="ring-2 ring-slate-600 bg-gradient-to-r from-black via-slate-700 to-black text-white p-2 rounded flex items-center justify-center">
+                className="bg-black text-white p-2 rounded flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-8"

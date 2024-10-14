@@ -216,7 +216,7 @@ const text = 'Нужен сайт?'
                   </ul>
                 </div>
               </div>
-              <Link href="/contact"> <button className="my-5 md:mt-10 p-3 rounded-lg ring-2 ring-slate-800 bg-gradient-to-r from-black via-slate-700 to-black text-white text-lg">
+              <Link href="/contact"> <button className="my-5 md:mt-10 p-3 rounded-lg bg-black text-white text-lg">
                Заказать сайт-визитку
               </button></Link>
             </motion.div>

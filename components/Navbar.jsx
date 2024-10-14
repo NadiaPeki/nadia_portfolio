@@ -79,7 +79,7 @@ const Navbar = () => {
       <div className=" ">
         <Link
           href="/"
-          className="text-sm bg-slate-950 rounded-md p-1 pl-3 font-semibold flex items-center justify-center">
+          className="text-sm bg-black rounded-md p-1 pl-3 font-semibold flex items-center justify-center">
           <span className="text-white pr-3 ">KOT</span>
           <span className="w-12 h-8 rounded bg-red-100 text-black flex items-center justify-center">
             .dev
