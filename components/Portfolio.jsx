@@ -100,7 +100,7 @@ const Portfolio = () => {
                       {item.title}
                     </h1>
                     <div className="relative w-80 h-56 md:w-96 md:h-64 lg:w-[700px] lg:h-[380px] xl:w-[800px] xl:h-[450px]">
-                      <Image src={item.img} alt={item.title} fill objectFit="cover" />
+                      <Image src={item.img} alt={item.title} fill objectFit="contain" />
                     </div>
                     <p className="w-72 md:w-96 lg:w-[700px] lg:text-lg xl:w-[800px] text-center">
                       {item.desc}

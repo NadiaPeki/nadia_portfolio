@@ -5,6 +5,7 @@ import { motion, useInView, useScroll } from 'framer-motion';
 import { useRef } from 'react';
 import Portfolio from '@/components/Portfolio';
 import Link from 'next/link';
+import Footer from '@/components/Footer';
 import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
 
 export default function Homepage() {
@@ -17,11 +18,11 @@ export default function Homepage() {
 
   return (
     <motion.div
-      className="h-full overflow-x-hidden"
+      className="h-full overflow-x-hidden "
       initial={{ y: '-200vh' }}
       animate={{ y: '0%' }}
       transition={{ duration: 1 }}>
-      <div className="h-full overflow-y-auto" ref={containerRef}>
+      <div className="flex-grow overflow-y-auto" ref={containerRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row py-10 md:py-20 z-20 relative">
             {/* Image container */}
@@ -119,7 +120,7 @@ export default function Homepage() {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="flex flex-col gap-4 p-4 border rounded-lg shadow-2xl min-h-[280px] w-full bg-blue-50">
+                    className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm min-h-[280px] w-full bg-blue-50">
                     <div className="flex gap-2 items-center justify-center font-semibold text-xl">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +147,7 @@ export default function Homepage() {
             </div>
 
             {/* SKILLS CONTAINER */}
-            <div className="hidden md:flex flex-col items-center gap-12 mt-20" ref={skillRef}>
+            <div className="hidden md:flex flex-col items-center gap-12 mt-10 md:mt-20" ref={skillRef}>
               {/* SKILL TITLE */}
               <motion.h1
                 initial={{ x: '-300px' }}
@@ -172,7 +173,6 @@ export default function Homepage() {
                  "Безопасность данных",
                  "Масштабируемость",
                  'Простота управления'
-
                 ].map((skill, index) => (
                   <div
                     key={index}
@@ -187,6 +187,7 @@ export default function Homepage() {
           <Portfolio />
         </div>
       </div>
+      <Footer />
     </motion.div>
   );
 }
