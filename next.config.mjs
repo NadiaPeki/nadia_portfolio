@@ -1,8 +1,12 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['images.pexels.com'], // Разрешаем загружать изображения с Pexels
+    domains: ['images.pexels.com'],
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

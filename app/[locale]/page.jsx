@@ -7,15 +7,19 @@ import Portfolio from '@/components/Portfolio';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
+import { useTranslations } from 'next-intl';
+
 
 export default function Homepage() {
+  
   const skillRef = useRef();
   const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
   const containerRef = useRef();
 
   const experienceRef = useRef();
   const isExperienceRefInView = useInView(experienceRef, { margin: '-100px' });
-
+ 
+  const t = useTranslations('Homepage')
   return (
     <motion.div
       className="h-full overflow-x-hidden "
@@ -39,7 +43,8 @@ export default function Homepage() {
             {/* Text container */}
             <div className="flex flex-col lg:w-1/2 lg:h-auto gap-8 items-center justify-center mt-10">
               <h1 className="text-4xl md:text-5xl font-bold text-start">
-                Современные сайты и реклама для вашего бизнеса!
+                {/* Современные сайты и реклама для вашего бизнеса! */}
+                {t('title')}
               </h1>
               <p className="text-start md:text-lg">
                 Мы разрабатываем удобные и современные цифровые решения, которые привлекают клиентов и

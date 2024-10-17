@@ -1,9 +1,9 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
-import NavLink from './NavLink';
-import { motion } from 'framer-motion';
+'use client'
+
+import Link from 'next/link'
+import { useState } from 'react'
+import NavLink from './NavLink'
+import { motion } from 'framer-motion'
 
 const links = [
   { url: '/', title: 'Главная' },
@@ -12,42 +12,25 @@ const links = [
   { url: '/startaps', title: 'Стартап' },
   { url: '/ads', title: "Google Ads" },
   { url: '/contact', title: 'Контакты' },
-];
+]
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
+export default function Navbar() {
+  const [open, setOpen] = useState(false)
+
   const topVariants = {
-    closed: {
-      rotate: 0,
-    },
-    opened: {
-      rotate: 45,
-      backgroundColor: 'rgb(255,255,255)',
-    },
-  };
+    closed: { rotate: 0 },
+    opened: { rotate: 45, backgroundColor: 'rgb(255,255,255)' },
+  }
   const centerVariants = {
-    closed: {
-      opacity: 1,
-    },
-    opened: {
-      opacity: 0,
-    },
-  };
-
+    closed: { opacity: 1 },
+    opened: { opacity: 0 },
+  }
   const bottomVariants = {
-    closed: {
-      rotate: 0,
-    },
-    opened: {
-      rotate: -45,
-      backgroundColor: 'rgb(255,255,255)',
-    },
-  };
-
+    closed: { rotate: 0 },
+    opened: { rotate: -45, backgroundColor: 'rgb(255,255,255)' },
+  }
   const listVariants = {
-    closed: {
-      x: '100vw',
-    },
+    closed: { x: '100vw' },
     opened: {
       x: 0,
       transition: {
@@ -55,71 +38,77 @@ const Navbar = () => {
         staggerChildren: 0.2,
       },
     },
-  };
-
+  }
   const listItemVariants = {
-    closed: {
-      x: -10,
-      opacity: 0,
-    },
-    opened: {
-      x: 0,
-      opacity: 1,
-    },
-  };
+    closed: { x: -10, opacity: 0 },
+    opened: { x: 0, opacity: 1 },
+  }
+
+  const handleLinkClick = () => {
+    setOpen(false)
+  }
 
   return (
-    <div className=" h-24 flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-lg font-semibold">
-      {/* This will hide the menu links at 920px and below */}
-      <div className="hidden custom-lg:flex gap-4 ">
+    <div className="h-24 flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-lg font-semibold">
+      <div className="hidden custom-lg:flex gap-4">
         {links.map((link) => (
           <NavLink link={link} key={link.title} />
         ))}
       </div>
-      <div className=" ">
+      <div>
         <Link
           href="/"
-          className="text-sm bg-black rounded-md p-1 pl-3 font-semibold flex items-center justify-center">
-          <span className="text-white pr-3 ">KOT</span>
+          className="text-sm bg-black rounded-md p-1 pl-3 font-semibold flex items-center justify-center"
+        >
+          <span className="text-white pr-3">KOT</span>
           <span className="w-12 h-8 rounded bg-red-100 text-black flex items-center justify-center">
             .dev
           </span>
         </Link>
       </div>
 
-      {/* The hamburger menu should show from 920px and below */}
       <div className="custom-lg:hidden">
         <button
           className="w-10 h-8 flex flex-col justify-between z-50 relative"
-          onClick={() => setOpen(!open)}>
+          onClick={() => setOpen(!open)}
+        >
           <motion.div
             variants={topVariants}
             animate={open ? 'opened' : 'closed'}
-            className="w-10 h-1 bg-black rounded origin-left"></motion.div>
+            className="w-10 h-1 bg-black rounded origin-left"
+          ></motion.div>
           <motion.div
             variants={centerVariants}
             animate={open ? 'opened' : 'closed'}
-            className="w-10 h-1 bg-black rounded"></motion.div>
+            className="w-10 h-1 bg-black rounded"
+          ></motion.div>
           <motion.div
             variants={bottomVariants}
             animate={open ? 'opened' : 'closed'}
-            className="w-10 h-1 bg-black rounded origin-left"></motion.div>
+            className="w-10 h-1 bg-black rounded origin-left"
+          ></motion.div>
         </button>
         {open && (
           <motion.div
             variants={listVariants}
             initial="closed"
             animate="opened"
-            className="absolute top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-8 text-3xl z-40">
+            className="fixed top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-4 text-3xl z-40"
+          >
             {links.map((link) => (
-              <motion.div variants={listItemVariants} key={link.title}>
-                <Link href={link.url}>{link.title}</Link>
+              <motion.div variants={listItemVariants} key={link.title} className="w-full text-center">
+                <Link 
+                  href={link.url} 
+                  className="block py-4 px-8" 
+                  onClick={handleLinkClick}
+                >
+                  {link.title}
+                </Link>
               </motion.div>
             ))}
           </motion.div>
         )}
       </div>
     </div>
-  );
-};
-export default Navbar;
+  )
+}
