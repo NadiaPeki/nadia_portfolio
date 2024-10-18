@@ -2,5 +2,8 @@
   "Homepage": {
     "title": "Привет!",
     "about": "Go to the about page"
+  },
+  "Sites": {
+    "title": "Сайт-визитка"
   }
 }

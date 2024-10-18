@@ -2,5 +2,8 @@
   "Homepage": {
     "title": "Witaj, świecie!",
     "about": "Przejdź na stronę o nas"
+  },
+  "Sites": {
+    "title": "Strona wizytówka"
   }
 }

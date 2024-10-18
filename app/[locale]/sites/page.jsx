@@ -3,13 +3,17 @@
 import Brain from '@/components/Brain';
 import { motion, useInView, useScroll } from 'framer-motion';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
 import Head from 'next/head';
+import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const Sites = () => {
+  const t = useTranslations('Sites');
+  const params = useParams();
   const containerRef = useRef();
   const { scrollYProgress } = useScroll({ container: containerRef });
   const skillRef = useRef();
@@ -24,6 +28,12 @@ const Sites = () => {
   const [error, setError] = useState(false);
   const [validationError, setValidationError] = useState('');
   const form = useRef();
+
+  useEffect(() => {
+    console.log('Sites page loaded');
+    console.log('Current locale:', params.locale);
+    console.log('Current URL:', window.location.href);
+  }, [params.locale]);
 
   const validateForm = () => {
     const contactInfo = form.current.user_contact.value;
@@ -90,7 +100,7 @@ const Sites = () => {
             {/* BIOGRAPHY CONTAINER */}
             <div className="flex flex-col gap-12 justify-center">
               {/* description container */}
-              <h1 className="text-4xl md:text-5xl font-bold text-start">Сайт-визитка</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-start">{t('title')}</h1>
               <p className="text-start md:text-lg">
                 Создание сайта-визитки — это эффективный способ представить вашу компанию в
                 интернете, совмещая информативность и маркетинговые возможности. Современные сайты
@@ -250,7 +260,7 @@ const Sites = () => {
               </motion.svg>
             </div>
 
-            {/* ПРЕМИУМ САЙТ-ВИЗИТКА CONTAINER */}
+            {/* ПРЕМИУМ САЙТ-ВИЗИТКА CONTAINER  */}
             <div className="flex flex-col gap-8 justify-center" ref={experienceRef}>
               {/* TITLE */}
               <motion.h2

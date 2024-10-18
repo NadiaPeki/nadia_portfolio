@@ -1,21 +1,18 @@
 import createMiddleware from 'next-intl/middleware';
 import { locales } from './config';
 
+const middlewareLogger = (request) => {
+  console.log(`Middleware processing: ${request.url}`);
+  console.log(`Locale from URL: ${request.nextUrl.pathname.split('/')[1]}`);
+};
+
 export default createMiddleware({
-  // Список всех поддерживаемых локалей
   locales: locales,
- 
-  // Используется, когда не найдено соответствие локали
   defaultLocale: 'pl',
-
-  // Всегда показывать префикс локали в URL
   localePrefix: 'always',
+}, middlewareLogger);
 
-  
-});
- 
 export const config = {
-  // Соответствие только интернационализированным путям
   matcher: [
     '/',
     '/(pl|ru)/:path*',
