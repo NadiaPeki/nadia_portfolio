@@ -27,11 +27,11 @@ const nextConfig = {
       },
       {
         source: '/ru/startapy',
-        destination: '/ru/startaps',
+        destination: '/ru/startups',
       },
       {
         source: '/pl/startupy',
-        destination: '/pl/startaps',
+        destination: '/pl/startups',
       },
       {
         source: '/ru/reklama',

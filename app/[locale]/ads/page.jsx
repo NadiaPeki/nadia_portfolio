@@ -8,8 +8,10 @@ import emailjs from '@emailjs/browser';
 import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
 import Head from 'next/head';
 import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const Ads = () => {
+  const t = useTranslations('Ads');
   const params = useParams();
   const containerRef = useRef();
   const { scrollYProgress } = useScroll({ container: containerRef });
@@ -19,7 +21,7 @@ const Ads = () => {
   const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
   const isExperienceRefInView = useInView(experienceRef, { margin: '-100px' });
   const isFormInView = useInView(formRef, { once: false, margin: '-100px' });
-  const text = 'Нужна реклама?';
+  const text = t('ads_needAds');
 
   // Contact form state and functions
   const [success, setSuccess] = useState(false);
@@ -39,12 +41,12 @@ const Ads = () => {
     const phoneRegex = /^[\d\s()+-]+$/;
 
     if (!contactInfo) {
-      setValidationError('Пожалуйста, укажите email или номер телефона.');
+      setValidationError(t('ads_validationErrorEmail'));
       return false;
     }
 
     if (!emailRegex.test(contactInfo) && !phoneRegex.test(contactInfo)) {
-      setValidationError('Пожалуйста, введите корректный email или номер телефона.');
+      setValidationError(t('ads_validationErrorContact'));
       return false;
     }
 
@@ -97,21 +99,15 @@ const Ads = () => {
             {/* BIOGRAPHY CONTAINER */}
             <div className="flex flex-col gap-12 justify-center">
               {/* description container */}
-              <h1 className="text-4xl md:text-5xl font-bold text-start">Google Ads</h1>
-              <p className="text-start md:text-lg">
-                В современном мире онлайн-рекламы Google Ads является мощным инструментом для
-                привлечения целевой аудитории и увеличения продаж. Наши услуги по настройке и ведению
-                рекламных кампаний в Google Ads помогут вам эффективно использовать рекламный бюджет и
-                привлекать клиентов. Мы предлагаем профессиональную настройку кампаний и постоянную оптимизацию для
-                достижения наилучших результатов.
-              </p>
+              <h1 className="text-4xl md:text-5xl font-bold text-start">{t('ads_title')}</h1>
+              <p className="text-start md:text-lg">{t('ads_description')}</p>
               <div className="flex flex-row gap-4 justify-center">
                 <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Доменное имя в зоне .pl — в подарок.
+                    {t('ads_domainGift')}
                   </motion.p>
                 </div>
 
@@ -120,7 +116,7 @@ const Ads = () => {
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    При заказе сайта и Google Ads — 500 PLN скидка.
+                    {t('ads_discount')}
                   </motion.p>
                 </div>
               </div>
@@ -150,7 +146,7 @@ const Ads = () => {
                 initial={{ x: '-300px' }}
                 animate={isSkillRefInView ? { x: 0 } : {}}
                 className="font-bold text-2xl">
-                НАСТРОЙКА GOOGLE ADS
+                {t('ads_setupTitle')}
               </motion.h2>
 
               {/* SKILL LIST */}
@@ -163,71 +159,46 @@ const Ads = () => {
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Стоимость: 2000 PLN
+                    {t('ads_setupPrice')}
                   </motion.p>
 
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Время выполнения: 20 - 45 дней
+                    {t('ads_setupTime')}
                   </motion.p>
                 </div>
                 <div className="flex flex-col gap-8">
                   <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                     {/* Функционал */}
-                    <p className="font-semibold text-lg mb-2 text-start">Что будет сделано?</p>
+                    <p className="font-semibold text-lg mb-2 text-start">
+                      {t('ads_setupWhatWillBeDone')}
+                    </p>
                     <ul className="list-disc list-inside p-3">
-                      <li className="mb-1">Определение целей и анализ целевой аудитории.</li>
-                      <li className="mb-1">
-                        Анализ сайтов и объявлений конкурентов, исследование рынка.
-                      </li>
-                      <li className="mb-1">Исследование и подбор ключевых слов.</li>
-                      <li className="mb-1">
-                        Формирование логической структуры аккаунта, создание группы объявлений и
-                        настройка таргетинга для максимальной релевантности.
-                      </li>
-                      <li className="mb-1">Создание объявлений.</li>
-                      <li className="mb-1">Настройка конверсий и отслеживания.</li>
-                      <li className="mb-1">
-                        Установка дневного и общего бюджета, выбор стратегии ставок.
-                      </li>
-                      <li className="mb-1">Тестирование объявлений.</li>
-                      <li className="mb-1">
-                        Персональный видеоурок с обзором настроек рекламной кампании для
-                        самостоятельного управления рекламой.
-                      </li>
+                      {[...Array(9)].map((_, index) => (
+                        <li key={index} className="mb-1">
+                          {t(`ads_setupFunctionality${index + 1}`)}
+                        </li>
+                      ))}
                     </ul>
                   </div>
 
                   <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                    <p className="font-semibold text-lg mb-2 text-start">Какой нужен будет бюджет?</p>
-                    <p>
-                      При запуске рекламной кампании важно выделить небольшой бюджет на тестирование.
-                      Эта сумма может варьироваться в зависимости от ваших целей и стратегии.
-                      Тестирование рекламы — ключевой этап для достижения эффективности. Оно позволяет
-                      собрать важную информацию и статистику, на основе которой можно оптимизировать
-                      дальнейшие настройки и улучшить результаты кампании.
-                    </p>
+                    <p className="font-semibold text-lg mb-2 text-start">{t('ads_budgetTitle')}</p>
+                    <p>{t('ads_budgetDescription')}</p>
                   </div>
 
                   <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                     <p className="font-semibold text-lg mb-2 text-start">
-                      Как понять, во сколько обходится клиент?
+                      {t('ads_costPerClientTitle')}
                     </p>
-                    <p>
-                      Если один лид (потенциальный клиент, оставивший свои контактные данные)
-                      обходится вам в 100 злотых, а каждый пятый лид становится вашим клиентом, то
-                      стоимость привлечения одного клиента составит 500 злотых. Таким образом, ваш
-                      бюджет на рекламу будет зависеть от количества клиентов, которых вы хотите
-                      получить. Например, для привлечения 10 клиентов вам потребуется выделить 5000
-                      злотых на рекламные кампании.
-                    </p>
+                    <p>{t('ads_costPerClientDescription')}</p>
                   </div>
                 </div>
                 <Link href={`/${params.locale}/contact`}>
                   <button className="my-5 md:mt-10 p-3 rounded-lg bg-black text-white text-lg">
-                    Заказать рекламу
+                    {t('ads_orderButton')}
                   </button>
                 </Link>
               </motion.div>
@@ -258,7 +229,7 @@ const Ads = () => {
                 initial={{ x: '-300px' }}
                 animate={isExperienceRefInView ? { x: 0 } : {}}
                 className="font-bold text-2xl">
-                ВЕДЕНИЕ GOOGLE ADS
+                {t('ads_managementTitle')}
               </motion.h2>
 
               {/* EXPERIENCE LIST */}
@@ -271,42 +242,21 @@ const Ads = () => {
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100%50%', '0%50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Стоимость: 20% от фактически потраченного бюджета на рекламу за прошлый месяц
+                    {t('ads_managementPrice')}
                   </motion.p>
                 </div>
                 <div className="flex flex-col gap-8">
                   <div className="bg-white p-4 mb-10 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                     {/* Функционал */}
-                    <p className="font-semibold text-lg mb-2 text-start">Что будет сделано?</p>
+                    <p className="font-semibold text-lg mb-2 text-start">
+                      {t('ads_managementWhatWillBeDone')}
+                    </p>
                     <ul className="list-disc list-inside p-3">
-                      <li className="mb-1">
-                        Регулярный анализ ключевых метрик (показы, клики, конверсии и стоимость за
-                        клик) и использование Google Analytics для оптимизации.
-                      </li>
-                      <li className="mb-1">
-                        Корректировка текстов на основе результатов тестирования и обновление
-                        креативов для удержания внимания.
-                      </li>
-                      <li className="mb-1">
-                        Добавление новых ключевых слов и удаление неэффективных для сокращения
-                        расходов.
-                      </li>
-                      <li className="mb-1">
-                        Регулировка демографического и географического таргетинга для более точного
-                        охвата.
-                      </li>
-                      <li className="mb-1">
-                        Регулировка бюджета и оптимизация стратегий ставок для повышения
-                        эффективности.
-                      </li>
-                      <li className="mb-1">
-                        Используем ремаркетинг для повторного показа объявлений пользователям, которые
-                        уже взаимодействовали с вашим сайтом.
-                      </li>
-                      <li>
-                        Расширение охвата с помощью контекстно-медийной рекламы, показывающей
-                        объявления на релевантных сайтах.
-                      </li>
+                      {[...Array(7)].map((_, index) => (
+                        <li key={index} className="mb-1">
+                          {t(`ads_managementFunctionality${index + 1}`)}
+                        </li>
+                      ))}
                     </ul>
                   </div>
                   {/* Contact Form */}
@@ -338,28 +288,30 @@ const Ads = () => {
                         ref={form}
                         className="bg-red-50 rounded-xl text-xl flex flex-col gap-6 p-8 w-full"
                         initial={{ scale: 0.9, opacity: 0 }}
-                        animate={isFormInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+                        animate={
+                          isFormInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }
+                        }
                         transition={{ duration: 0.5, delay: 0.2 }}>
-                        <span className="font-semibold">Опишите ваши рекламные цели:</span>
+                        <span className="font-semibold">{t('ads_describeGoals')}</span>
                         <textarea
                           rows={8}
                           className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-sm md:text-base min-h-[200px] max-w-full"
                           name="user_message"
-                          placeholder="Пожалуйста, опишите ваши рекламные цели, целевую аудиторию и любые конкретные пожелания по рекламной кампании."
+                          placeholder={t('ads_describeGoalsPlaceholder')}
                         />
-                        <span className="font-semibold">Оставьте ваш email или номер телефона:</span>
+                        <span className="font-semibold">{t('ads_contactInfo')}</span>
                         <input
                           name="user_contact"
                           type="text"
                           className="bg-transparent border-b-2 border-b-black outline-none text-sm md:text-base min-h-[40px] max-w-full placeholder-opacity-50"
-                          placeholder="Ваш email или номер телефона"
+                          placeholder={t('ads_contactInfoPlaceholder')}
                         />
 
                         <motion.button
                           className="bg-purple-200 rounded font-semibold text-gray-600 p-4 my-3"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}>
-                          Отправить
+                          {t('ads_sendButton')}
                         </motion.button>
                         {success && (
                           <motion.span
@@ -367,7 +319,7 @@ const Ads = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}>
-                            Ваше сообщение успешно отправлено!
+                            {t('ads_successMessage')}
                           </motion.span>
                         )}
                         {error && (
@@ -376,7 +328,7 @@ const Ads = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}>
-                            Что-то пошло не так!
+                            {t('ads_errorMessage')}
                           </motion.span>
                         )}
                         {validationError && (
@@ -392,7 +344,7 @@ const Ads = () => {
                     </div>
                     <div className="flex flex-col items-center mt-10">
                       <span className="text-lg md:text-xl font-semibold mb-4 ">
-                        Напишите нам в соцсетях:
+                        {t('ads_socialMediaTitle')}
                       </span>
                       <div className="flex space-x-7">
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">

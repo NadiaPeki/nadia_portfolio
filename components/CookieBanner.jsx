@@ -2,18 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 const CookieBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
+  const t = useTranslations('CookieBanner');
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Проверяем, что мы находимся в среде браузера
     if (typeof window !== 'undefined') {
-      // Проверяем, было ли дано согласие на использование cookies
       const cookieConsent = localStorage.getItem('cookieConsent');
-      console.log('Текущий статус согласия на cookies:', cookieConsent); // Лог текущего статуса
-
-      // Показываем баннер, если согласие не было дано
       if (cookieConsent === null) {
         setShowBanner(true);
       }
@@ -21,30 +20,29 @@ const CookieBanner = () => {
   }, []);
 
   const handleAcceptCookies = () => {
-    // Сохраняем согласие в localStorage
     localStorage.setItem('cookieConsent', 'true');
-    setShowBanner(false); // Скрываем баннер
-    console.log('Cookies accepted'); // Лог при принятии
+    setShowBanner(false);
+    console.log('Additional cookies accepted and activated');
   };
 
   const handleDeclineCookies = () => {
-    // Сохраняем отказ в localStorage (если необходимо)
     localStorage.setItem('cookieConsent', 'false');
-    setShowBanner(false); // Скрываем баннер
-    console.log('Cookies declined'); // Лог при отказе
+    setShowBanner(false);
+    console.log('Only necessary cookies will be used');
   };
 
-  // Если не нужно показывать баннер, ничего не рендерим
   if (!showBanner) return null;
+
+  // Extract the locale from the pathname
+  const locale = pathname.split('/')[1];
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-b from-blue-200 to-red-200 text-black p-4 shadow-lg z-50">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
         <p className="text-sm text-center sm:text-left">
-          Мы используем файлы cookie для улучшения вашего опыта. Для получения дополнительной
-          информации, пожалуйста, посетите нашу{' '}
-          <Link href="/cookie" className="text-black underline font-semibold">
-            Политику использования файлов cookie
+          {t('cookieBanner_message')}{' '}
+          <Link href={`/${locale}/cookie`} className="text-black underline font-semibold">
+            {t('cookieBanner_policyLink')}
           </Link>
           .
         </p>
@@ -52,12 +50,12 @@ const CookieBanner = () => {
           <button
             onClick={handleAcceptCookies}
             className="bg-black hover:bg-blue-300 text-white py-2 px-4 rounded transition-colors duration-300">
-            Принять
+            {t('cookieBanner_acceptButton')}
           </button>
           <button
             onClick={handleDeclineCookies}
             className="bg-white hover:bg-red-300 text-black py-2 px-4 rounded transition-colors duration-300">
-            Отклонить
+            {t('cookieBanner_declineButton')}
           </button>
         </div>
       </div>

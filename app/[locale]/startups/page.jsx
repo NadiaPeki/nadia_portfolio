@@ -8,8 +8,9 @@ import Link from 'next/link';
 import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
 import Head from 'next/head';
 import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
-const Startaps = () => {
+const Startups = () => {
   const params = useParams();
   const containerRef = useRef();
   const { scrollYProgress } = useScroll({ container: containerRef });
@@ -19,7 +20,8 @@ const Startaps = () => {
   const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
   const isExperienceRefInView = useInView(experienceRef, { margin: '-100px' });
   const isFormInView = useInView(formRef, { once: false, margin: '-100px' });
-  const text = 'Нужен сайт для стартапа?'
+  const t = useTranslations('Startups');
+  const text = t('startups_needWebsite');
 
   // Contact form state and functions
   const [success, setSuccess] = useState(false);
@@ -39,12 +41,12 @@ const Startaps = () => {
     const phoneRegex = /^[\d\s()+-]+$/;
 
     if (!contactInfo) {
-      setValidationError('Пожалуйста, укажите email или номер телефона.');
+      setValidationError(t('startups_validationErrorEmail'));
       return false;
     }
 
     if (!emailRegex.test(contactInfo) && !phoneRegex.test(contactInfo)) {
-      setValidationError('Пожалуйста, введите корректный email или номер телефона.');
+      setValidationError(t('startups_validationErrorContact'));
       return false;
     }
 
@@ -98,13 +100,10 @@ const Startaps = () => {
             <div className="flex flex-col gap-12 justify-center">
               {/* description container */}
               <h1 className="text-4xl md:text-5xl font-bold text-start">
-                Запуск стартапа: полное решение для вашего бизнеса
+                {t('startups_title')}
               </h1>
               <p className="text-start md:text-lg">
-                Готовы запустить свой стартап или интернет-бизнес? Мы создаем не просто сайты, а
-                эффективные платформы, которые помогут вам выстроить прочную основу для бизнеса и
-                привлечь клиентов. Наша команда разрабатывает решения под ключ — от идей до полного
-                воплощения, используя передовые технологии и инновационные подходы.
+                {t('startups_description')}
               </p>
 
               <div className="flex flex-row gap-4 justify-center">
@@ -113,7 +112,7 @@ const Startaps = () => {
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Доменное имя в зоне .pl — в подарок.
+                    {t('startups_domainGift')}
                   </motion.p>
                 </div>
 
@@ -122,7 +121,7 @@ const Startaps = () => {
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    При заказе сайта и Google Ads — 500 PLN скидка.
+                    {t('startups_discount')}
                   </motion.p>
                 </div>
               </div>
@@ -152,7 +151,7 @@ const Startaps = () => {
                 initial={{ x: '-300px' }}
                 animate={isSkillRefInView ? { x: 0 } : {}}
                 className="font-bold text-2xl">
-                НАШИ КЛЮЧЕВЫЕ РЕШЕНИЯ:
+                {t('startups_solutionsTitle')}
               </motion.h2>
 
               {/* SKILL LIST */}
@@ -165,68 +164,49 @@ const Startaps = () => {
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Стоимость: ♾️
+                    {t('startups_price')}
                   </motion.p>
                 </div>
                 <div className="flex flex-col gap-8">
                   <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                     <p className="font-semibold text-lg mb-2 text-start">
-                      Инновационные сайты с ИИ-интеграцией
+                      {t('startups_solution1Title')}
                     </p>
                     <p>
-                      Превратите ваши идеи в интеллектуальные системы. Мы создаем платформы с
-                      искусственным интеллектом, которые автоматизируют задачи, персонализируют
-                      взаимодействие и помогают вашим пользователям получать максимальную пользу. Это
-                      может быть система для обучения, бизнес-инструменты или развлекательные
-                      приложения — наши решения помогут вам выйти на рынок с уникальным продуктом.
+                      {t('startups_solution1Description')}
                     </p>
                   </div>
                 </div>
 
                 <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                   <p className="font-semibold text-lg mb-2 text-start">
-                    Форумы и социальные платформы
+                    {t('startups_solution2Title')}
                   </p>
                   <p>
-                    Создавайте пространства для общения и взаимодействия пользователей. Сообщества —
-                    это ключ к удержанию аудитории и созданию лояльности. Мы разрабатываем удобные
-                    форумы и социальные платформы, которые вовлекают пользователей, создавая место для
-                    обмена опытом, идеями и знаниями. Ваша платформа станет точкой притяжения для
-                    людей с общими интересами.
+                    {t('startups_solution2Description')}
                   </p>
                 </div>
 
-                <div className="bg-white p-6 mb-10 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                  <p className="font-semibold text-lg mb-2 text-start">Доски объявлений</p>
+                <div className="bg-white p-6 mb-10  rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
+                  <p className="font-semibold text-lg mb-2 text-start">{t('startups_solution3Title')}</p>
                   <p>
-                    Монетизируйте взаимодействие через удобные площадки для объявлений. Наши доски
-                    объявлений созданы с учетом удобства пользователей и потребностей бизнеса. Мы
-                    предлагаем решения для любых ниш, с функциями фильтрации, рейтингов и отзывов,
-                    которые помогают покупателям и продавцам легко находить друг друга. Это надежный
-                    способ монетизации и расширения аудитории.
+                    {t('startups_solution3Description')}
                   </p>
                 </div>
                 <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                   <p className="font-semibold text-lg mb-2 text-start">
-                    Платформы для оказания услуг
+                    {t('startups_solution4Title')}
                   </p>
                   <p>
-                    Соедините клиентов и исполнителей через продуманные сервисы бронирования. Наши
-                    платформы упрощают процесс поиска и заказа услуг. Мы разрабатываем решения для
-                    бронирования и оплаты, которые идеально подходят для фрилансеров, специалистов и
-                    сервисных компаний. Удобный интерфейс и возможность безопасных платежей делают
-                    такие платформы привлекательными для пользователей.
+                    {t('startups_solution4Description')}
                   </p>
                 </div>
                 <div className="bg-white p-6 mb-10 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                   <p className="font-semibold text-lg mb-2 text-start">
-                    Платформы для доставки товаров и услуг
+                    {t('startups_solution5Title')}
                   </p>
                   <p>
-                    Обеспечьте вашим клиентам удобство заказа и доставки. Мы создаем платформы для
-                    быстрой и удобной доставки товаров и услуг с отслеживанием в реальном времени и
-                    интеграцией с платежными системами. Такие решения позволяют улучшить качество
-                    обслуживания и повысить лояльность клиентов.
+                    {t('startups_solution5Description')}
                   </p>
                 </div>
               </motion.div>
@@ -239,7 +219,7 @@ const Startaps = () => {
                 animate={isFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.5 }}>
                 <div className='text-center mb-8 leading-normal'>
-                  {text.split('').map((letter, index) => (
+                  {t('startups_needWebsite').split('').map((letter, index) => (
                     <motion.span
                       className="pr-3 text-2xl md:text-4xl "
                       key={index}
@@ -258,24 +238,23 @@ const Startaps = () => {
                   <motion.form
                     onSubmit={sendEmail}
                     ref={form}
-                    
                     className="bg-red-50 rounded-xl text-xl flex flex-col gap-6 p-8 w-full"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={isFormInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}>
-                    <span className="font-semibold">Опишите ваш будущий сайт:</span>
+                    <span className="font-semibold">{t('startups_describeWebsite')}</span>
                     <textarea
                       rows={8}
                       className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-sm md:text-base min-h-[200px] max-w-full"
                       name="user_message"
-                      placeholder="Пожалуйста, опишите ваши идеи, цели и любые конкретные функции, которые вы хотите."
+                      placeholder={t('startups_describeWebsitePlaceholder')}
                     />
-                    <span className="font-semibold">Оставьте ваш email или номер телефона:</span>
+                    <span className="font-semibold">{t('startups_contactInfo')}</span>
                     <input
                       name="user_contact"
                       type="text"
                       className="bg-transparent border-b-2 border-b-black outline-none text-sm md:text-base min-h-[40px] max-w-full placeholder-opacity-50"
-                      placeholder="Ваш email или номер телефона"
+                      placeholder={t('startups_contactInfoPlaceholder')}
                     />
 
                     <motion.button
@@ -283,7 +262,7 @@ const Startaps = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      Отправить
+                      {t('startups_sendButton')}
                     </motion.button>
                     {success && (
                       <motion.span
@@ -292,7 +271,7 @@ const Startaps = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
                       >
-                        Ваше сообщение успешно отправлено!
+                        {t('startups_successMessage')}
                       </motion.span>
                     )}
                     {error && (
@@ -302,7 +281,7 @@ const Startaps = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
                       >
-                        Что-то пошло не так!
+                        {t('startups_errorMessage')}
                       </motion.span>
                     )}
                     {validationError && (
@@ -319,7 +298,7 @@ const Startaps = () => {
                 </div>
                 <div className="flex flex-col items-center mt-10">
                   <span className="text-lg md:text-xl font-semibold mb-4 ">
-                    Напишите нам в соцсетях:
+                    {t('startups_socialMediaTitle')}
                   </span>
                   <div className="flex space-x-7">
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
@@ -337,11 +316,9 @@ const Startaps = () => {
 
               <div className="bg-yellow-100 mb-10 md:mt-10 p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                 <p className="text-sm font-semibold text-sky-700 italic">
-                  Мы предлагаем гибкость в выборе функционала! Вы можете добавлять или убирать опции в
-                  зависимости от ваших потребностей.
+                  {t('startups_flexibilityNote')}
                   <br />
-                  Обратите внимание, что итоговая цена может изменяться в зависимости от выбранных
-                  вами функций.
+                  {t('startups_priceNote')}
                 </p>
               </div>
             </div>
@@ -356,4 +333,4 @@ const Startaps = () => {
   );
 };
 
-export default Startaps;
+export default Startups;

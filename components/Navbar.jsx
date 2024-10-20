@@ -114,7 +114,7 @@ export default function Navbar() {
               <motion.div
                 variants={listItemVariants}
                 key={link.title}
-                className="w-full text-center">
+                className="w-full text-3xl text-center">
                 <Link
                   href={`/${currentLocale}${link.url === '/' ? '' : link.url}`}
                   className="block py-4 px-8"

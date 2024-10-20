@@ -11,7 +11,7 @@ import Head from 'next/head';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-const Sites = () => {
+export default function Sites() {
   const t = useTranslations('Sites');
   const params = useParams();
   const containerRef = useRef();
@@ -22,8 +22,7 @@ const Sites = () => {
   const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
   const isExperienceRefInView = useInView(experienceRef, { margin: '-100px' });
   const isFormInView = useInView(formRef, { once: false, margin: '-100px' });
-  const text = 'Нужен сайт?';
-  // Contact form state and functions
+  const text = t('needWebsite');
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [validationError, setValidationError] = useState('');
@@ -41,12 +40,12 @@ const Sites = () => {
     const phoneRegex = /^[\d\s()+-]+$/;
 
     if (!contactInfo) {
-      setValidationError('Пожалуйста, укажите email или номер телефона.');
+      setValidationError(t('validationErrorEmail'));
       return false;
     }
 
     if (!emailRegex.test(contactInfo) && !phoneRegex.test(contactInfo)) {
-      setValidationError('Пожалуйста, введите корректный email или номер телефона.');
+      setValidationError(t('validationErrorContact'));
       return false;
     }
 
@@ -84,7 +83,6 @@ const Sites = () => {
   return (
     <>
       <Head>
-        {/* Теги hreflang для разных языков */}
         <link rel="alternate" href="https://yoursite.com/pl/strony" hreflang="pl" />
         <link rel="alternate" href="https://yoursite.com/ru/sajty" hreflang="ru" />
       </Head>
@@ -93,43 +91,29 @@ const Sites = () => {
         initial={{ y: '-200vh' }}
         animate={{ y: '0%' }}
         transition={{ duration: 1 }}>
-        {/* CONTAINER */}
         <div className="h-full overflow-y-auto lg:flex" ref={containerRef}>
-          {/* TEXT CONTAINER */}
           <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-40 flex flex-col gap-20 md:gap-32 lg:gap-40 xl:gap-50 lg:w-2/3 lg:pr-0 xl:w-1/2">
-            {/* BIOGRAPHY CONTAINER */}
             <div className="flex flex-col gap-12 justify-center">
-              {/* description container */}
               <h1 className="text-4xl md:text-5xl font-bold text-start">{t('title')}</h1>
-              <p className="text-start md:text-lg">
-                Создание сайта-визитки — это эффективный способ представить вашу компанию в
-                интернете, совмещая информативность и маркетинговые возможности. Современные сайты
-                часто строятся как совокупность лендингов, что позволяет использовать преимущества
-                лендингового подхода для каждой услуги или продукта. Такая гибридная структура
-                сохраняет многостраничный формат, но на каждой странице фокусируется на конверсии,
-                помогая привлекать клиентов.
-              </p>
+              <p className="text-start md:text-lg">{t('description')}</p>
               <div className="flex flex-row gap-4 justify-center">
                 <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Доменное имя в зоне .pl — в подарок.
+                    {t('domainGift')}
                   </motion.p>
                 </div>
-
                 <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    При заказе сайта и Google Ads — 500 PLN скидка.
+                    {t('discount')}
                   </motion.p>
                 </div>
               </div>
-
-              {/* BIOGRAPHY SCROLL SVG */}
               <motion.svg
                 initial={{ opacity: 0.2, y: 0 }}
                 animate={{ opacity: 1, y: '10px' }}
@@ -147,17 +131,13 @@ const Sites = () => {
                 <path d="M15 11L12 14L9 11" stroke="#000000" strokeWidth="1"></path>
               </motion.svg>
             </div>
-            {/* базовый сайт-визитка CONTAINER */}
             <div className="flex flex-col gap-8 justify-center" ref={skillRef}>
-              {/* TITLE */}
               <motion.h2
                 initial={{ x: '-300px' }}
                 animate={isSkillRefInView ? { x: 0 } : {}}
                 className="font-bold text-2xl">
-                СТАНДАРТНЫЙ САЙТ-ВИЗИТКА
+                {t('standardTitle')}
               </motion.h2>
-
-              {/* SKILL LIST */}
               <motion.div
                 initial={{ x: '-300px' }}
                 animate={isSkillRefInView ? { x: 0 } : {}}
@@ -167,81 +147,56 @@ const Sites = () => {
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Стоимость: 1500 - 3000 PLN
+                    {t('standardPrice')}
                   </motion.p>
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Количество страниц: 1 - 5
+                    {t('standardPages')}
                   </motion.p>
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Время выполнения: 10 - 20 дней
+                    {t('standardTime')}
                   </motion.p>
                 </div>
                 <div className="flex flex-col gap-8">
                   <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                    {/* Функционал */}
-                    <p className="font-semibold text-lg mb-2 text-start">Функционал:</p>
+                    <p className="font-semibold text-lg mb-2 text-start">{t('functionalityTitle')}</p>
                     <ul className="list-disc list-inside p-3">
-                      <li className="mb-1">
-                        Главная, страницы услуг, контакты с формой обратной связи.
-                      </li>
-                      <li className="mb-1">
-                        Интеграция с Google Maps для отображения местоположения.
-                      </li>
-                      <li className="mb-1">Подключение домена и размещение на хостинге.</li>
-                      <li className="mb-1">
-                        Адаптивный дизайн: Оптимизация с учетом различных экранов и устройств.
-                      </li>
-                      <li className="mb-1">Работа по вашему макету или из нашей базы шаблонов.</li>
-                      <li className="mb-1">
-                        Оптимизация скорости загрузки сайта для улучшения SEO и пользовательского
-                        опыта.
-                      </li>
-                      <li className="mb-1">Подключение ссылок на соцсети (Facebook, Instagram).</li>
-                      <li className="mb-1">
-                        Анимация: Плавные переходы между секциями, эффекты на кнопках и элементах
-                        при взаимодействии.
-                      </li>
-                      <li>
-                        Персональный видеоурок с обзором настроек и функционала вашего сайта для его
-                        дальнейшего самостоятельного управления.
-                      </li>
+                      <li className="mb-1">{t('functionalityItem1')}</li>
+                      <li className="mb-1">{t('functionalityItem2')}</li>
+                      <li className="mb-1">{t('functionalityItem3')}</li>
+                      <li className="mb-1">{t('functionalityItem4')}</li>
+                      <li className="mb-1">{t('functionalityItem5')}</li>
+                      <li className="mb-1">{t('functionalityItem6')}</li>
+                      <li className="mb-1">{t('functionalityItem7')}</li>
+                      <li className="mb-1">{t('functionalityItem8')}</li>
+                      <li>{t('functionalityItem9')}</li>
                     </ul>
                   </div>
-
                   <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                    {/* SEO-подготовка и техническая оптимизация */}
-                    <p className="font-semibold text-lg mb-2 text-start">
-                      SEO-подготовка и техническая оптимизация:
-                    </p>
+                    <p className="font-semibold text-lg mb-2 text-start">{t('seoTitle')}</p>
                     <ul className="list-disc list-inside p-3">
-                      <li className="mb-1">Настройка метатегов, описаний и заголовков для SEO.</li>
-                      <li>Регистрация в Google Search Console и Google Analytics.</li>
+                      <li className="mb-1">{t('seoItem1')}</li>
+                      <li>{t('seoItem2')}</li>
                     </ul>
                   </div>
-
                   <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                    {/* Технологии */}
-                    <p className="font-semibold text-lg mb-2 text-start">Технологии:</p>
+                    <p className="font-semibold text-lg mb-2 text-start">{t('technologiesTitle')}</p>
                     <ul className="list-none list-inside p-3">
-                      <li>Next.js и React для быстрой работы и интерактивных компонентов.</li>
+                      <li>{t('technologiesStandard')}</li>
                     </ul>
                   </div>
                 </div>
                 <Link href="/contact">
-                  {' '}
                   <button className="my-5 md:mt-10 p-3 rounded-lg bg-black text-white text-lg">
-                    Заказать сайт-визитку
+                    {t('orderButton')}
                   </button>
                 </Link>
               </motion.div>
-
-              {/* SCROLL SVG */}
               <motion.svg
                 initial={{ opacity: 0.2, y: 0 }}
                 animate={{ opacity: 1, y: '10px' }}
@@ -259,18 +214,13 @@ const Sites = () => {
                 <path d="M15 11L12 14L9 11" stroke="#000000" strokeWidth="1"></path>
               </motion.svg>
             </div>
-
-            {/* ПРЕМИУМ САЙТ-ВИЗИТКА CONTAINER  */}
             <div className="flex flex-col gap-8 justify-center" ref={experienceRef}>
-              {/* TITLE */}
               <motion.h2
                 initial={{ x: '-300px' }}
                 animate={isExperienceRefInView ? { x: 0 } : {}}
                 className="font-bold text-2xl">
-                ПРЕМИУМ САЙТ-ВИЗИТКА
+                {t('premiumTitle')}
               </motion.h2>
-
-              {/* EXPERIENCE LIST */}
               <motion.div
                 initial={{ x: '-300px' }}
                 animate={isExperienceRefInView ? { x: 0 } : {}}
@@ -280,85 +230,54 @@ const Sites = () => {
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Стоимость: 3000 - 8000 PLN.
+                    {t('premiumPrice')}
                   </motion.p>
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Количество страниц: 5 - 10.
+                    {t('premiumPages')}
                   </motion.p>
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    Время выполнения: 20 - 45 дней.
+                    {t('premiumTime')}
                   </motion.p>
                 </div>
                 <div className="flex flex-col gap-8">
                   <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                    {/* Функционал */}
-                    <p className="font-semibold text-lg mb-2 text-start">Функционал:</p>
+                    <p className="font-semibold text-lg mb-2 text-start">{t('functionalityTitle')}</p>
                     <ul className="list-disc list-inside p-3">
-                      <li className="mb-1">
-                        Главная, страницы услуг, контакты с формой обратной связи.
-                      </li>
-                      <li className="mb-1">
-                        Подробное описание предлагаемых услуг с возможностью включения галереи
-                        изображений или примеров работ.
-                      </li>
-                      <li className="mb-1">
-                        Интеграция с Google Maps для отображения местоположения и информации о
-                        компании.
-                      </li>
-                      <li className="mb-1">Блог или раздел новостей.</li>
-                      <li className="mb-1">Возможность управления контентом через админ-панель.</li>
-                      <li className="mb-1">Поддержка нескольких языков.</li>
-                      <li className="mb-1">Подключение домена и размещение на хостинге.</li>
-                      <li className="mb-1">
-                        Адаптивный дизайн: Оптимизация с учетом различных экранов и устройств.
-                      </li>
-                      <li className="mb-1">
-                        Работа по вашему макету,из нашей базы шаблонов или создание кастомного
-                        дизайна.
-                      </li>
-                      <li className="mb-1">
-                        Оптимизация скорости загрузки сайта для улучшения SEO и пользовательского
-                        опыта.
-                      </li>
-                      <li className="mb-1">Подключение ссылок на соцсети (Facebook, Instagram).</li>
-                      <li className="mb-1">
-                        Анимация: Плавные переходы между секциями, анимация при прокрутке, эффекты
-                        на кнопках и элементах при взаимодействии.
-                      </li>
-                      <li>
-                        Персональный видеоурок с обзором настроек и функционала вашего сайта для его
-                        дальнейшего самостоятельного управления.
-                      </li>
+                      <li className="mb-1">{t('premiumFunctionalityItem1')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem2')}</li>
+                      <li  className="mb-1">{t('premiumFunctionalityItem3')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem4')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem5')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem6')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem7')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem8')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem9')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem10')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem11')}</li>
+                      <li className="mb-1">{t('premiumFunctionalityItem12')}</li>
+                      <li>{t('premiumFunctionalityItem13')}</li>
                     </ul>
                   </div>
-
                   <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                    {/* SEO-подготовка и техническая оптимизация */}
-                    <p className="font-semibold text-lg mb-2 text-start">
-                      SEO-подготовка и техническая оптимизация:
-                    </p>
+                    <p className="font-semibold text-lg mb-2 text-start">{t('seoTitle')}</p>
                     <ul className="list-disc list-inside p-3">
-                      <li className="mb-1">Настройка метатегов, описаний и заголовков для SEO.</li>
-                      <li>Регистрация в Google Search Console и Google Analytics.</li>
+                      <li className="mb-1">{t('seoItem1')}</li>
+                      <li>{t('seoItem2')}</li>
                     </ul>
                   </div>
-
                   <div className="bg-white mb-10 p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                    {/* Технологии */}
-                    <p className="font-semibold text-lg mb-2 text-start">Технологии:</p>
+                    <p className="font-semibold text-lg mb-2 text-start">{t('technologiesTitle')}</p>
                     <ul className="list-disc list-inside p-3">
-                      <li>Next.js и React для создания высококачественных интерфейсов.</li>
-                      <li>Node.js для серверной логики и работы с API.</li>
+                      <li className="mb-1">{t('technologiesPremium1')}</li>
+                      <li>{t('technologiesPremium2')}</li>
                     </ul>
                   </div>
-
-                  {/* Contact Form - with improved animation */}
                   <motion.div
                     ref={formRef}
                     className="flex flex-col justify-center"
@@ -391,28 +310,25 @@ const Sites = () => {
                           isFormInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }
                         }
                         transition={{ duration: 0.5, delay: 0.2 }}>
-                        <span className="font-semibold">Опишите ваш будущий сайт:</span>
+                        <span className="font-semibold">{t('describeWebsite')}</span>
                         <textarea
                           rows={8}
                           className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-sm md:text-base min-h-[200px] max-w-full"
                           name="user_message"
-                          placeholder="Пожалуйста, опишите ваши идеи, цели и любые конкретные функции, которые вы хотите."
+                          placeholder={t('describeWebsitePlaceholder')}
                         />
-                        <span className="font-semibold">
-                          Оставьте ваш email или номер телефона:
-                        </span>
+                        <span className="font-semibold">{t('contactInfo')}</span>
                         <input
                           name="user_contact"
                           type="text"
                           className="bg-transparent border-b-2 border-b-black outline-none text-sm md:text-base min-h-[40px] max-w-full placeholder-opacity-50"
-                          placeholder="Ваш email или номер телефона"
+                          placeholder={t('contactInfoPlaceholder')}
                         />
-
                         <motion.button
                           className="bg-purple-200 rounded font-semibold text-gray-600 p-4 my-3"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}>
-                          Отправить
+                          {t('sendButton')}
                         </motion.button>
                         {success && (
                           <motion.span
@@ -420,7 +336,7 @@ const Sites = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}>
-                            Ваше сообщение успешно отправлено!
+                            {t('successMessage')}
                           </motion.span>
                         )}
                         {error && (
@@ -429,7 +345,7 @@ const Sites = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}>
-                            Что-то пошло не так!
+                            {t('errorMessage')}
                           </motion.span>
                         )}
                         {validationError && (
@@ -445,7 +361,7 @@ const Sites = () => {
                     </div>
                     <div className="flex flex-col items-center mt-10">
                       <span className="text-lg md:text-xl font-semibold mb-4 ">
-                        Напишите нам в соцсетях:
+                        {t('socialMediaTitle')}
                       </span>
                       <div className="flex space-x-7">
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
@@ -462,19 +378,15 @@ const Sites = () => {
                   </motion.div>
                 </div>
               </motion.div>
-
               <div className="bg-yellow-100 mb-10 md:mt-10 p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                 <p className="text-sm font-semibold text-sky-700 italic">
-                  Мы предлагаем гибкость в выборе функционала! Вы можете добавлять или убирать опции
-                  в зависимости от ваших потребностей.
+                  {t('flexibilityNote')}
                   <br />
-                  Обратите внимание, что итоговая цена может изменяться в зависимости от выбранных
-                  вами функций.
+                  {t('priceNote')}
                 </p>
               </div>
             </div>
           </div>
-          {/* SVG CONTAINER */}
           <div className="hidden lg:block w-1/2 sticky top-0 z-30 xl:w-1/2">
             <Brain scrollYProgress={scrollYProgress} />
           </div>
@@ -482,6 +394,4 @@ const Sites = () => {
       </motion.div>
     </>
   );
-};
-
-export default Sites;
+}

@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import { FaFacebook, FaInstagram, FaTelegram } from 'react-icons/fa6'
+import { useTranslations } from 'next-intl'
 
 export default function Footer() {
+  const t = useTranslations('Homepage')
+
   return (
     <footer className="bg-white text-black py-5 md:py-8 px-4 shadow-inner">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center  md:justify-between">
@@ -9,18 +12,18 @@ export default function Footer() {
           <Link href="/" className="text-2xl font-bold whitespace-nowrap">
             KOT<span className="text-primary">.dev</span>
           </Link>
-          <p className="mt-2 text-sm">© {new Date().getFullYear()} Все права защищены</p>
+          <p className="mt-2 text-sm">© {new Date().getFullYear()} {t('footerAllRightsReserved')}</p>
         </div>
 
         <nav className="flex flex-wrap justify-center gap-6  mb-6 md:mb-0">
           <Link href="/policy" className="text-sm hover:text-primary transition-colors duration-300">
-            Политика конфиденциальности
+            {t('footerPrivacyPolicy')}
           </Link>
           <Link href="/cookie" className="text-sm hover:text-primary transition-colors duration-300">
-            Политика использования файлов cookie
+            {t('footerCookiePolicy')}
           </Link>
           <Link href="/contact" className="text-sm hover:text-primary transition-colors duration-300">
-            Контакты
+            {t('footerContacts')}
           </Link>
         </nav>
 

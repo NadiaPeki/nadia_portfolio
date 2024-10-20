@@ -19,7 +19,7 @@ const urlMappings = {
     internetmagaziny: 'sklepyinternetowe',
     startapy: 'startupy',
     reklama: 'reklama',
-    kontakty: 'kontakt',
+    kontakty: 'kontakty',
   },
 };
 

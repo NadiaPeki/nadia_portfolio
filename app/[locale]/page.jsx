@@ -9,9 +9,7 @@ import Footer from '@/components/Footer';
 import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
 
-
 export default function Homepage() {
-  
   const skillRef = useRef();
   const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
   const containerRef = useRef();
@@ -19,10 +17,48 @@ export default function Homepage() {
   const experienceRef = useRef();
   const isExperienceRefInView = useInView(experienceRef, { margin: '-100px' });
  
-  const t = useTranslations('Homepage')
+  const t = useTranslations('Homepage');
+
+  const services = [
+    {
+      title: t('titleservice1'),
+      description: t('service1'),
+      link: '/sites',
+    },
+    {
+      title: t('titleservice2'),
+      description: t('service2'),
+      link: '/shops',
+    },
+    {
+      title: t('titleservice3'),
+      description: t('service3'),
+      link: '/startaps',
+    },
+    {
+      title: t('titleservice4'),
+      description: t('service4'),
+      link: '/ads',
+    },
+  ];
+
+  const skills = [
+    t('skill1'),
+    t('skill2'),
+    t('skill3'),
+    t('skill4'),
+    t('skill5'),
+    t('skill6'),
+    t('skill7'),
+    t('skill8'),
+    t('skill9'),
+    t('skill10'),
+    t('skill11')
+  ];
+
   return (
     <motion.div
-      className="h-full overflow-x-hidden "
+      className="h-full overflow-x-hidden"
       initial={{ y: '-200vh' }}
       animate={{ y: '0%' }}
       transition={{ duration: 1 }}>
@@ -43,25 +79,21 @@ export default function Homepage() {
             {/* Text container */}
             <div className="flex flex-col lg:w-1/2 lg:h-auto gap-8 items-center justify-center mt-10">
               <h1 className="text-4xl md:text-5xl font-bold text-start">
-                {/* Современные сайты и реклама для вашего бизнеса! */}
                 {t('title')}
               </h1>
               <p className="text-start md:text-lg">
-                Мы разрабатываем удобные и современные цифровые решения, которые привлекают клиентов и
-                способствуют росту продаж. Профессионально настроенная реклама в Google Ads поможет
-                вам выйти на целевую аудиторию. Давайте вместе реализуем ваши идеи и сделаем ваш
-                бизнес более заметным на рынке!
+                {t('hero')}
               </p>
 
               <div className="flex gap-4">
                 <Link href="/contact">
                   <button className="p-2 rounded-lg bg-black text-white">
-                    Оценить сайт
+                    {t('buttonprice')}
                   </button>
                 </Link>
                 <Link href="/contact">
                   <button className="p-2 rounded-lg ring-2 ring-black font-semibold bg-gradient-to-r from-red-100 via-blue-100 to-red-100">
-                    Написать нам
+                    {t('buttonwrite')}
                   </button>
                 </Link>
               </div>
@@ -89,7 +121,7 @@ export default function Homepage() {
                 animate={isExperienceRefInView ? { x: '0' } : {}}
                 transition={{ delay: 0.2 }}
                 className="font-bold text-2xl md:text-3xl">
-                Наши услуги
+                {t('titleservice')}
               </motion.h1>
               {/* EXPERIENCE LIST */}
               <motion.div
@@ -97,32 +129,7 @@ export default function Homepage() {
                 animate={isExperienceRefInView ? { x: '0' } : {}}
                 className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-20 text-center">
                 {/* EXPERIENCE ITEMS */}
-                {[
-                  {
-                    title: 'Сайты-визитки',
-                    description:
-                      'Наши сайты-визитки и лэндинги — это быстрые и стильные решения, созданные для привлечения внимания клиентов и выделения вашего бизнеса на фоне конкурентов. Мы фокусируемся на современном дизайне и удобном интерфейсе, чтобы обеспечить лучший пользовательский опыт.',
-                    link: '/sites',
-                  },
-                  {
-                    title: 'Интернет-магазины',
-                    description:
-                      'Мы создаем интернет-магазины, которые привлекают внимание и обеспечивают комфортные покупки для клиентов. Стильный дизайн и современные технологии позволяют вашим товарам выделяться на фоне конкурентов. С нами вы превратите ваш бизнес в успешный онлайн-проект!',
-                    link: '/shops',
-                  },
-                  {
-                    title: 'Стартапы',
-                    description:
-                      'Успешный стартап требует не только оригинальной идеи, но и эффективной реализации. Наша команда использует передовые технологии для разработки стильных и удобных платформ, которые не только привлекают внимание, но и обеспечивают отличное взаимодействие с пользователями.',
-                    link: '/startaps',
-                  },
-                  {
-                    title: 'Google Ads',
-                    description:
-                      'Профессиональная реклама в Google Ads помогает точно определить целевую аудиторию и увеличить видимость вашего бизнеса. Мы оптимизируем кампании, чтобы ваши объявления доходили до заинтересованных пользователей, что ускоряет выход на рынок и привлекает клиентов.',
-                    link: '/ads',
-                  },
-                ].map((item, index) => (
+                {services.map((item, index) => (
                   <div
                     key={index}
                     className="flex flex-col gap-4 p-4 border rounded-lg shadow-sm min-h-[280px] w-full bg-blue-50">
@@ -143,7 +150,7 @@ export default function Homepage() {
                     <span>{item.description}</span>
                     <Link href={item.link}>
                       <button className="mt-5 p-2 rounded-lg ring-2 ring-black bg-gradient-to-r from-red-100 via-blue-100 to-red-100 font-bold">
-                        Узнать больше
+                        {t('buttonmore')}
                       </button>
                     </Link>
                   </div>
@@ -159,26 +166,14 @@ export default function Homepage() {
                 animate={isSkillRefInView ? { x: 0 } : {}}
                 transition={{ delay: 0.2 }}
                 className="font-bold text-2xl text-center">
-                Что нас отличает?
+            {t('titleadvantages')}
               </motion.h1>
               {/* SKILL LIST */}
               <motion.div
                 initial={{ x: '-300px' }}
                 animate={isSkillRefInView ? { x: 0 } : {}}
                 className="flex gap-4 flex-wrap justify-center">
-                {[
-                 'Высокая скорость сайтов',
-                 "Современные технологии",
-                 "Оптимизация под рекламу",
-                 "Быстрый запуск",
-                 "Следование здравому смыслу",
-                 "Стильный дизайн сайтов",
-                 "Привлечение клиентов",
-                 "Поэтапная система оплаты",
-                 "Безопасность данных",
-                 "Масштабируемость",
-                 'Простота управления'
-                ].map((skill, index) => (
+                {skills.map((skill, index) => (
                   <div
                     key={index}
                     className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">

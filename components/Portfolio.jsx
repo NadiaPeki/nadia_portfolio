@@ -1,47 +1,34 @@
 'use client';
+
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactUs from './ContactUs';
-
-const items = [
-  {
-    id: 1,
-    color: 'from-red-100 to-blue-500',
-    title: 'Блог с админ панелью',
-    desc: 'Удобная блог-платформа с админ-панелью, где можно легко управлять публикациями, редактировать контент и следить за статистикой. Система позволяет эффективно создавать, настраивать и продвигать ваши записи, делая ведение блога простым и продуктивным.',
-    img: '/examples/example3.jpg',
-    link: 'https://www.wroclawtop.pl',
-  },
-  {
-    id: 2,
-    color: 'from-blue-300 to-violet-300',
-    img: '/examples/example2.jpg',
-    title: 'AI платформа',
-    desc: 'Это персональный AI-ассистент для работы с PDF, который анализирует, переводит и отвечает на вопросы по документам мгновенно. Приложение с личным кабинетом и оплатой услуг. Интеграция с OpenAI.',
-    link: 'https://www.yourpdfchat.com/',
-  },
-  // {
-  //   id: 3,
-  //   color: 'from-violet-300 to-purple-300',
-  //   title: 'Vanilla Book App',
-  //   desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.',
-  //   img: 'https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-  //   link: 'https://lama.dev',
-  // },
-  // {
-  //   id: 4,
-  //   color: 'from-purple-300 to-red-300',
-  //   title: 'Spotify Music App',
-  //   desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.',
-  //   img: 'https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-  //   link: 'https://lama.dev',
-  // },
-];
+import { useTranslations } from 'next-intl';
 
 const Portfolio = () => {
+  const t = useTranslations('Homepage');
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const items = [
+    {
+      id: 1,
+      color: 'from-red-100 to-blue-500',
+      title: t('exampleTitle1'),
+      desc: t('exampleDesc1'),
+      img: '/examples/example3.jpg',
+      link: 'https://www.wroclawtop.pl',
+    },
+    {
+      id: 2,
+      color: 'from-blue-300 to-violet-300',
+      img: '/examples/example2.jpg',
+      title: t('exampleTitle2'),
+      desc: t('exampleDesc2'),
+      link: 'https://www.yourpdfchat.com/',
+    },
+  ];
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex === items.length - 1 ? 0 : prevIndex + 1));
@@ -56,22 +43,23 @@ const Portfolio = () => {
       className="h-full overflow-hidden"
       initial={{ y: '-200vh' }}
       animate={{ y: '0%' }}
-      transition={{ duration: 1 }}>
+      transition={{ duration: 1 }}
+    >
       <div className="pt-10 md:pt-20">
         <div className="h-full relative flex flex-col items-center">
           <div className="flex h-full py-10 md:py-20 gap-10 items-center justify-center">
             <div className="absolute top-10 left-0 md:left-10 z-10">
-              {' '}
-              {/* Adjust the top value as needed */}
               <button
                 onClick={handlePrev}
-                className=" bg-black text-white p-2 rounded flex items-center justify-center">
+                className="bg-black text-white p-2 rounded flex items-center justify-center"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-8"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor">
+                  stroke="currentColor"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -87,14 +75,15 @@ const Portfolio = () => {
               initial={{ x: '100%' }}
               animate={{ x: '0%' }}
               transition={{ duration: 0.5 }}
-              key={currentIndex} // For re-rendering when changing index
+              key={currentIndex}
             >
               {items.map((item, index) => (
                 <div
                   className={`min-w-[300px] md:min-w-[400px] lg:min-w-[600px] flex-shrink-0 flex justify-center items-center transition-transform duration-500 ease-in-out ${
                     index === currentIndex ? 'block' : 'hidden'
                   }`}
-                  key={item.id}>
+                  key={item.id}
+                >
                   <div className="flex flex-col gap-10 md:gap-12 text-slate-950 items-center justify-center px-2">
                     <h1 className="text-base font-bold md:text-xl lg:text-2xl xl:text-4xl text-center">
                       {item.title}
@@ -106,9 +95,9 @@ const Portfolio = () => {
                       {item.desc}
                     </p>
 
-                    <Link href={item.link} target="blank" className="flex justify-center">
+                    <Link href={item.link} target="_blank" rel="noopener noreferrer" className="flex justify-center">
                       <button className="p-2 text-sm md:p-4 md:text-md lg:p-4 lg:text-lg bg-white text-gray-600 font-semibold rounded">
-                        Посмотреть
+                        {t('viewButton')}
                       </button>
                     </Link>
                   </div>
@@ -117,17 +106,17 @@ const Portfolio = () => {
             </motion.div>
 
             <div className="absolute top-10 right-0 md:right-10">
-              {' '}
-              {/* Adjust the top value as needed */}
               <button
                 onClick={handleNext}
-                className="bg-black text-white p-2 rounded flex items-center justify-center">
+                className="bg-black text-white p-2 rounded flex items-center justify-center"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-8"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor">
+                  stroke="currentColor"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
