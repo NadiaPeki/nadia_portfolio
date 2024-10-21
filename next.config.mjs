@@ -49,6 +49,32 @@ const nextConfig = {
         source: '/pl/kontakty',
         destination: '/pl/contact',
       },
+      // Добавленные правила для favicon и OpenGraph изображений
+      {
+        source: '/pl/favicon.ico',
+        destination: '/favicon.ico',
+      },
+      {
+        source: '/ru/favicon.ico',
+        destination: '/favicon.ico',
+      },
+    
+      {
+        source: '/pl/apple-touch-icon-180x180.png',
+        destination: '/apple-icon.png',
+      },
+      {
+        source: '/ru/apple-touch-icon-180x180.png',
+        destination: '/apple-icon.png',
+      },
+      {
+        source: '/pl/opengraph-image.png',
+        destination: '/opengraph-image.png',
+      },
+      {
+        source: '/ru/opengraph-image.png',
+        destination: '/opengraph-image.png',
+      },
     ];
   },
 };

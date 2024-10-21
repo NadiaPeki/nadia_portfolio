@@ -334,5 +334,12 @@
     "cookieBanner_acceptButton": "Akceptuj",
     "cookieBanner_declineButton": "Odrzuć",
     "cookieBanner_statusLog": "Aktualny status zgody na pliki cookie:"
+  },
+  "Metadata": {
+    "title": "Tworzenie stron i reklama | KOT.dev",
+    "description": "Profesjonalne tworzenie stron internetowych i konfiguracja Google Ads dla skutecznej promocji biznesu online",
+    "ogTitle": "KOT.dev | Tworzenie stron i reklama",
+    "ogDescription": "KOT.dev oferuje profesjonalne usługi tworzenia stron internetowych i konfiguracji reklam dla Twojej firmy",
+    "siteName": "KOT.dev"
   }
 }

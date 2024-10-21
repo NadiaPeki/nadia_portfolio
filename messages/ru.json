@@ -334,5 +334,12 @@
     "cookieBanner_acceptButton": "Принять",
     "cookieBanner_declineButton": "Отклонить",
     "cookieBanner_statusLog": "Текущий статус согласия на cookies:"
+  },
+  "Metadata": {
+    "title": "Разработка и реклама | KOT.dev",
+    "description": "Профессиональная разработка веб-сайтов и настройка Google Ads для эффективного продвижения бизнеса онлайн",
+    "ogTitle": "KOT.dev | Веб-разработка и реклама",
+    "ogDescription": "KOT.dev предлагает профессиональные услуги по созданию сайтов и настройке рекламы для вашего бизнеса",
+    "siteName": "KOT.dev"
   }
 }
