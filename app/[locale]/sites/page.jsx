@@ -96,24 +96,28 @@ export default function Sites() {
             <div className="flex flex-col gap-12 justify-center">
               <h1 className="text-4xl md:text-5xl font-bold text-start">{t('title')}</h1>
               <p className="text-start md:text-lg">{t('description')}</p>
-              <div className="flex flex-row gap-4 justify-center">
-                <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('domainGift')}
-                  </motion.p>
-                </div>
-                <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('discount')}
-                  </motion.p>
-                </div>
-              </div>
+              <div className="flex flex-col gap-6 items-center">
+  {/* Domain Gift Box */}
+  <div className="flex flex-col  text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
+    <motion.p
+      className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+      {t('domainGift')}
+    </motion.p>
+  </div>
+
+  {/* Discount Box */}
+  <div className="flex flex-col items-center justify-center gap-5 text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
+    <motion.p
+      className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+      {t('discount')}
+    </motion.p>
+  </div>
+</div>
+
               <motion.svg
                 initial={{ opacity: 0.2, y: 0 }}
                 animate={{ opacity: 1, y: '10px' }}
@@ -132,16 +136,11 @@ export default function Sites() {
               </motion.svg>
             </div>
             <div className="flex flex-col gap-8 justify-center" ref={skillRef}>
-              <motion.h2
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
+              <h2
                 className="font-bold text-2xl">
                 {t('standardTitle')}
-              </motion.h2>
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
-                className="flex gap-8 flex-wrap">
+              </h2>
+              <div className="flex gap-8 flex-wrap">
                 <div>
                   <motion.p
                     className="text-lg font-semibold text-gradient"
@@ -196,7 +195,7 @@ export default function Sites() {
                     {t('orderButton')}
                   </button>
                 </Link>
-              </motion.div>
+              </div>
               <motion.svg
                 initial={{ opacity: 0.2, y: 0 }}
                 animate={{ opacity: 1, y: '10px' }}
@@ -215,15 +214,11 @@ export default function Sites() {
               </motion.svg>
             </div>
             <div className="flex flex-col gap-8 justify-center" ref={experienceRef}>
-              <motion.h2
-                initial={{ x: '-300px' }}
-                animate={isExperienceRefInView ? { x: 0 } : {}}
+              <h2
                 className="font-bold text-2xl">
                 {t('premiumTitle')}
-              </motion.h2>
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isExperienceRefInView ? { x: 0 } : {}}
+              </h2>
+              <div
                 className="flex gap-8 flex-wrap">
                 <div>
                   <motion.p
@@ -245,8 +240,8 @@ export default function Sites() {
                     {t('premiumTime')}
                   </motion.p>
                 </div>
-                <div className="flex flex-col gap-8">
-                  <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
+                <div className="flex flex-col gap-8 overflow-hidden">
+                  <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300 ">
                     <p className="font-semibold text-lg mb-2 text-start">{t('functionalityTitle')}</p>
                     <ul className="list-disc list-inside p-3">
                       <li className="mb-1">{t('premiumFunctionalityItem1')}</li>
@@ -377,7 +372,7 @@ export default function Sites() {
                     </div>
                   </motion.div>
                 </div>
-              </motion.div>
+              </div>
               <div className="bg-yellow-100 mb-10 md:mt-10 p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                 <p className="text-sm font-semibold text-sky-700 italic">
                   {t('flexibilityNote')}

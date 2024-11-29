@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion, useInView, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import Portfolio from '@/components/Portfolio';
 import Link from 'next/link';
@@ -11,11 +11,8 @@ import { useTranslations } from 'next-intl';
 
 export default function Homepage() {
   const skillRef = useRef();
-  const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
   const containerRef = useRef();
-
   const experienceRef = useRef();
-  const isExperienceRefInView = useInView(experienceRef, { margin: '-100px' });
  
   const t = useTranslations('Homepage');
 
@@ -116,18 +113,11 @@ export default function Homepage() {
             {/* EXPERIENCE CONTAINER */}
             <div className="flex flex-col items-center gap-12" ref={experienceRef}>
               {/* EXPERIENCE TITLE */}
-              <motion.h1
-                initial={{ x: '-300px' }}
-                animate={isExperienceRefInView ? { x: '0' } : {}}
-                transition={{ delay: 0.2 }}
-                className="font-bold text-2xl md:text-3xl">
+              <h1 className="font-bold text-2xl md:text-3xl">
                 {t('titleservice')}
-              </motion.h1>
+              </h1>
               {/* EXPERIENCE LIST */}
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isExperienceRefInView ? { x: '0' } : {}}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-20 text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-20 text-center">
                 {/* EXPERIENCE ITEMS */}
                 {services.map((item, index) => (
                   <div
@@ -155,24 +145,17 @@ export default function Homepage() {
                     </Link>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
 
             {/* SKILLS CONTAINER */}
             <div className="hidden md:flex flex-col items-center gap-12 mt-10 md:mt-20" ref={skillRef}>
               {/* SKILL TITLE */}
-              <motion.h1
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
-                transition={{ delay: 0.2 }}
-                className="font-bold text-2xl text-center">
-            {t('titleadvantages')}
-              </motion.h1>
+              <h1 className="font-bold text-2xl text-center">
+                {t('titleadvantages')}
+              </h1>
               {/* SKILL LIST */}
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
-                className="flex gap-4 flex-wrap justify-center">
+              <div className="flex gap-4 flex-wrap justify-center">
                 {skills.map((skill, index) => (
                   <div
                     key={index}
@@ -180,7 +163,7 @@ export default function Homepage() {
                     {skill}
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
 
@@ -191,3 +174,4 @@ export default function Homepage() {
     </motion.div>
   );
 }
+

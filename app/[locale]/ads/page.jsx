@@ -101,25 +101,27 @@ const Ads = () => {
               {/* description container */}
               <h1 className="text-4xl md:text-5xl font-bold text-start">{t('ads_title')}</h1>
               <p className="text-start md:text-lg">{t('ads_description')}</p>
-              <div className="flex flex-row gap-4 justify-center">
-                <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('ads_domainGift')}
-                  </motion.p>
-                </div>
+              <div className="flex flex-col gap-6 items-center">
+  {/* Domain Gift Box */}
+  <div className="flex flex-col  text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
+    <motion.p
+      className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+      {t('ads_domainGift')}
+    </motion.p>
+  </div>
 
-                <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('ads_discount')}
-                  </motion.p>
-                </div>
-              </div>
+  {/* Discount Box */}
+  <div className="flex flex-col items-center justify-center gap-5 text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
+    <motion.p
+      className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+      {t('ads_discount')}
+    </motion.p>
+  </div>
+</div>
 
               {/* BIOGRAPHY SCROLL SVG */}
               <motion.svg
@@ -142,17 +144,13 @@ const Ads = () => {
             {/* НАСТРОЙКА GOOGLE ADS CONTAINER */}
             <div className="flex flex-col gap-8 justify-center" ref={skillRef}>
               {/* TITLE */}
-              <motion.h2
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
+              <h2
                 className="font-bold text-2xl">
                 {t('ads_setupTitle')}
-              </motion.h2>
+              </h2>
 
               {/* SKILL LIST */}
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
+              <div
                 className="flex gap-8 flex-wrap">
                 <div>
                   <motion.p
@@ -201,7 +199,7 @@ const Ads = () => {
                     {t('ads_orderButton')}
                   </button>
                 </Link>
-              </motion.div>
+              </div>
 
               {/* SCROLL SVG */}
               <motion.svg
@@ -225,17 +223,13 @@ const Ads = () => {
             {/* ВЕДЕНИЕ GOOGLE ADS CONTAINER */}
             <div className="flex flex-col gap-8 justify-center" ref={experienceRef}>
               {/* TITLE */}
-              <motion.h2
-                initial={{ x: '-300px' }}
-                animate={isExperienceRefInView ? { x: 0 } : {}}
+              <h2
                 className="font-bold text-2xl">
                 {t('ads_managementTitle')}
-              </motion.h2>
+              </h2>
 
               {/* EXPERIENCE LIST */}
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isExperienceRefInView ? { x: 0 } : {}}
+              <div
                 className="flex gap-8 flex-wrap">
                 <div>
                   <motion.p
@@ -360,7 +354,7 @@ const Ads = () => {
                     </div>
                   </motion.div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
 

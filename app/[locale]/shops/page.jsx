@@ -95,24 +95,27 @@ export default function Shops() {
             <div className="flex flex-col gap-12 justify-center">
               <h1 className="text-4xl md:text-5xl font-bold text-start">{t('shops_title')}</h1>
               <p className="text-start md:text-lg">{t('shops_description')}</p>
-              <div className="flex flex-row gap-4 justify-center">
-                <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('shops_domainGift')}
-                  </motion.p>
-                </div>
-                <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('shops_discount')}
-                  </motion.p>
-                </div>
-              </div>
+              <div className="flex flex-col gap-6 items-center">
+  {/* Domain Gift Box */}
+  <div className="flex flex-col  text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
+    <motion.p
+      className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+      {t('shops_domainGift')}
+    </motion.p>
+  </div>
+
+  {/* Discount Box */}
+  <div className="flex flex-col items-center justify-center gap-5 text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
+    <motion.p
+      className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+      {t('shops_discount')}
+    </motion.p>
+  </div>
+</div>
               <motion.svg
                 initial={{ opacity: 0.2, y: 0 }}
                 animate={{ opacity: 1, y: '10px' }}
@@ -131,15 +134,11 @@ export default function Shops() {
               </motion.svg>
             </div>
             <div className="flex flex-col gap-8 justify-center" ref={skillRef}>
-              <motion.h2
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
+              <h2
                 className="font-bold text-2xl">
                 {t('shops_standardTitle')}
-              </motion.h2>
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
+              </h2>
+              <div
                 className="flex gap-8 flex-wrap">
                 <div>
                   <motion.p
@@ -189,7 +188,7 @@ export default function Shops() {
                     {t('shops_orderButton')}
                   </button>
                 </Link>
-              </motion.div>
+              </div>
               <motion.svg
                 initial={{ opacity: 0.2, y: 0 }}
                 animate={{ opacity: 1, y: '10px' }}
@@ -208,15 +207,11 @@ export default function Shops() {
               </motion.svg>
             </div>
             <div className="flex flex-col gap-8 justify-center" ref={experienceRef}>
-              <motion.h2
-                initial={{ x: '-300px' }}
-                animate={isExperienceRefInView ? { x: 0 } : {}}
+              <h2
                 className="font-bold  text-2xl">
                 {t('shops_premiumTitle')}
-              </motion.h2>
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isExperienceRefInView ? { x: 0 } : {}}
+              </h2>
+              <div
                 className="flex gap-8 flex-wrap">
                 <div>
                   <motion.p
@@ -263,7 +258,7 @@ export default function Shops() {
                     </ul>
                   </div>
                 </div>
-              </motion.div>
+              </div>
               <motion.div
                 ref={formRef}
                 className="flex flex-col justify-center"

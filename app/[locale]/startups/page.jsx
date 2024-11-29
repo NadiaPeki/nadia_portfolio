@@ -92,11 +92,11 @@ const Startups = () => {
         initial={{ y: '-200vh' }}
         animate={{ y: '0%' }}
         transition={{ duration: 1 }}>
-        {/* CONTAINER */}
+      
         <div className="h-full overflow-y-auto lg:flex" ref={containerRef}>
-          {/* TEXT CONTAINER */}
+   
           <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-40 flex flex-col gap-20 md:gap-32 lg:gap-40 xl:gap-50 lg:w-2/3 lg:pr-0 xl:w-1/2">
-            {/* BIOGRAPHY CONTAINER */}
+
             <div className="flex flex-col gap-12 justify-center">
               {/* description container */}
               <h1 className="text-4xl md:text-5xl font-bold text-start">
@@ -106,25 +106,27 @@ const Startups = () => {
                 {t('startups_description')}
               </p>
 
-              <div className="flex flex-row gap-4 justify-center">
-                <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('startups_domainGift')}
-                  </motion.p>
-                </div>
+              <div className="flex flex-col gap-6 items-center">
+  {/* Domain Gift Box */}
+  <div className="flex flex-col  text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
+    <motion.p
+      className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+      {t('startups_domainGift')}
+    </motion.p>
+  </div>
 
-                <div className="flex flex-col gap-3 text-center border border-slate-100 p-4 rounded-lg bg-lime-50 w-1/2">
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('startups_discount')}
-                  </motion.p>
-                </div>
-              </div>
+  {/* Discount Box */}
+  <div className="flex flex-col items-center justify-center gap-5 text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
+    <motion.p
+      className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
+      {t('startups_discount')}
+    </motion.p>
+  </div>
+</div>
 
               {/* BIOGRAPHY SCROLL SVG */}
               <motion.svg
@@ -147,17 +149,13 @@ const Startups = () => {
             {/* НАШИ КЛЮЧЕВЫЕ РЕШЕНИЯ CONTAINER */}
             <div className="flex flex-col gap-8 justify-center" ref={skillRef}>
               {/* TITLE */}
-              <motion.h2
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
+              <h2
                 className="font-bold text-2xl">
                 {t('startups_solutionsTitle')}
-              </motion.h2>
+              </h2>
 
               {/* SKILL LIST */}
-              <motion.div
-                initial={{ x: '-300px' }}
-                animate={isSkillRefInView ? { x: 0 } : {}}
+              <div
                 className="flex gap-8 flex-wrap">
                 <div>
                   <motion.p
@@ -209,7 +207,7 @@ const Startups = () => {
                     {t('startups_solution5Description')}
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Contact Form */}
               <motion.div
