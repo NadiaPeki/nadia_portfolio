@@ -85,8 +85,8 @@ const Startups = () => {
   return (
     <>
       <Head>
-        <link rel="alternate" href="https://yoursite.com/pl/startupy" hreflang="pl" />
-        <link rel="alternate" href="https://yoursite.com/ru/startapy" hreflang="ru" />
+        <link rel="alternate" href="https://kotdev.pl/pl/startupy" hreflang="pl" />
+        <link rel="alternate" href="https://kotdev.pl/ru/startapy" hreflang="ru" />
       </Head>
       <motion.div
         className="h-full"

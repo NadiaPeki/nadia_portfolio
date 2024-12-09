@@ -82,8 +82,8 @@ export default function Shops() {
   return (
     <>
       <Head>
-        <link rel="alternate" href="https://yoursite.com/pl/sklepyinternetowe" hreflang="pl" />
-        <link rel="alternate" href="https://yoursite.com/ru/internetmagaziny" hreflang="ru" />
+        <link rel="alternate" href="https://kotdev.pl/pl/sklepyinternetowe" hreflang="pl" />
+        <link rel="alternate" href="https://kotdev.pl/ru/internetmagaziny" hreflang="ru" />
       </Head>
       <motion.div
         className="h-full"

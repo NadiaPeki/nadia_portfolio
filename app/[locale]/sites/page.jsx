@@ -83,8 +83,8 @@ export default function Sites() {
   return (
     <>
       <Head>
-        <link rel="alternate" href="https://yoursite.com/pl/strony" hreflang="pl" />
-        <link rel="alternate" href="https://yoursite.com/ru/sajty" hreflang="ru" />
+        <link rel="alternate" href="https://kotdev.pl/pl/strony" hreflang="pl" />
+        <link rel="alternate" href="https://kotdev.pl/ru/sajty" hreflang="ru" />
       </Head>
       <motion.div
         className="h-full"

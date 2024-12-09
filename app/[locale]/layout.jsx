@@ -19,10 +19,13 @@ export async function generateMetadata({ params: { locale } }) {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: `https://business-website-omega-teal.vercel.app/${locale}`,
+      url: `https://kotdev.pl/${locale}`,
       siteName: t('siteName'),
-      images: `https://business-website-omega-teal.vercel.app/${locale}/opengraph-image.png`
-    }
+      images: `https://kotdev.pl/${locale}/opengraph-image.png`
+    },
+    icons: {
+      icon: '/favicon.ico',  // Укажите путь к фавиконке
+    },
   };
 }
 
@@ -43,6 +46,15 @@ export default async function RootLayout({ children, params }) {
 
   return (
     <html lang={locale}>
+      <head>
+        <link rel="icon" href="https://www.kotdev.pl/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href={`https://www.kotdev.pl/${locale}/favicon.ico`} type="image/x-icon" />
+        <link rel="icon" href="https://www.kotdev.pl/favicon.ico" type="image/x-icon" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+      </head>
       <body className={`${inter.className} min-h-screen h-screen flex flex-col`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <TransitionProvider>

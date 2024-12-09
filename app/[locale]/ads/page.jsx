@@ -84,8 +84,8 @@ const Ads = () => {
   return (
     <>
       <Head>
-        <link rel="alternate" href="https://yoursite.com/pl/reklama" hreflang="pl" />
-        <link rel="alternate" href="https://yoursite.com/ru/reklama" hreflang="ru" />
+        <link rel="alternate" href="https://kotdev.pl/pl/reklama" hreflang="pl" />
+        <link rel="alternate" href="https://kotdev.pl/ru/reklama" hreflang="ru" />
       </Head>
       <motion.div
         className="h-full"

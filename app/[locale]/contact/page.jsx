@@ -70,8 +70,8 @@ const ContactPage = () => {
       <Head>
         <title>{t('contact_pageTitle')}</title>
         <meta name="description" content={t('contact_metaDescription')} />
-        <link rel="alternate" href={`https://yoursite.com/ru/kontakty`} hreflang="ru" />
-        <link rel="alternate" href={`https://yoursite.com/pl/kontakty`} hreflang="pl" />
+        <link rel="alternate" href="https://kotdev.pl/ru/kontakty" hreflang="ru" />
+        <link rel="alternate" href="https://kotdev.pl/pl/kontakty" hreflang="pl" />
       </Head>
       <motion.div
         className="min-h-screen"
