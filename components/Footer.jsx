@@ -28,11 +28,11 @@ export default function Footer() {
         </nav>
 
         <div className="flex gap-6">
-          <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors duration-300">
+          <Link href="https://www.facebook.com/groups/1809126336287422" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors duration-300">
             <FaFacebook className="w-6 h-6" />
             <span className="sr-only">Facebook</span>
           </Link>
-          <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 transition-colors duration-300">
+          <Link href="https://www.instagram.com/kotdev.pl/" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 transition-colors duration-300">
             <FaInstagram className="w-6 h-6" />
             <span className="sr-only">Instagram</span>
           </Link>

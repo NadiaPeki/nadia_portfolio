@@ -303,10 +303,10 @@ const Startups = () => {
                     {t('startups_socialMediaTitle')}
                   </span>
                   <div className="flex space-x-7">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/kotdev.pl/" target="_blank" rel="noopener noreferrer">
                       <FaInstagram className="text-2xl text-pink-600 hover:text-pink-400" />
                     </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/groups/1809126336287422" target="_blank" rel="noopener noreferrer">
                       <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-400" />
                     </a>
                     {/* <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
