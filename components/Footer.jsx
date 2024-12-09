@@ -36,10 +36,10 @@ export default function Footer() {
             <FaInstagram className="w-6 h-6" />
             <span className="sr-only">Instagram</span>
           </Link>
-          <Link href="https://t.me/your_telegram_channel" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 transition-colors duration-300">
+          {/* <Link href="https://t.me/your_telegram_channel" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 transition-colors duration-300">
             <FaTelegram className="w-6 h-6" />
             <span className="sr-only">Telegram</span>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </footer>

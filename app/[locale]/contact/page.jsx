@@ -145,9 +145,9 @@ const ContactPage = () => {
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                   <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-400" />
                 </a>
-                <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+                {/* <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
                   <FaTelegramPlane className="text-2xl text-blue-400 hover:text-blue-300" />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

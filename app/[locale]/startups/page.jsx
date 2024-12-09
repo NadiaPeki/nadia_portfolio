@@ -9,6 +9,7 @@ import { FaInstagram, FaFacebookF, FaTelegramPlane } from 'react-icons/fa';
 import Head from 'next/head';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const Startups = () => {
   const params = useParams();
@@ -157,14 +158,17 @@ const Startups = () => {
               {/* SKILL LIST */}
               <div
                 className="flex gap-8 flex-wrap">
-                <div>
+              
+                <div className='flex flex-row gap-1'>
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('startups_price')}
+                      {t('startups_price')}
                   </motion.p>
-                </div>
+                  <Image src='/infinity.png' width={30} height={8} className='object-contain mt-1'/>
+                  </div>
+         
                 <div className="flex flex-col gap-8">
                   <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
                     <p className="font-semibold text-lg mb-2 text-start">
@@ -305,9 +309,9 @@ const Startups = () => {
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                       <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-400" />
                     </a>
-                    <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
+                    {/* <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
                       <FaTelegramPlane className="text-2xl text-blue-400 hover:text-blue-300" />
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </motion.div>

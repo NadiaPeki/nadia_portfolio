@@ -147,12 +147,7 @@ export default function Shops() {
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
                     {t('shops_standardPrice')}
                   </motion.p>
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('shops_standardPages')}
-                  </motion.p>
+
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
@@ -220,12 +215,7 @@ export default function Shops() {
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
                     {t('shops_premiumPrice')}
                   </motion.p>
-                  <motion.p
-                    className="text-lg font-semibold text-gradient"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                    {t('shops_premiumPages')}
-                  </motion.p>
+                 
                   <motion.p
                     className="text-lg font-semibold text-gradient"
                     animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
@@ -349,9 +339,7 @@ export default function Shops() {
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                       <FaFacebookF className="text-2xl text-blue-600 hover:text:blue-400" />
                     </a>
-                    <a href="https://telegram.org" target="_blank" rel="noopener noreferrer">
-                      <FaTelegramPlane className="text-2xl text-blue-400 hover:text-blue-300" />
-                    </a>
+                  
                   </div>
                 </div>
               </motion.div>
