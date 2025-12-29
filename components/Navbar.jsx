@@ -4,33 +4,21 @@ import Link from 'next/link';
 import { useState } from 'react';
 import NavLink from './NavLink';
 import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import LanguageSwitcher from './LanguageSwitcher';
 
-const links = {
-  ru: [
-    { url: '/', title: 'Главная' },
-    { url: '/sajty', title: 'Сайт-визитка' },
-    { url: '/internetmagaziny', title: 'Интернет-магазин' },
-    { url: '/startapy', title: 'Стартап' },
-    { url: '/reklama', title: 'Google Ads' },
-    { url: '/kontakty', title: 'Контакты' },
-  ],
-  pl: [
-    { url: '/', title: 'Główna' },
-    { url: '/strony', title: 'Strona wizytówka' },
-    { url: '/sklepyinternetowe', title: 'Sklep internetowy' },
-    { url: '/startupy', title: 'Startup' },
-    { url: '/reklama', title: 'Google Ads' },
-    { url: '/kontakty', title: 'Kontakt' },
-  ],
-};
+// 1. Оставляем только один плоский массив ссылок на английском
+const links = [
+  { url: '/', title: 'Home' },
+  { url: '/sites', title: 'Business Site' },
+  { url: '/shops', title: 'Online Shop' },
+  { url: '/startups', title: 'Startup' },
+  { url: '/ads', title: 'Google Ads' },
+  { url: '/contact', title: 'Contact' },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  const currentLocale = pathname.split('/')[1];
 
+  // Варианты анимации для бургера
   const topVariants = {
     closed: { rotate: 0 },
     opened: { rotate: 45, backgroundColor: 'rgb(255,255,255)' },
@@ -64,30 +52,17 @@ export default function Navbar() {
 
   return (
     <div className="h-24 flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-lg font-semibold">
+      {/* Логотип слева или навигация */}
       <div className="hidden custom-lg:flex items-center gap-4">
-        {links[currentLocale].map((link) => (
-          <NavLink
-            link={{
-              ...link,
-              url: `/${currentLocale}${link.url === '/' ? '' : link.url}`,
-            }}
-            key={link.title}
-          />
+        {links.map((link) => (
+          <NavLink link={link} key={link.title} />
         ))}
-        <LanguageSwitcher />
       </div>
-      <div>
-        <Link
-          href={`/${currentLocale}`}
-          className="text-sm bg-black rounded-md p-1 pl-3 font-semibold flex items-center justify-center">
-          <span className="text-white pr-3">KOT</span>
-          <span className="w-12 h-8 rounded bg-red-100 text-black flex items-center justify-center">
-            .dev
-          </span>
-        </Link>
-      </div>
+
+     
+
+      {/* Мобильное меню */}
       <div className="custom-lg:hidden flex items-center">
-        <LanguageSwitcher />
         <button
           className="w-10 h-8 flex flex-col justify-between z-50 relative ml-4"
           onClick={() => setOpen(!open)}>
@@ -104,19 +79,20 @@ export default function Navbar() {
             animate={open ? 'opened' : 'closed'}
             className="w-10 h-1 bg-black rounded origin-left"></motion.div>
         </button>
+        
         {open && (
           <motion.div
             variants={listVariants}
             initial="closed"
             animate="opened"
             className="fixed top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-4 text-3xl z-40">
-            {links[currentLocale].map((link) => (
+            {links.map((link) => (
               <motion.div
                 variants={listItemVariants}
                 key={link.title}
                 className="w-full text-3xl text-center">
                 <Link
-                  href={`/${currentLocale}${link.url === '/' ? '' : link.url}`}
+                  href={link.url}
                   className="block py-4 px-8"
                   onClick={handleLinkClick}>
                   {link.title}
