@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { FaInstagram, FaFacebookF } from 'react-icons/fa';
+// Добавили IoMail для яркости
+import { FaLinkedin, FaMedium, FaGithub } from 'react-icons/fa';
+import { IoMail } from 'react-icons/io5'; 
 import Head from 'next/head';
 
 const ContactPage = () => {
@@ -62,8 +64,7 @@ const ContactPage = () => {
   return (
     <>
       <Head>
-        <title>Контакты</title>
-        <meta name="description" content="Свяжитесь с нами для заказа или консультации" />
+        <title>Contacts | KOT.dev</title>
       </Head>
 
       <motion.div
@@ -73,7 +74,8 @@ const ContactPage = () => {
         transition={{ duration: 1 }}
       >
         <div className="h-full flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 gap-10 py-10 md:py-20">
-          {/* Текст */}
+          
+          {/* Левая колонка: Текст */}
           <div className="h-1/2 lg:h-full lg:w-1/2 text-start text-5xl md:text-6xl">
             <div className="text-center md:leading-normal">
               {mainText.split('').map((letter, index) => (
@@ -90,17 +92,42 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Форма */}
+          {/* Правая колонка */}
           <div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col">
+            
+            {/* Соцсети сверху */}
+            <div className="flex flex-col items-center mb-8 pt-7">
+              <span className="text-lg md:text-xl font-semibold mb-6  tracking-widest">
+                Contact & Profiles:
+              </span>
+              <div className="flex justify-center gap-10">
+                <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin className="text-4xl text-[#0077b5] hover:scale-125 transition-transform" />
+                </a>
+                <a href="https://medium.com/@YOUR_PROFILE" target="_blank" rel="noopener noreferrer">
+                  <FaMedium className="text-4xl text-black hover:scale-125 transition-transform" />
+                </a>
+                <a href="https://github.com/YOUR_PROFILE" target="_blank" rel="noopener noreferrer">
+                  <FaGithub className="text-4xl text-black hover:scale-125 transition-transform" />
+                </a>
+                
+                {/* ЯРКАЯ ИКОНКА ПОЧТЫ */}
+                <a href="mailto:hello@kotdev.pl">
+                  <IoMail className="text-4xl text-sky-500 hover:scale-125 transition-transform drop-shadow-sm" />
+                </a>
+              </div>
+            </div>
+
+            {/* Форма */}
             <form
               onSubmit={sendEmail}
               ref={form}
-              className="bg-red-50 rounded-xl text-xl flex flex-col gap-6 p-8"
+              className="bg-red-50 rounded-xl text-xl flex flex-col gap-6 p-8 shadow-sm border border-red-100"
             >
               <span className="font-semibold">Напишите нам</span>
               <textarea
-                rows={8}
-                className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-base min-h-[200px] max-w-full"
+                rows={5}
+                className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-base"
                 name="user_message"
                 placeholder="Опишите ваш вопрос или проект"
               />
@@ -108,30 +135,20 @@ const ContactPage = () => {
               <input
                 name="user_contact"
                 type="text"
-                className="bg-transparent border-b-2 border-b-black outline-none text-base min-h-[40px] max-w-full placeholder-opacity-50"
+                className="bg-transparent border-b-2 border-b-black outline-none text-base"
                 placeholder="Email или телефон"
               />
-              <button className="bg-purple-200 rounded font-semibold text-gray-600 p-4 my-3">
+              
+              {/* ТВОЯ КНОПКА */}
+              <button className="bg-purple-200 rounded font-semibold text-gray-600 p-4 my-3 hover:bg-purple-300 transition-colors">
                 Отправить
               </button>
 
-              {success && <span className="text-green-600 font-semibold">Сообщение отправлено!</span>}
-              {error && <span className="text-red-600 font-semibold">Ошибка при отправке.</span>}
-              {validationError && <span className="text-red-600 font-semibold">{validationError}</span>}
+              {success && <span className="text-green-600 font-semibold text-center">Сообщение отправлено!</span>}
+              {error && <span className="text-red-600 font-semibold text-center text-sm">Ошибка. Попробуйте еще раз.</span>}
+              {validationError && <span className="text-red-600 font-semibold text-center text-sm">{validationError}</span>}
             </form>
 
-            {/* Соцсети */}
-            <div className="flex flex-col items-center mt-10">
-              <span className="text-lg md:text-xl font-semibold mb-4">Мы в соцсетях</span>
-              <div className="flex space-x-7">
-                <a href="https://www.instagram.com/kotdev.pl/" target="_blank" rel="noopener noreferrer">
-                  <FaInstagram className="text-2xl text-pink-600 hover:text-pink-400" />
-                </a>
-                <a href="https://www.facebook.com/groups/1809126336287422" target="_blank" rel="noopener noreferrer">
-                  <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-400" />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </motion.div>
