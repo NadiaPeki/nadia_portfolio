@@ -8,7 +8,6 @@ import { usePathname } from 'next/navigation';
 const TransitionProvider = ({ children }) => {
   const pathName = usePathname();
 
-  // 1. Создаем словарь названий страниц
   const pageTitles = {
     '/': 'ABOUT ME',
     '/worko': 'WORKO',
@@ -18,24 +17,26 @@ const TransitionProvider = ({ children }) => {
     '/contact': 'CONTACT',
   };
 
-  // 2. Определяем заголовок для текущего пути. 
-  // Если пути нет в словаре (например, 404), выводим KOT.dev
-  const currentTitle = pageTitles[pathName] || 'KOT.dev';
+  const currentTitle = pageTitles[pathName] || 'Portfolio';
 
   return (
     <AnimatePresence mode="wait">
+      {/* key={pathName} заставляет всё внутри перерисовываться при смене страницы */}
       <div key={pathName} className="w-screen h-screen bg-gradient-to-b from-blue-100 to-red-100">
-        {/* Верхняя черная шторка (уходит вверх) */}
+        
+        {/* ЧЕРНАЯ ШТОРКА (Верхняя) */}
+        {/* Ставим z-[9999], чтобы она была выше абсолютно всего на свете */}
         <motion.div
-          className="h-screen w-screen fixed bg-black rounded-b-[100px] z-40"
+          className="h-screen w-screen fixed bg-black rounded-b-[100px] z-[9999] pointer-events-none"
           animate={{ height: '0vh' }}
           exit={{ height: '140vh' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         />
 
         {/* ДИНАМИЧЕСКИЙ ТЕКСТ */}
+        {/* Ставим z-[10000], чтобы текст был над шторкой */}
         <motion.div
-          className="fixed m-auto top-0 bottom-0 left-0 right-0 text-white font-bold text-7xl md:text-9xl cursor-default z-50 w-fit h-fit uppercase"
+          className="fixed m-auto top-0 bottom-0 left-0 right-0 text-white font-bold text-5xl md:text-8xl cursor-default z-[10000] w-fit h-fit uppercase pointer-events-none"
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           exit={{ opacity: 0 }}
@@ -43,15 +44,17 @@ const TransitionProvider = ({ children }) => {
           {currentTitle}
         </motion.div>
 
-        {/* Нижняя черная шторка (поднимается вверх при входе) */}
+        {/* ЧЕРНАЯ ШТОРКА (Нижняя) */}
         <motion.div
-          className="h-screen w-screen fixed bg-black rounded-t-[100px] bottom-0 z-30"
+          className="h-screen w-screen fixed bg-black rounded-t-[100px] bottom-0 z-[9999] pointer-events-none"
           initial={{ height: '140vh' }}
           animate={{ height: '0vh', transition: { delay: 0.5 } }}
         />
 
-        <div className="flex-1 flex flex-col h-screen bg-gradient-to-b from-blue-100 to-red-100">
-          <Navbar className="sticky top-0 z-10" />
+        {/* ВЕСЬ КОНТЕНТ САЙТА */}
+        <div className="flex flex-col h-screen">
+          {/* Навбар теперь точно будет ПОД шторкой в моменты перехода */}
+          <Navbar />
           <main className="flex-1 overflow-y-auto">{children}</main>
         </div>
       </div>

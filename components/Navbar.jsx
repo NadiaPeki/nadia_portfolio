@@ -36,7 +36,7 @@ export default function Navbar() {
       x: 0,
       transition: {
         when: 'beforeChildren',
-        staggerChildren: 0.1, // Чуть ускорил для отзывчивости
+        staggerChildren: 0.1,
       },
     },
   };
@@ -46,31 +46,33 @@ export default function Navbar() {
     opened: { x: 0, opacity: 1 },
   };
 
-  const handleLinkClick = () => {
-    setOpen(false);
-  };
-
   return (
     <div className="h-24 flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-lg font-semibold relative">
-      {/* Логотип KOT.dev (если он есть слева/в центре, добавил для структуры) */}
-      <div className="z-50">
-        <Link href="/" className="text-sm bg-black rounded-md p-1 pl-3 font-semibold flex items-center justify-center">
+      
+      {/* ЛОГОТИП (Слева) */}
+      <div className="z-50"> {/* z-50 ниже, чем шторка (z-100), поэтому он не будет просвечивать */}
+        <Link 
+          href="/" 
+          className="text-sm bg-black rounded-md p-1 pl-3 font-semibold flex items-center justify-center transition-transform hover:scale-105"
+        >
           <span className="text-white pr-3">KOT</span>
-          <span className="w-12 h-8 rounded bg-red-100 text-black flex items-center justify-center">.dev</span>
+          <span className="w-12 h-8 rounded bg-red-100 text-black flex items-center justify-center">
+            .dev
+          </span>
         </Link>
       </div>
 
-      {/* Десктопная навигация */}
-      <div className="hidden custom-lg:flex items-center gap-4">
+      {/* ДЕКСТОПНАЯ НАВИГАЦИЯ (Справа) */}
+      <div className="hidden custom-lg:flex items-center gap-6">
         {links.map((link) => (
           <NavLink link={link} key={link.title} />
         ))}
       </div>
 
-      {/* Мобильная навигация (Кнопка Бургера) */}
+      {/* МОБИЛЬНАЯ НАВИГАЦИЯ */}
       <div className="custom-lg:hidden flex items-center">
         <button
-          className="w-10 h-8 flex flex-col justify-between z-[70] relative" // z-70 чтобы кнопка всегда была сверху
+          className="w-10 h-8 flex flex-col justify-between z-[70] relative"
           onClick={() => setOpen(!open)}
           aria-label="Toggle Menu"
         >
@@ -96,18 +98,18 @@ export default function Navbar() {
             variants={listVariants}
             initial="closed"
             animate="opened"
-            className="fixed top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center z-[60]" // Меню на z-60
+            className="fixed top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center z-[60]"
           >
             {links.map((link) => (
               <motion.div
                 variants={listItemVariants}
                 key={link.title}
-                className="w-full" // Растягиваем на всю ширину
+                className="w-full text-center"
               >
                 <Link
                   href={link.url}
-                  className="w-full py-6 flex items-center justify-center text-3xl active:bg-gray-800 transition-colors" // Огромная область клика
-                  onClick={handleLinkClick}
+                  className="w-full py-6 flex items-center justify-center text-3xl active:bg-gray-800 transition-colors"
+                  onClick={() => setOpen(false)}
                 >
                   {link.title}
                 </Link>

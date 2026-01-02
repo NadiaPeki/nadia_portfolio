@@ -5,14 +5,14 @@ import TransitionProvider from '@/components/TransitionProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'KotDev Portfolio',
-  description: 'Портфолио веб-разработчика KotDev',
+  title: 'Portfolio',
+  description: 'Portfolio',
   openGraph: {
-    title: 'KotDev Portfolio',
-    description: 'Портфолио веб-разработчика KotDev',
+    title: 'Portfolio',
+    description: 'Portfolio',
     type: 'website',
     url: 'https://kotdev.pl',
-    siteName: 'KotDev',
+    siteName: 'Portfolio',
     images: '/opengraph-image.png',
   },
   icons: {
