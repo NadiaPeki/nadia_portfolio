@@ -75,8 +75,8 @@ export default function WorkoProject() {
                 <motion.div 
                   onClick={() => setIsZoomed(true)}
                   whileHover={{ scale: 1.2}}
-                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-8 group cursor-zoom-in w-20 md:w-28 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30 transition-all"
+                   transition={{ duration: 0.2}}
+                  className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-8 group cursor-zoom-in w-20 md:w-28 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30"
                 >
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-40 flex items-center justify-center">
                     <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-2xl" />
