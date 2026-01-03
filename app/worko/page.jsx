@@ -1,304 +1,158 @@
 'use client';
 
-import Brain from '@/components/Brain';
-import { motion, useInView, useScroll } from 'framer-motion';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
 import Link from 'next/link';
-import { FaInstagram, FaFacebookF } from 'react-icons/fa';
-import Head from 'next/head';
+import { FiArrowRight, FiDatabase, FiClock, FiCheckCircle, FiExternalLink, FiX, FiMaximize2 } from 'react-icons/fi';
 
-export default function Sites() {
+export default function WorkoProject() {
   const containerRef = useRef();
+  const [isZoomed, setIsZoomed] = useState(false);
   const { scrollYProgress } = useScroll({ container: containerRef });
-  const skillRef = useRef();
-  const experienceRef = useRef();
-  const formRef = useRef();
-  const isSkillRefInView = useInView(skillRef, { margin: '-100px' });
-  const isExperienceRefInView = useInView(experienceRef, { margin: '-100px' });
-  const isFormInView = useInView(formRef, { once: false, margin: '-100px' });
 
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
-  const [validationError, setValidationError] = useState('');
-  const form = useRef();
-
+  // Блокируем скролл страницы при открытии модального окна
   useEffect(() => {
-    console.log('Shops page loaded');
-  }, []);
-
-  const validateForm = () => {
-    const contactInfo = form.current.user_contact.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[\d\s()+-]+$/;
-
-    if (!contactInfo) {
-      setValidationError('Введите email или телефон');
-      return false;
+    if (isZoomed) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
     }
-
-    if (!emailRegex.test(contactInfo) && !phoneRegex.test(contactInfo)) {
-      setValidationError('Введите корректный контакт');
-      return false;
-    }
-
-    return true;
-  };
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setError(false);
-    setSuccess(false);
-    setValidationError('');
-
-    if (!validateForm()) return;
-
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        form.current,
-        process.env.NEXT_PUBLIC_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setSuccess(true);
-          form.current.reset();
-        },
-        () => {
-          setError(true);
-        }
-      );
-  };
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isZoomed]);
 
   return (
     <>
-      <Head>
-        <title>Интернет-магазины</title>
-      </Head>
-
       <motion.div
         className="h-full"
-        initial={{ y: '-200vh' }}
-        animate={{ y: '0%' }}
-        transition={{ duration: 1 }}
+        initial={{ y: "-200vh" }}
+        animate={{ y: "0%" }}
+        transition={{ duration: 1}}
       >
-        <div className="h-full overflow-y-auto lg:flex" ref={containerRef}>
-          <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-40 flex flex-col gap-20 md:gap-32 lg:gap-40 xl:gap-50 lg:w-2/3 lg:pr-0 xl:w-1/2">
-            <div className="flex flex-col gap-12 justify-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-start">Интернет-магазины</h1>
-              <p className="text-start md:text-lg">Создаём современные интернет-магазины под ваши потребности.</p>
+        <div className="h-full overflow-y-auto" ref={containerRef}>
+          
+          {/* --- HERO SECTION --- */}
+          <section className="relative pt-10 pb-20 md:pt-16">
+            <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+              
+              {/* 1. TEXT & METRICS (Static for "Single Wall" effect) */}
+              <div className="flex flex-col items-center text-center gap-8 mb-16">
+                <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tight">
+                  Worko<span className="text-red-600">.</span>
+                </h1>
 
-              <div className="flex flex-col gap-6 items-center">
-                {/* Подарок: домен */}
-                <div className="flex flex-col text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
-                  <motion.p
-                    className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                  >
-                    Бесплатный домен при заказе
-                  </motion.p>
-                </div>
+                <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
+                  A <span className="text-slate-900 font-semibold">Human-Centric platform</span> designed for micro-businesses and niche talent. 
+                  How to build a product that actually hires people in 21 days with a 15 PLN budget.
+                </p>
 
-                {/* Скидка */}
-                <div className="flex flex-col items-center justify-center gap-5 text-center border border-slate-100 p-3 rounded-lg bg-gradient-to-r from-lime-50 to-lime-100 shadow-lg w-full">
-                  <motion.p
-                    className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-                    animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                  >
-                    Скидка на первый заказ
-                  </motion.p>
+                {/* METRICS */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mt-4">
+                  <div className="p-6 rounded-3xl bg-white/40 border border-slate-100 backdrop-blur-md flex flex-col items-center gap-2">
+                    <FiDatabase className="text-red-600 text-xl" />
+                    <div className="text-2xl font-black text-slate-900">15 PLN</div>
+                    <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">CAPEX</div>
+                  </div>
+
+                  <div className="p-6 rounded-3xl bg-white/40 border border-slate-100 backdrop-blur-md flex flex-col items-center gap-2">
+                    <FiClock className="text-red-600 text-xl" />
+                    <div className="text-2xl font-black text-slate-900">21 Days</div>
+                    <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Dev Sprint</div>
+                  </div>
+
+                  <div className="p-6 rounded-3xl bg-red-600 flex flex-col items-center gap-2 shadow-xl shadow-red-200">
+                    <FiCheckCircle className="text-white text-xl" />
+                    <div className="text-2xl font-black text-white">44 Days</div>
+                    <div className="text-[10px] text-red-100 font-bold uppercase tracking-widest opacity-80 text-center">First Success Hire</div>
+                  </div>
                 </div>
               </div>
 
-              {/* Стандартный пакет */}
-              <div className="flex flex-col gap-8 justify-center" ref={skillRef}>
-                <h2 className="font-bold text-2xl">Стандартный пакет</h2>
-                <div className="flex gap-8 flex-wrap">
-                  <div>
-                    <motion.p
-                      className="text-lg font-semibold text-gradient"
-                      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                    >
-                      Цена: 500€
-                    </motion.p>
-                    <motion.p
-                      className="text-lg font-semibold text-gradient"
-                      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                    >
-                      Срок: 2 недели
-                    </motion.p>
+              {/* 2. VISUALS */}
+              <div className="relative flex flex-col items-center max-w-5xl mx-auto">
+                <motion.div 
+                  onClick={() => setIsZoomed(true)}
+                  whileHover={{ scale: 1.2}}
+                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-8 group cursor-zoom-in w-20 md:w-28 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30 transition-all"
+                >
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-40 flex items-center justify-center">
+                    <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-2xl" />
                   </div>
-
-                  <div className="flex flex-col gap-8">
-                    <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                      <p className="font-semibold text-lg mb-2 text-start">Функционал</p>
-                      <ul className="list-disc list-inside p-3">
-                        <li>Главная страница</li>
-                        <li>Каталог товаров</li>
-                        <li>Корзина</li>
-                        <li>Оплата и доставка</li>
-                      </ul>
-                    </div>
-
-                    <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                      <p className="font-semibold text-lg mb-2 text-start">SEO</p>
-                      <ul className="list-disc list-inside p-3">
-                        <li>Оптимизация страниц</li>
-                        <li>Мета-теги и ключевые слова</li>
-                      </ul>
-                    </div>
-
-                    <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                      <p className="font-semibold text-lg mb-2 text-start">Технологии</p>
-                      <ul className="list-none list-inside p-3">
-                        <li>React, Next.js, TailwindCSS</li>
-                      </ul>
-                    </div>
+                  <div className="w-full h-full overflow-hidden">
+                    <motion.img
+                      src="/screen1.png"
+                      alt="Mobile Form"
+                      className="w-full h-auto"
+                      animate={{ y: ["0%", "-65%", "0%"] }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    />
                   </div>
+                </motion.div>
 
-                  <Link href="/contact">
-                    <button className="my-5 md:mt-10 p-3 rounded-lg bg-black text-white text-lg">
-                      Заказать
+                <div className="flex flex-col items-center gap-6 mt-12">
+                  <Link href="#problem">
+                    <button className="px-12 py-5 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-red-600 transition-all flex items-center gap-3 shadow-2xl active:scale-95">
+                      Explore Case Study <FiArrowRight />
                     </button>
                   </Link>
+                  <a href="https://worko.pl" target="_blank" className="flex items-center gap-2 text-slate-400 font-bold hover:text-red-600 transition-colors text-sm uppercase tracking-widest">
+                    <FiExternalLink /> Live Preview
+                  </a>
                 </div>
               </div>
-
-              {/* Премиум пакет */}
-              <div className="flex flex-col gap-8 justify-center" ref={experienceRef}>
-                <h2 className="font-bold text-2xl">Премиум пакет</h2>
-                <div className="flex gap-8 flex-wrap">
-                  <div>
-                    <motion.p
-                      className="text-lg font-semibold text-gradient"
-                      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                    >
-                      Цена: 1000€
-                    </motion.p>
-                    <motion.p
-                      className="text-lg font-semibold text-gradient"
-                      animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                    >
-                      Срок: 4 недели
-                    </motion.p>
-                  </div>
-
-                  <div className="flex flex-col gap-8">
-                    <div className="bg-white p-4 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                      <p className="font-semibold text-lg mb-2 text-start">Функционал</p>
-                      <ul className="list-disc list-inside p-3">
-                        <li>Все из стандартного пакета</li>
-                        <li>Поддержка нескольких языков</li>
-                        <li>Расширенные фильтры товаров</li>
-                        <li>Личный кабинет</li>
-                      </ul>
-                    </div>
-
-                    <div className="bg-white p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                      <p className="font-semibold text-lg mb-2 text-start">SEO</p>
-                      <ul className="list-disc list-inside p-3">
-                        <li>Расширенная оптимизация страниц</li>
-                        <li>Аналитика и метрики</li>
-                      </ul>
-                    </div>
-
-                    <div className="bg-white mb-10 p-6 rounded-md shadow-lg transition-transform transform md:hover:scale-105 md:hover:shadow-xl duration-300">
-                      <p className="font-semibold text-lg mb-2 text-start">Технологии</p>
-                      <ul className="list-disc list-inside p-3">
-                        <li>React, Next.js, TailwindCSS, TypeScript</li>
-                        <li>Интеграции с платежными системами</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Форма */}
-              <motion.div
-                ref={formRef}
-                className="flex flex-col justify-center"
-                initial={{ opacity: 0, y: 50 }}
-                animate={isFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="text-center mb-8 leading-normal">
-                  {'Нужен интернет-магазин?'.split('').map((letter, index) => (
-                    <motion.span
-                      className="pr-3 text-2xl md:text-4xl"
-                      key={index}
-                      initial={{ opacity: 1 }}
-                      animate={{ opacity: 0 }}
-                      transition={{ duration: 3, repeat: Infinity, delay: index * 0.1 }}
-                    >
-                      {letter}
-                    </motion.span>
-                  ))}
-                </div>
-
-                <div className="flex gap-8 flex-wrap">
-                  <motion.form
-                    onSubmit={sendEmail}
-                    ref={form}
-                    className="bg-red-50 rounded-xl text-xl flex flex-col gap-6 p-8 w-full"
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={isFormInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    <span className="font-semibold">Опишите ваш проект</span>
-                    <textarea
-                      rows={8}
-                      className="bg-transparent border-b-2 border-b-black outline-none resize-none placeholder-gray-700 placeholder-opacity-50 text-sm md:text-base min-h-[200px] max-w-full"
-                      name="user_message"
-                      placeholder="Что вы хотите получить?"
-                    />
-                    <span className="font-semibold">Ваш email или телефон</span>
-                    <input
-                      name="user_contact"
-                      type="text"
-                      className="bg-transparent border-b-2 border-b-black outline-none text-sm md:text-base min-h-[40px] max-w-full placeholder-opacity-50"
-                      placeholder="Email или телефон"
-                    />
-                    <motion.button
-                      className="bg-purple-200 rounded font-semibold text-gray-600 p-4 my-3"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Отправить
-                    </motion.button>
-
-                    {success && <motion.span className="text-green-600 font-semibold">Сообщение отправлено!</motion.span>}
-                    {error && <motion.span className="text-red-600 font-semibold">Ошибка при отправке.</motion.span>}
-                    {validationError && <motion.span className="text-red-600 font-semibold">{validationError}</motion.span>}
-                  </motion.form>
-                </div>
-
-                <div className="flex flex-col items-center mt-10">
-                  <span className="text-lg md:text-xl font-semibold mb-4">Мы в соцсетях</span>
-                  <div className="flex space-x-7">
-                    <a href="https://www.instagram.com/kotdev.pl/" target="_blank" rel="noopener noreferrer">
-                      <FaInstagram className="text-2xl text-pink-600 hover:text-pink-400" />
-                    </a>
-                    <a href="https://www.facebook.com/groups/1809126336287422" target="_blank" rel="noopener noreferrer">
-                      <FaFacebookF className="text-2xl text-blue-600 hover:text-blue-400" />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
             </div>
-          </div>
+          </section>
 
-          <div className="hidden lg:block w-1/2 sticky top-0 z-30 xl:w-1/2">
-            <Brain scrollYProgress={scrollYProgress} />
-          </div>
+          <section id="problem" className="py-20"></section>
         </div>
       </motion.div>
+
+      {/* --- LIGHTBOX MODAL (ВНЕ основного контейнера) --- */}
+      <AnimatePresence>
+        {isZoomed && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsZoomed(false)}
+            className="fixed top-0 left-0 w-full h-full bg-black z-[99999] flex items-center justify-center p-6 cursor-zoom-out"
+            style={{ zIndex: 99999 }}
+          >
+            {/* Container for the screen */}
+            <div className="relative max-w-[400px] w-full h-[85vh]">
+              
+              {/* RED CLOSE CROSS */}
+              <button 
+                className="absolute -top-12 -right-4 md:-right-16 text-red-600 hover:text-red-400 text-5xl transition-colors z-[100000]"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsZoomed(false);
+                }}
+              >
+                <FiX />
+              </button>
+              
+              {/* Enlarged Screen */}
+              <motion.div 
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                className="w-full h-full rounded-[2.5rem] border-[10px] border-slate-800 overflow-hidden bg-white shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <motion.img
+                    src="/screen1.png"
+                    className="w-full h-auto"
+                    animate={{ y: ["0%", "-70%", "0%"] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                />
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

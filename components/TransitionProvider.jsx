@@ -9,7 +9,7 @@ const TransitionProvider = ({ children }) => {
   const pathName = usePathname();
 
   const pageTitles = {
-    '/': 'ABOUT ME',
+    '/': 'PORTFOLIO',
     '/worko': 'WORKO',
     '/airbnb': 'AIRBNB',
     '/voltedge': 'VOLTEDGE',
