@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import { FiArrowRight, FiDatabase, FiClock, FiCheckCircle, FiExternalLink, FiX, FiMaximize2 } from 'react-icons/fi';
 
@@ -10,17 +10,41 @@ export default function WorkoProject() {
   const [isZoomed, setIsZoomed] = useState(false);
   const { scrollYProgress } = useScroll({ container: containerRef });
 
-  // Блокируем скролл страницы при открытии модального окна
-  useEffect(() => {
+  // ФИКСИРОВАННЫЙ useEffect для блокировки скролла
+  useLayoutEffect(() => {
     if (isZoomed) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
+      // Сохраняем позицию скролла перед блокировкой
+      const scrollY = window.scrollY;
+      
+      // Блокируем скролл через requestAnimationFrame
+      const rafId = requestAnimationFrame(() => {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
+      });
+      
+      return () => {
+        cancelAnimationFrame(rafId);
+        
+        // Восстанавливаем скролл
+        const scrollY = document.body.style.top 
+          ? parseInt(document.body.style.top, 10) * -1 
+          : 0;
+        
+        document.body.style.removeProperty('overflow');
+        document.body.style.removeProperty('position');
+        document.body.style.removeProperty('top');
+        document.body.style.removeProperty('left');
+        document.body.style.removeProperty('right');
+        document.body.style.removeProperty('width');
+        
+        // Восстанавливаем позицию скролла
+        window.scrollTo(0, scrollY);
+      };
     }
-    
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
   }, [isZoomed]);
 
   return (
@@ -75,7 +99,7 @@ export default function WorkoProject() {
                 <motion.div 
                   onClick={() => setIsZoomed(true)}
                   whileHover={{ scale: 1.2}}
-                   transition={{ duration: 0.2}}
+                  transition={{ duration: 0.2}}
                   className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-8 group cursor-zoom-in w-20 md:w-28 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30"
                 >
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-40 flex items-center justify-center">
