@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { FiArrowRight, FiDatabase, FiClock, FiCheckCircle, FiExternalLink, FiX, FiMaximize2 } from 'react-icons/fi';
 
@@ -10,42 +10,7 @@ export default function WorkoProject() {
   const [isZoomed, setIsZoomed] = useState(false);
   const { scrollYProgress } = useScroll({ container: containerRef });
 
-  // ФИКСИРОВАННЫЙ useEffect для блокировки скролла
-  useLayoutEffect(() => {
-    if (isZoomed) {
-      // Сохраняем позицию скролла перед блокировкой
-      const scrollY = window.scrollY;
-      
-      // Блокируем скролл через requestAnimationFrame
-      const rafId = requestAnimationFrame(() => {
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollY}px`;
-        document.body.style.left = '0';
-        document.body.style.right = '0';
-        document.body.style.width = '100%';
-      });
-      
-      return () => {
-        cancelAnimationFrame(rafId);
-        
-        // Восстанавливаем скролл
-        const scrollY = document.body.style.top 
-          ? parseInt(document.body.style.top, 10) * -1 
-          : 0;
-        
-        document.body.style.removeProperty('overflow');
-        document.body.style.removeProperty('position');
-        document.body.style.removeProperty('top');
-        document.body.style.removeProperty('left');
-        document.body.style.removeProperty('right');
-        document.body.style.removeProperty('width');
-        
-        // Восстанавливаем позицию скролла
-        window.scrollTo(0, scrollY);
-      };
-    }
-  }, [isZoomed]);
+  // УБРАЛ ВЕСЬ useLayoutEffect - НЕ БЛОКИРУЕМ СКРОЛЛ
 
   return (
     <>
@@ -53,7 +18,7 @@ export default function WorkoProject() {
         className="h-full"
         initial={{ y: "-200vh" }}
         animate={{ y: "0%" }}
-        transition={{ duration: 1}}
+        transition={{ duration: 1 }}
       >
         <div className="h-full overflow-y-auto" ref={containerRef}>
           
