@@ -3,7 +3,17 @@
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FiArrowRight, FiDatabase, FiClock, FiCheckCircle, FiExternalLink, FiX, FiMaximize2, FiArrowDown } from 'react-icons/fi';
+import { FiArrowRight, 
+  FiDatabase, 
+  FiClock, 
+  FiCheckCircle, 
+  FiExternalLink, 
+  FiX, 
+  FiMaximize2, 
+  FiArrowDown,
+  FiAlertCircle, 
+  FiDollarSign, 
+  FiUsers } from 'react-icons/fi';
 
 export default function WorkoProject() {
   const containerRef = useRef();
@@ -113,7 +123,97 @@ export default function WorkoProject() {
             </div>
           </section>
 
-          <section id="problem" className="py-20"></section>
+         {/* --- SECTION 2: THE PROBLEM --- */}
+<section id="problem" className="py-2 md:py-10">
+  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    
+    {/* Header of Section */}
+    <div className="mb-16 md:mb-24">
+      <motion.span 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        className="text-red-600 font-bold uppercase tracking-widest text-sm"
+      >
+        01. The Context
+      </motion.span>
+      <motion.h2 
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="text-4xl md:text-6xl font-black text-black mt-4 tracking-tight"
+      >
+        A Broken Hiring Cycle<span className="text-red-600">.</span>
+      </motion.h2>
+    </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      
+      {/* Left Column: The Narrative */}
+      <motion.div 
+        initial={{ x: -20, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed"
+      >
+        <p>
+          While working as an <span className="text-black font-semibold">HR Analyst</span>, 
+          I noticed a recurring pattern: niche micro-businesses (like technical services or local contractors) 
+          were consistently ignored by major job boards.
+        </p>
+        <p>
+          Platforms like <span className="italic">Pracuj.pl</span> or <span className="italic">LinkedIn</span> are 
+          designed for corporate giants, while <span className="italic">OLX</span> is too generalized. 
+          The result? Small business owners spent more time fighting with interfaces than talking to candidates.
+        </p>
+        <div className="pt-6 border-t border-slate-100">
+          <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">The Core Insight</p>
+          <p className="text-2xl text-black font-black mt-2 italic">
+            "Complexity is the enemy of recruitment in the real sector."
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Right Column: Pain Points Cards */}
+      <div className="grid grid-cols-1 gap-6">
+        {[
+          {
+            title: "High Barrier to Entry",
+            desc: "Most platforms require a 15-minute registration process. For a busy technician, this is an immediate drop-off point.",
+            icon: <FiAlertCircle className="text-red-600" />
+          },
+          {
+            title: "Corporate Pricing",
+            desc: "Single job postings can cost up to 500 PLN. A micro-business cannot justify this cost for a single hire.",
+            icon: <FiDollarSign className="text-red-600" />
+          },
+          {
+            title: "Fragmented Niche",
+            desc: "The Eastern European workforce in Poland communicates via messengers, not corporate portals. The bridge was missing.",
+            icon: <FiUsers className="text-red-600" />
+          }
+        ].map((item, index) => (
+          <motion.div 
+            key={index}
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: index * 0.1 + 0.4 }}
+            className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-red-100/20 transition-all group"
+          >
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-2xl bg-red-50 text-2xl group-hover:bg-red-600 group-hover:text-white transition-colors">
+                {item.icon}
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-black mb-2">{item.title}</h3>
+                <p className="text-slate-500 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
         </div>
       </motion.div>
 
