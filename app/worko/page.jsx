@@ -3,7 +3,7 @@
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FiArrowRight, FiDatabase, FiClock, FiCheckCircle, FiExternalLink, FiX, FiMaximize2 } from 'react-icons/fi';
+import { FiArrowRight, FiDatabase, FiClock, FiCheckCircle, FiExternalLink, FiX, FiMaximize2, FiArrowDown } from 'react-icons/fi';
 
 export default function WorkoProject() {
   const containerRef = useRef();
@@ -42,13 +42,13 @@ export default function WorkoProject() {
               
               {/* 1. TEXT & METRICS (Static for "Single Wall" effect) */}
               <div className="flex flex-col items-center text-center gap-8 mb-16">
-                <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tight">
+                <h1 className="text-6xl md:text-8xl font-black text-black tracking-tight">
                   Worko<span className="text-red-600">.</span>
                 </h1>
 
                 <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
-                  A <span className="text-slate-900 font-semibold">Human-Centric platform</span> designed for micro-businesses and niche talent. 
-                  How to build a product that actually hires people in 21 days with a 15 PLN budget.
+                  A <span className="text-black font-semibold">Human-Centric platform</span> designed for small and medium businesses. 
+                  How to build a product in 21 days that achieves hiring success with a <span className='text-black font-semibold'>15 PLN budget.</span>
                 </p>
 
                 {/* METRICS */}
@@ -98,13 +98,14 @@ export default function WorkoProject() {
                   </motion.div>
                 )}
 
-                <div className="flex flex-col items-center gap-6 mt-12">
+                {/* КНОПКИ С АДАПТИВНЫМИ СТИЛЯМИ */}
+                <div className="flex flex-col items-center gap-6 mt-12 md:mt-12">
                   <Link href="#problem">
-                    <button className="px-12 py-5 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-red-600 transition-all flex items-center gap-3 shadow-2xl active:scale-95">
-                      Explore Case Study <FiArrowRight />
+                    <button className="px-8 md:px-12 py-4 md:py-5 bg-slate-900 text-white rounded-full font-bold text-base md:text-lg hover:bg-red-600 transition-all flex items-center gap-3 shadow-2xl active:scale-95 w-full md:w-auto justify-center max-w-xs md:max-w-none">
+                      Explore Case Study <FiArrowDown />
                     </button>
                   </Link>
-                  <a href="https://worko.pl" target="_blank" className="flex items-center gap-2 text-slate-400 font-bold hover:text-red-600 transition-colors text-sm uppercase tracking-widest">
+                  <a href="https://worko.pl" target="_blank" className="flex items-center gap-2 text-slate-400 font-bold hover:text-red-600 transition-colors text-xs md:text-sm uppercase tracking-widest">
                     <FiExternalLink /> Live Preview
                   </a>
                 </div>
@@ -125,15 +126,15 @@ export default function WorkoProject() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsZoomed(false)}
-              className="fixed top-0 left-0 w-full h-full bg-black z-[99999] flex items-center justify-center p-6 cursor-zoom-out"
+              className="fixed top-0 left-0 w-full h-full bg-black z-[99999] flex items-center justify-center p-4 md:p-6 cursor-zoom-out"
               style={{ zIndex: 99999 }}
             >
               {/* Container for the screen */}
-              <div className="relative max-w-[400px] w-full h-[85vh]">
+              <div className="relative max-w-[90vw] md:max-w-[400px] w-full h-[70vh] md:h-[85vh]">
                 
-                {/* RED CLOSE CROSS */}
+                {/* RED CLOSE CROSS - адаптивная позиция */}
                 <button 
-                  className="absolute -top-12 -right-4 md:-right-16 text-red-600 hover:text-red-400 text-5xl transition-colors z-[100000]"
+                  className="absolute -top-10 -right-2 md:-top-12 md:-right-4 text-red-600 hover:text-red-400 text-4xl md:text-5xl transition-colors z-[100000]"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsZoomed(false);
@@ -146,7 +147,7 @@ export default function WorkoProject() {
                 <motion.div 
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
-                  className="w-full h-full rounded-[2.5rem] border-[10px] border-slate-800 overflow-hidden bg-white shadow-2xl"
+                  className="w-full h-full rounded-[2rem] md:rounded-[2.5rem] border-[6px] md:border-[10px] border-slate-800 overflow-hidden bg-white shadow-2xl"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <motion.img
