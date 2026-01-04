@@ -168,7 +168,7 @@ export default function WorkoProject() {
         <div className="pt-6 border-t border-slate-100">
           <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">The Core Insight</p>
           <p className="text-2xl text-black font-black mt-2 italic">
-            "Complexity is the enemy of recruitment in the real sector."
+            Complexity is the enemy of recruitment in the real sector.
           </p>
         </div>
       </motion.div>
