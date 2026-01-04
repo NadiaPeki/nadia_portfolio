@@ -1,24 +1,38 @@
 'use client';
 
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiArrowRight, FiDatabase, FiClock, FiCheckCircle, FiExternalLink, FiX, FiMaximize2 } from 'react-icons/fi';
 
 export default function WorkoProject() {
   const containerRef = useRef();
   const [isZoomed, setIsZoomed] = useState(false);
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
   const { scrollYProgress } = useScroll({ container: containerRef });
 
-  // УБРАЛ ВЕСЬ useLayoutEffect - НЕ БЛОКИРУЕМ СКРОЛЛ
+  // Даем время шторке завершить анимацию
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageLoaded(true);
+    }, 1200); // Чуть больше чем duration анимации (1s)
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
       <motion.div
         className="h-full"
-        initial={{ y: "-100vh" }}
+        initial={{ y: "-200vh" }}
         animate={{ y: "0%" }}
         transition={{ duration: 1 }}
+        onAnimationComplete={() => {
+          // Меньше ресурсоемко, чем useEffect с таймером
+          requestAnimationFrame(() => {
+            setIsPageLoaded(true);
+          });
+        }}
       >
         <div className="h-full overflow-y-auto" ref={containerRef}>
           
@@ -61,25 +75,28 @@ export default function WorkoProject() {
 
               {/* 2. VISUALS */}
               <div className="relative flex flex-col items-center max-w-5xl mx-auto">
-                <motion.div 
-                  onClick={() => setIsZoomed(true)}
-                  whileHover={{ scale: 1.2}}
-                  transition={{ duration: 0.2}}
-                  className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-8 group cursor-zoom-in w-20 md:w-28 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30"
-                >
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-40 flex items-center justify-center">
-                    <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-2xl" />
-                  </div>
-                  <div className="w-full h-full overflow-hidden">
-                    <motion.img
-                      src="/screen1.png"
-                      alt="Mobile Form"
-                      className="w-full h-auto"
-                      animate={{ y: ["0%", "-65%", "0%"] }}
-                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    />
-                  </div>
-                </motion.div>
+                {/* Оборачиваем в проверку isPageLoaded */}
+                {isPageLoaded && (
+                  <motion.div 
+                    onClick={() => setIsZoomed(true)}
+                    whileHover={{ scale: 1.2}}
+                    transition={{ duration: 0.2}}
+                    className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-8 group cursor-zoom-in w-20 md:w-28 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30"
+                  >
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-40 flex items-center justify-center">
+                      <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-2xl" />
+                    </div>
+                    <div className="w-full h-full overflow-hidden">
+                      <motion.img
+                        src="/screen1.png"
+                        alt="Mobile Form"
+                        className="w-full h-auto"
+                        animate={{ y: ["0%", "-65%", "0%"] }}
+                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                      />
+                    </div>
+                  </motion.div>
+                )}
 
                 <div className="flex flex-col items-center gap-6 mt-12">
                   <Link href="#problem">
@@ -99,49 +116,51 @@ export default function WorkoProject() {
         </div>
       </motion.div>
 
-      {/* --- LIGHTBOX MODAL (ВНЕ основного контейнера) --- */}
-      <AnimatePresence>
-        {isZoomed && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsZoomed(false)}
-            className="fixed top-0 left-0 w-full h-full bg-black z-[99999] flex items-center justify-center p-6 cursor-zoom-out"
-            style={{ zIndex: 99999 }}
-          >
-            {/* Container for the screen */}
-            <div className="relative max-w-[400px] w-full h-[85vh]">
-              
-              {/* RED CLOSE CROSS */}
-              <button 
-                className="absolute -top-12 -right-4 md:-right-16 text-red-600 hover:text-red-400 text-5xl transition-colors z-[100000]"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsZoomed(false);
-                }}
-              >
-                <FiX />
-              </button>
-              
-              {/* Enlarged Screen */}
-              <motion.div 
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                className="w-full h-full rounded-[2.5rem] border-[10px] border-slate-800 overflow-hidden bg-white shadow-2xl"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <motion.img
-                    src="/screen1.png"
-                    className="w-full h-auto"
-                    animate={{ y: ["0%", "-70%", "0%"] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                />
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* --- LIGHTBOX MODAL - рендерим ТОЛЬКО после загрузки страницы --- */}
+      {isPageLoaded && (
+        <AnimatePresence>
+          {isZoomed && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsZoomed(false)}
+              className="fixed top-0 left-0 w-full h-full bg-black z-[99999] flex items-center justify-center p-6 cursor-zoom-out"
+              style={{ zIndex: 99999 }}
+            >
+              {/* Container for the screen */}
+              <div className="relative max-w-[400px] w-full h-[85vh]">
+                
+                {/* RED CLOSE CROSS */}
+                <button 
+                  className="absolute -top-12 -right-4 md:-right-16 text-red-600 hover:text-red-400 text-5xl transition-colors z-[100000]"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsZoomed(false);
+                  }}
+                >
+                  <FiX />
+                </button>
+                
+                {/* Enlarged Screen */}
+                <motion.div 
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  className="w-full h-full rounded-[2.5rem] border-[10px] border-slate-800 overflow-hidden bg-white shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <motion.img
+                      src="/screen1.png"
+                      className="w-full h-auto"
+                      animate={{ y: ["0%", "-70%", "0%"] }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </>
   );
 }
