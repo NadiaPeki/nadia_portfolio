@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
+import Image from 'next/image'; // Не забудь импортировать Image
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiArrowRight, 
@@ -57,8 +58,7 @@ export default function WorkoProject() {
                 </h1>
 
                 <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
-                  A <span className="text-black font-semibold">Human-Centric platform</span> designed for small and medium businesses. 
-                  How to build a product in 21 days that achieves hiring success with a <span className='text-black font-semibold'>15 PLN budget.</span>
+                  A <span className="text-black font-semibold">Human-Centric MVP</span> for the underserved SMB market. How I built a job platform in 21 days, validated core business hypotheses, and achieved confirmed hiring success with a <span className='text-black font-semibold'>total infrastructure spend of 15 PLN (domain name only)</span>.
                 </p>
 
                 {/* METRICS */}
@@ -78,7 +78,7 @@ export default function WorkoProject() {
                   <div className="p-6 rounded-3xl bg-red-600 flex flex-col items-center gap-2 shadow-xl shadow-red-200">
                     <FiCheckCircle className="text-white text-xl" />
                     <div className="text-2xl font-black text-white">44 Days</div>
-                    <div className="text-[10px] text-red-100 font-bold uppercase tracking-widest opacity-80 text-center">First Success Hire</div>
+                    <div className="text-[10px] text-red-100 font-bold uppercase tracking-widest opacity-80 text-center">Success Hire</div>
                   </div>
                 </div>
               </div>
@@ -91,7 +91,7 @@ export default function WorkoProject() {
                     onClick={() => setIsZoomed(true)}
                     whileHover={{ scale: 1.2}}
                     transition={{ duration: 0.2}}
-                    className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-8 group cursor-zoom-in w-20 md:w-28 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30"
+                    className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-0 group cursor-zoom-in w-20 md:w-32 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30"
                   >
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-40 flex items-center justify-center">
                       <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-2xl" />
@@ -101,8 +101,8 @@ export default function WorkoProject() {
                         src="/screen1.png"
                         alt="Mobile Form"
                         className="w-full h-auto"
-                        animate={{ y: ["0%", "-65%", "0%"] }}
-                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                        animate={{ y: ["0%", "-50%", "0%"] }}
+                        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
                       />
                     </div>
                   </motion.div>
@@ -124,92 +124,260 @@ export default function WorkoProject() {
           </section>
 
          {/* --- SECTION 2: THE PROBLEM --- */}
-<section id="problem" className="py-2 md:py-10">
+<section id="problem" className="py-12 md:py-24">
   <div className="container mx-auto px-4 md:px-6 max-w-6xl">
     
-    {/* Header of Section */}
-    <div className="mb-16 md:mb-24">
-      <motion.span 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        className="text-red-600 font-bold uppercase tracking-widest text-sm"
-      >
+    {/* Заголовок секции — Статичный и лаконичный */}
+    <div className="mb-12 md:mb-16 text-center lg:text-left">
+      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">
         01. The Context
-      </motion.span>
-      <motion.h2 
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className="text-4xl md:text-6xl font-black text-black mt-4 tracking-tight"
-      >
+      </span>
+      <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">
         A Broken Hiring Cycle<span className="text-red-600">.</span>
-      </motion.h2>
+      </h2>
     </div>
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-      
-      {/* Left Column: The Narrative */}
-      <motion.div 
-        initial={{ x: -20, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed"
-      >
-        <p>
-          While working as an <span className="text-black font-semibold">HR Analyst</span>, 
-          I noticed a recurring pattern: niche micro-businesses (like technical services or local contractors) 
-          were consistently ignored by major job boards.
-        </p>
-        <p>
-          Platforms like <span className="italic">Pracuj.pl</span> or <span className="italic">LinkedIn</span> are 
-          designed for corporate giants, while <span className="italic">OLX</span> is too generalized. 
-          The result? Small business owners spent more time fighting with interfaces than talking to candidates.
-        </p>
-        <div className="pt-6 border-t border-slate-100">
-          <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">The Core Insight</p>
-          <p className="text-2xl text-black font-black mt-2 italic">
-            Complexity is the enemy of recruitment in the real sector.
+    {/* Сетка с тезисами — Всплывают по очереди (эффект волны) */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          title: "The Invisible 99.8%",
+          desc: "SMBs represent 99.8% of Polish enterprises and 45.3% of GDP, yet they are priced out of corporate platforms that require dedicated HR departments.",
+          highlight: "The Underserved Majority",
+          icon: "📊"
+        },
+        {
+          title: "Blue-Collar Gap",
+          desc: "While tech tools focus on IT and management, high-demand sectors like caregiving, teaching, and technical services remain digitally forgotten.",
+          highlight: "High-Demand, Low-Tech",
+          icon: "🛠️"
+        },
+        {
+          title: "Process Friction",
+          desc: "The non-corporate market doesn't need complex HR pipelines. It needs friction-less tools that connect small business owners directly with essential workers.",
+          highlight: "Non-Corporate Mindset",
+          icon: "⚡"
+        }
+      ].map((item, index) => (
+        <motion.div 
+          key={index}
+          initial={{ y: 60, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ 
+            duration: 0.6, 
+            delay: index * 0.2, // Волна: задержка для каждой следующей карточки
+            ease: "easeOut" 
+          }}
+          className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full"
+        >
+          {/* Иконки теперь всегда цветные */}
+          <div className="text-4xl mb-6">
+            {item.icon}
+          </div>
+          <h3 className="text-2xl font-bold text-black mb-4">{item.title}</h3>
+          <p className="text-slate-600 leading-relaxed mb-6 flex-grow text-base md:text-lg">
+            {item.desc}
           </p>
-        </div>
-      </motion.div>
+          <div className="pt-4 border-t border-slate-50">
+            <span className="text-xs font-bold text-red-600 uppercase tracking-widest">
+              {item.highlight}
+            </span>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+<section id="solution" className="py-12 md:py-24 bg-slate-50/50">
+  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    
+    {/* --- ЧАСТЬ 1: СТРАТЕГИЯ (Текст + Иконки) --- */}
+    {/* Этот блок оставляем без изменений, он отлично задает контекст */}
+    <div className="mb-16 md:mb-20 text-center lg:text-left">
+      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">
+        02. The Solution
+      </span>
+      <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">
+        Engineering as Marketing<span className="text-red-600">.</span>
+      </h2>
+      <p className="text-slate-500 mt-4 text-lg max-w-2xl font-medium">
+        Worko is an SEO-first, low-barrier platform built to close the gap between SMBs and the workforce through technical leverage.
+      </p>
+    </div>
 
-      {/* Right Column: Pain Points Cards */}
-      <div className="grid grid-cols-1 gap-6">
-        {[
-          {
-            title: "High Barrier to Entry",
-            desc: "Most platforms require a 15-minute registration process. For a busy technician, this is an immediate drop-off point.",
-            icon: <FiAlertCircle className="text-red-600" />
-          },
-          {
-            title: "Corporate Pricing",
-            desc: "Single job postings can cost up to 500 PLN. A micro-business cannot justify this cost for a single hire.",
-            icon: <FiDollarSign className="text-red-600" />
-          },
-          {
-            title: "Fragmented Niche",
-            desc: "The Eastern European workforce in Poland communicates via messengers, not corporate portals. The bridge was missing.",
-            icon: <FiUsers className="text-red-600" />
-          }
-        ].map((item, index) => (
-          <motion.div 
-            key={index}
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: index * 0.1 + 0.4 }}
-            className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-red-100/20 transition-all group"
-          >
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-2xl bg-red-50 text-2xl group-hover:bg-red-600 group-hover:text-white transition-colors">
-                {item.icon}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+      {[
+        {
+          title: "SEO-First Engine",
+          desc: "Next.js SSG architecture enables instant indexing. The platform generates organic traffic 24/7, outranking heavy corporate portals with zero ad spend.",
+          highlight: "Static-First Leverage",
+          icon: "🚀"
+        },
+        {
+          title: "Radical Simplicity",
+          desc: "Mobile-first UX designed for zero friction. Direct employer–candidate contact with TTP < 5 min and no mandatory registration.",
+          highlight: "Zero Barrier Entry",
+          icon: "📱"
+        },
+        {
+          title: "Product-Led Growth",
+          desc: "We replaced marketing budgets with engineering. Automated indexing and smart SEO-routing reach the non-corporate market organically.",
+          highlight: "Tech-Driven Acquisition",
+          icon: "💎"
+        }
+      ].map((item, index) => (
+        <motion.div 
+          key={index}
+          initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.15 }}
+          className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all flex flex-col h-full"
+        >
+          <div className="text-4xl mb-6">{item.icon}</div>
+          <h3 className="text-2xl font-bold text-black mb-4">{item.title}</h3>
+          <p className="text-slate-600 leading-relaxed mb-6 flex-grow">{item.desc}</p>
+          <div className="pt-4 border-t border-slate-50 text-xs font-bold text-red-600 uppercase tracking-widest">
+            {item.highlight}
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* --- ЧАСТЬ 2: VISUAL USER JOURNEY (Картинки) --- */}
+    <div className="pt-16 border-t border-slate-200">
+      <div className="space-y-20">
+        
+        {/* ПУТЬ РАБОТОДАТЕЛЯ */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl font-extrabold uppercase tracking-tighter text-black flex items-center gap-3 mb-8">
+            <span className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center text-base">1</span>
+            Employer Path: Fast Execution
+          </h3>
+          
+          {/* Сетка из 3 шагов с картинками */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Шаг 1 */}
+            <div className="space-y-4 group">
+              <div className="overflow-hidden rounded-2xl border-2 border-slate-100 shadow-sm group-hover:shadow-md transition-all bg-white">
+                {/* ЗАМЕНИ SRC НА СВОЮ КАРТИНКУ */}
+                <Image 
+                  src="/api/placeholder/300/533" 
+                  alt="SEO Landing Page screenshot" 
+                  width={300} height={533} 
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-black mb-2">{item.title}</h3>
-                <p className="text-slate-500 leading-relaxed">{item.desc}</p>
+                <h4 className="font-bold text-lg text-black">Instant SEO Entry</h4>
+                <p className="text-slate-500 text-sm mt-1">Finds a niche-specific landing page via Google. No navigation noise.</p>
               </div>
             </div>
-          </motion.div>
-        ))}
+             {/* Шаг 2 */}
+            <div className="space-y-4 group">
+              <div className="overflow-hidden rounded-2xl border-2 border-slate-100 shadow-sm group-hover:shadow-md transition-all bg-white">
+                {/* ЗАМЕНИ SRC НА СВОЮ КАРТИНКУ */}
+                <Image 
+                  src="/api/placeholder/300/533" 
+                  alt="Posting Form screenshot" 
+                  width={300} height={533} 
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div>
+                <h4 className="font-bold text-lg text-black">Post in &lt; 5 Min</h4>
+                <p className="text-slate-500 text-sm mt-1">One-page form. No account creation required for the first cycle.</p>
+              </div>
+            </div>
+             {/* Шаг 3 */}
+            <div className="space-y-4 group">
+              <div className="overflow-hidden rounded-2xl border-2 border-red-100 shadow-sm group-hover:shadow-md transition-all bg-white">
+                {/* ЗАМЕНИ SRC НА СВОЮ КАРТИНКУ */}
+                <Image 
+                  src="/api/placeholder/300/533" 
+                  alt="Lead Delivery screenshot" 
+                  width={300} height={533} 
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div>
+                <h4 className="font-bold text-lg text-black">Direct Lead Delivery</h4>
+                <p className="text-slate-500 text-sm mt-1">Candidates contact via phone/messenger. No internal ATS to learn.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ПУТЬ КАНДИДАТА */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <h3 className="text-2xl font-extrabold uppercase tracking-tighter text-black flex items-center gap-3 mb-8">
+            <span className="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center text-base">2</span>
+            Candidate Path: Immediate Contact
+          </h3>
+          
+           {/* Сетка из 3 шагов с картинками */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+             {/* Шаг 1 */}
+            <div className="space-y-4 group">
+              <div className="overflow-hidden rounded-2xl border-2 border-slate-100 shadow-sm group-hover:shadow-md transition-all bg-white">
+                {/* ЗАМЕНИ SRC НА СВОЮ КАРТИНКУ */}
+                <Image 
+                  src="/api/placeholder/300/533" 
+                  alt="Mobile Discovery screenshot" 
+                  width={300} height={533} 
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div>
+                <h4 className="font-bold text-lg text-black">Mobile-First Discovery</h4>
+                <p className="text-slate-500 text-sm mt-1">Optimized for fast-loading on mobile. 100% responsive UI.</p>
+              </div>
+            </div>
+             {/* Шаг 2 */}
+            <div className="space-y-4 group">
+              <div className="overflow-hidden rounded-2xl border-2 border-slate-100 shadow-sm group-hover:shadow-md transition-all bg-white">
+                {/* ЗАМЕНИ SRC НА СВОЮ КАРТИНКУ */}
+                <Image 
+                  src="/api/placeholder/300/533" 
+                  alt="No Paperwork screenshot" 
+                  width={300} height={533} 
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div>
+                <h4 className="font-bold text-lg text-black">No Paperwork</h4>
+                <p className="text-slate-500 text-sm mt-1">Eliminating resumes/PDFs. Blue-collar workers value speed over profiles.</p>
+              </div>
+            </div>
+             {/* Шаг 3 */}
+            <div className="space-y-4 group">
+              <div className="overflow-hidden rounded-2xl border-2 border-black shadow-sm group-hover:shadow-md transition-all bg-white">
+                {/* ЗАМЕНИ SRC НА СВОЮ КАРТИНКУ */}
+                <Image 
+                  src="/api/placeholder/300/533" 
+                  alt="One-Tap Connection screenshot" 
+                  width={300} height={533} 
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div>
+                <h4 className="font-bold text-lg text-black">One-Tap Connection</h4>
+                <p className="text-slate-500 text-sm mt-1">Direct call or message button. Closing the feedback loop instantly.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </div>
   </div>
