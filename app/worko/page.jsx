@@ -53,10 +53,10 @@ export default function WorkoProject() {
         transition={{ duration: 1 }}
         onAnimationComplete={() => requestAnimationFrame(() => setIsPageLoaded(true))}
       >
-        <div className="h-full overflow-y-auto scroll-smooth" ref={containerRef}>
+        <div className="h-full overflow-y-auto overflow-x-hidden scroll-smooth" ref={containerRef}>
           
           {/* --- HERO SECTION --- */}
-          <section className="relative pt-10 pb-20 md:pt-16">
+          <section className="relative pt-10 pb-12 md:pt-16 md:pb-24">
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
               <div className="flex flex-col items-center text-center gap-8 mb-16">
                 <h1 className="text-6xl md:text-8xl font-black text-black tracking-tight">
@@ -168,7 +168,7 @@ export default function WorkoProject() {
                 ))}
               </div>
 
-              <div className="space-y-32 md:space-y-48 pb-20">
+              <div className="space-y-24 md:space-y-28">
                 {/* Employer Slider */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                   <div className="space-y-6">
@@ -227,84 +227,74 @@ export default function WorkoProject() {
           </section>
 
           {/* --- SECTION 3: CASE STUDY (Layered Collage) --- */}
-          <section className="py-24 md:py-32">
-            <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                
-                {/* Text Block */}
-                <div className="space-y-8">
-                  <div>
-                    <span className="text-red-600 font-bold uppercase tracking-widest text-lg">03. Real Case</span>
-                    <h2 className="text-4xl md:text-6xl font-black text-black mt-4 mb-8 tracking-tight leading-none">The VoltEdge Story<span className="text-red-600">.</span></h2>
-                  </div>
-                  
-                  <div className="space-y-6 text-xl text-slate-600 leading-relaxed font-normal">
-                    <p>
-                      <span className="text-black font-bold underline decoration-red-600 decoration-4 underline-offset-4">Pan Alex</span>, owner of technical business, was tired of paying 500 PLN per post for zero results.
-                    </p>
-                    <p>
-                      After posting on Worko, he received <span className="text-black font-black">7 relevant leads</span> in days. One was <span className="text-black font-bold">Vitaliy</span>—hired 44 days after the project launch.
-                    </p>
-                  </div>
+          {/* --- SECTION 3: CASE STUDY (Layered Collage) --- */}
+{/* --- SECTION 3: THE SUCCESS STORY --- */}
+<section id="realcase" className="py-12 md:py-24">
+  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    
+    {/* TOP ROW: Context & Key Metrics */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 md:mb-20">
+      <div className="space-y-6">
+        <div>
+          <span className="text-red-600 font-bold uppercase tracking-widest text-sm md:text-base">03. Success Story</span>
+          <h2 className="text-4xl md:text-6xl font-black text-black mt-2 tracking-tight leading-none">The VoltEdge Case<span className="text-red-600">.</span></h2>
+        </div>
+        <div className="space-y-4 text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
+          <p>
+            <span className="text-black font-bold underline decoration-red-600 decoration-4 underline-offset-4">Pan Alex</span>, owner of a specialized electrical installation company, faced a common SMB barrier: he had neither the corporate budget nor the bandwidth to navigate the labyrinth of complex job board tariffs and hidden placement terms.
+          </p>
+          <p>
+            He needed a solution that worked as fast as he did. On Worko, he skipped the bureaucracy and received <span className="text-black font-black">7 relevant leads in weeks</span>. One was <span className="text-black font-bold">Vitaliy</span>—the perfect hire for his team, found with zero friction.
+          </p>
+        </div>
+      </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex-1 p-6 rounded-3xl bg-white border border-slate-100 shadow-sm">
-                       <div className="text-3xl font-black text-black">7</div>
-                       <div className="text-[10px] uppercase font-bold text-slate-400 tracking-widest leading-none">Responses</div>
-                    </div>
-                    <div className="flex-1 p-6 rounded-3xl bg-red-600 text-white shadow-xl shadow-red-100 flex flex-col justify-center">
-                       <FiUserCheck className="text-2xl mb-1" />
-                       <div className="text-lg font-bold italic leading-tight">Hired Vitaliy</div>
-                    </div>
-                  </div>
-                </div>
+      <div className="flex flex-row gap-4">
+        <div className="flex-1 p-8 rounded-3xl bg-white border border-slate-100 shadow-sm flex flex-col justify-center">
+           <div className="text-5xl font-black text-black">7</div>
+           <div className="text-[10px] uppercase font-bold text-slate-400 tracking-widest mt-2 leading-tight">Inbound Leads</div>
+        </div>
+        <div className="flex-1 p-8 rounded-3xl bg-red-600 text-white shadow-xl shadow-red-200 flex flex-col justify-center">
+           <FiUserCheck className="text-3xl mb-2" />
+           <div className="text-xl font-bold italic leading-tight">Hired Vitaliy</div>
+           <div className="text-[10px] uppercase opacity-80 mt-1 tracking-wider">Verified Outcome</div>
+        </div>
+      </div>
+    </div>
 
-                {/* DYNAMIC COLLAGE VISUAL */}
-                <div className="relative h-[550px] md:h-[650px] flex items-center justify-center">
-                  
-                  {/* Layer 1: Vacancy Preview (Back) */}
-                  <motion.div 
-                    initial={{ rotate: -5, y: 20 }} 
-                    whileInView={{ rotate: -2, y: 0 }}
-                    viewport={{ once: true }}
-                    className="absolute w-[85%] aspect-[9/12] rounded-[2rem] border-[8px] border-white shadow-2xl overflow-hidden z-10 left-0 top-0"
-                  >
-                    <Image src="/solution5.png" alt="Vacancy" fill className="object-cover" />
-                  </motion.div>
+    {/* BOTTOM ROW: Portfolio Evidence Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {[
+        { src: "/success1.png", label: "01. Targeted Vacancy", desc: "Optimized SMB job listing" },
+        { src: "/case4.png", label: "02. Direct Application", desc: "Friction-less candidate response" },
+        { src: "/case3.png", label: "03. Verified Feedback", desc: "Employer satisfaction proof" }
+      ].map((item, idx) => (
+        <motion.div 
+          key={idx}
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: idx * 0.15 }}
+          viewport={{ once: true }}
+          className="group"
+        >
+          <div className="mb-4 px-1">
+            <div className="text-sm font-black text-black uppercase tracking-tight">{item.label}</div>
+            <div className="text-xs text-slate-400 font-medium">{item.desc}</div>
+          </div>
+          <div className="relative aspect-[3/4] w-full rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden transition-transform duration-500 group-hover:shadow-xl">
+            <Image 
+              src={item.src} 
+              alt={item.label} 
+              fill 
+              className="object-contain p-1" // Минимальный паддинг, чтобы фото было "ближе"
+            />
+          </div>
+        </motion.div>
+      ))}
+    </div>
 
-                  {/* Layer 2: Feedback (Middle) */}
-                  <motion.div 
-                    initial={{ x: 30, opacity: 0 }} 
-                    whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="absolute z-20 right-0 top-1/4 w-[75%] bg-white p-6 rounded-3xl shadow-2xl border border-slate-100"
-                  >
-                    <div className="flex items-center gap-1 text-yellow-400 mb-3">★ ★ ★ ★ ★</div>
-                    <p className="text-black font-medium italic text-lg leading-snug">
-                      &quot;15 PLN and 2 minutes. I found a professional without any corporate tax.&quot;
-                    </p>
-                    <p className="mt-4 text-xs font-bold text-slate-400 uppercase tracking-widest leading-none">— Pan Alex, VoltEdge</p>
-                  </motion.div>
-
-                  {/* Layer 3: Vitaliy Message (Top) */}
-                  <motion.div 
-                    initial={{ y: 50, opacity: 0 }} 
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="absolute z-30 bottom-10 left-10 w-[80%] bg-slate-900 p-5 rounded-2xl shadow-2xl flex items-center gap-4 border border-white/10"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white font-black">V</div>
-                    <div className="flex-1">
-                      <p className="text-[10px] font-bold text-red-500 uppercase">New Message</p>
-                      <p className="text-white text-sm font-medium leading-none">Vitaliy: &quot;Dzień dobry, gotowy do pracy...&quot;</p>
-                    </div>
-                    <FiMessageSquare className="text-slate-500" />
-                  </motion.div>
-                </div>
-
-              </div>
-            </div>
-          </section>
+  </div>
+</section>
 
           <section id="results" className="py-20"></section>
         </div>
