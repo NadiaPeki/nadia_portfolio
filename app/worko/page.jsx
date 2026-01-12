@@ -62,9 +62,12 @@ export default function WorkoProject() {
                 <h1 className="text-6xl md:text-8xl font-black text-black tracking-tight">
                   Worko<span className="text-red-600">.</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
-                  A <span className="text-black font-semibold">Human-Centric MVP</span> for the underserved SMB market. How I built a job platform in 21 days, validated core business hypotheses, and achieved confirmed hiring success with a <span className='text-black font-semibold'>total infrastructure spend of 15 PLN</span>.
-                </p>
+               <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
+  A <span className="text-black font-semibold">Human-Centric MVP</span> for the underserved SMB market. 
+  How I built a job platform in 21 days, validated core business hypotheses, and achieved confirmed hiring success with a 
+  <span className='text-black font-semibold'> total project budget of 15 PLN</span> (domain only) and 
+  <span className='text-black font-semibold text-red-600'> zero marketing spend</span>.
+</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mt-4 font-bold">
                   <div className="p-6 rounded-3xl bg-white/40 border border-slate-100 backdrop-blur-md flex flex-col items-center gap-2 text-center shadow-sm">
@@ -122,109 +125,254 @@ export default function WorkoProject() {
           </section>
 
           {/* --- SECTION 1: THE CONTEXT --- */}
-          <section id="problem" className="py-12 md:py-24">
-            <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-              <div className="mb-12 md:mb-16 text-center lg:text-left">
-                <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">01. The Context</span>
-                <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">A Broken Hiring Cycle<span className="text-red-600">.</span></h2>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                  { title: "The Invisible 99.8%", desc: "SMBs represent 99.8% of Polish enterprises and 45.3% of GDP, yet they are priced out of corporate platforms that require dedicated HR departments.", icon: "📊", highlight: "The Underserved Majority" },
-                  { title: "Blue-Collar Gap", desc: "While tech tools focus on IT and management, high-demand sectors like caregiving, teaching, and technical services remain digitally forgotten.", icon: "🛠️", highlight: "High-Demand, Low-Tech" },
-                  { title: "Process Friction", desc: "The non-corporate market doesn't need complex HR pipelines. It needs friction-less tools that connect small business owners directly with essential workers.", icon: "⚡", highlight: "Non-Corporate Mindset" }
-                ].map((item, index) => (
-                  <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
-                    <div className="text-4xl mb-6">{item.icon}</div>
-                    <h3 className="text-2xl font-bold text-black mb-4">{item.title}</h3>
-                    <p className="text-slate-600 leading-relaxed mb-6 flex-grow text-base md:text-lg">{item.desc}</p>
-                    <div className="pt-4 border-t border-slate-50 font-bold text-red-600 text-xs uppercase tracking-widest">{item.highlight}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
+        <section id="problem" className="py-12 md:py-24">
+  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    <div className="mb-12 md:mb-16 text-center lg:text-left">
+      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">01. The Context</span>
+      <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">A Broken Hiring Cycle<span className="text-red-600">.</span></h2>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        { 
+          title: "The Invisible 99.8%", 
+          desc: "SMBs represent 99.8% of Polish enterprises, generate 45.3% of GDP, and provide 6.7M jobs. Despite this scale, they are priced out of high-cost platforms that prioritize corporate budgets over local business needs.", 
+          icon: "📊", 
+          highlight: "6.7M Jobs Underserved" 
+        },
+        { 
+          title: "The Blue-Collar Gap", 
+          desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and sales assistants—remains digitally forgotten in a 'high-demand, low-tech' void.", 
+          icon: "🛠️", 
+          highlight: "The Real Economy" 
+        },
+        { 
+          title: "Bureaucracy Paralysis", 
+          desc: "Small owners are paralyzed by corporate bureaucracy. Lacking HR departments, they can’t afford time-consuming sales calls, complex pricing tiers, or 20-minute application forms.", 
+          icon: "⚡", 
+          highlight: "No HR, No Time" 
+        }
+      ].map((item, index) => (
+        <motion.div 
+          key={index} 
+          initial={{ y: 60, opacity: 0 }} 
+          whileInView={{ y: 0, opacity: 1 }} 
+          viewport={{ once: true, margin: "-50px" }} 
+          transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} 
+          className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full"
+        >
+          <div className="text-4xl mb-6">{item.icon}</div>
+          <h3 className="text-2xl font-bold text-black mb-4">{item.title}</h3>
+          <p className="text-slate-600 leading-relaxed mb-6 flex-grow text-base md:text-lg">{item.desc}</p>
+          <div className="pt-4 border-t border-slate-50 font-bold text-red-600 text-xs uppercase tracking-widest">{item.highlight}</div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+<section id="strategy" className="py-12 md:py-24">
+  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    <div className="mb-12 md:mb-16 text-center lg:text-left">
+      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">02. Strategy, Methodology & Hypotheses</span>
+      <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">The Lean Experiment<span className="text-red-600">.</span></h2>
+     <p className="mt-6 text-slate-600 text-lg md:text-xl max-w-4xl leading-relaxed">
+        I adopted an <span className="text-black font-semibold">entrepreneurial mindset</span> to validate the lifecycle of a two-sided job platform. 
+        By applying extreme constraints — <span className="text-black font-semibold">minimum budget and maximum creativity</span> — 
+        I proved that Worko can attract, retain, and connect users with zero marketing spend.
+      </p>
+    </div>
 
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        { 
+          title: "Bootstrap DNA", 
+          icon: "🧬", 
+          highlight: "Tech-Driven Economy",
+          points: [
+            "15 PLN total budget & 21-day sprint to MVP",
+            "Zero infrastructure cost via Neon (Serverless) & Vercel",
+            "Next.js SSG: Turning architecture into a marketing-saving engine",
+            "Full system autonomy confirmed by an 8-month dormant test"
+          ]
+        },
+        { 
+          title: "Guerrilla Cold Start", 
+          icon: "🏹", 
+          highlight: "Network-Driven Launch",
+          points: [
+            "Solved the Cold Start problem via manual seeding in niche groups",
+            "Direct outreach to a network of recruiters & entrepreneurs",
+            "Leveraged 'Early Adopters' to seed initial job supply",
+            "Zero ad spend: Used social capital instead of a marketing budget"
+          ]
+        },
+        { 
+          title: "The Strategic Bets", 
+          icon: "🎯", 
+          highlight: "H1, H2, H3 Validation",
+          points: [
+            "H1 (Organic Growth): Niche SEO generates stable traffic with $0 spend",
+            "H2 (Retention): Radical UX simplicity creates loyalty & repeated use",
+            "H3 (Economic Loop): A functioning match-loop at near-zero CPA",
+            "Success Metric: Real candidate engagement + returning employers"
+          ]
+        }
+      ].map((item, index) => (
+        <motion.div 
+          key={index} 
+          initial={{ y: 60, opacity: 0 }} 
+          whileInView={{ y: 0, opacity: 1 }} 
+          viewport={{ once: true, margin: "-50px" }} 
+          transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} 
+          className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-all flex flex-col h-full group"
+        >
+          <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+          <h3 className="text-2xl font-bold text-black mb-6">{item.title}</h3>
+          
+          <ul className="space-y-4 flex-grow mb-8">
+            {item.points.map((point, pIndex) => (
+              <li key={pIndex} className="flex items-start text-slate-600 text-base md:text-lg leading-snug">
+                <span className="text-red-600 mr-2 mt-1.5 shrink-0 text-xs">●</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          <div className="pt-4 border-t border-slate-50 font-bold text-red-600 text-xs uppercase tracking-widest">
+            {item.highlight}
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
           {/* --- SECTION 2: THE SOLUTION --- */}
-          <section id="solution" className="py-12 md:py-24">
-            <div className="container mx-auto px-4 md:px-6 max-w-6xl font-bold">
-              <div className="mb-16 md:mb-20 text-center lg:text-left">
-                <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">02. The Solution</span>
-                <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">Engineering as Marketing<span className="text-red-600">.</span></h2>
-              </div>
+         <section id="solution" className="py-12 md:py-24">
+  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    <div className="mb-16 md:mb-20 text-center lg:text-left">
+      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">03. The Solution</span>
+      <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">Engineering as Marketing<span className="text-red-600">.</span></h2>
+    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 font-normal">
-                {[
-                  { title: "SEO-First Engine", desc: "Next.js SSG provides a lightweight foundation for organic indexing. This technical choice ensures visibility with zero maintenance costs.", icon: "🚀", highlight: "Static-First Leverage" },
-                  { title: "Radical Simplicity", desc: "Mobile-first UX designed for zero friction. Direct employer–candidate contact with TTP < 5 min and no mandatory registration.", icon: "📱", highlight: "Zero Barrier Entry" },
-                  { title: "Product-Led Growth", desc: "We replaced marketing budgets with engineering. Automated indexing and smart SEO-routing reach the non-corporate market organically.", icon: "💎", highlight: "Tech-Driven Acquisition" }
-                ].map((item, index) => (
-                  <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 flex flex-col h-full shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow">
-                    <div className="text-4xl mb-6">{item.icon}</div>
-                    <h3 className="text-2xl font-bold text-black mb-4">{item.title}</h3>
-                    <p className="text-slate-600 leading-relaxed mb-6 flex-grow">{item.desc}</p>
-                    <div className="pt-4 border-t border-slate-50 text-xs font-bold text-red-600 uppercase tracking-widest">{item.highlight}</div>
-                  </motion.div>
-                ))}
-              </div>
+    {/* Обновленные карточки Solution с тезисами */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+      {[
+        { 
+          title: "Tech-Driven Economy", 
+          icon: "🚀", 
+          highlight: "Zero Infrastructure Costs",
+          points: [
+            "Neon (Serverless DB): Zero idle costs with auto-suspend",
+            "Vercel: Scalable hosting at $0 for the MVP phase",
+            "Next.js SSG: Fast page loads + zero server-side compute",
+            "Maintenance-free: Built to run itself autonomously"
+          ]
+        },
+        { 
+          title: "Radical Simplicity", 
+          icon: "📱", 
+          highlight: "Zero Barrier Entry",
+          points: [
+            "Employer: Post in < 5 mins with No registration, and No sales calls",
+            "Candidate: One-click applications via direct email contact",
+            "Mobile-first: Optimized for blue-collar workers who lack desktop access",
+          ]
+        },
+        { 
+          title: "Automated Reach", 
+          icon: "💎", 
+          highlight: "Zero CAC Acquisition",
+          points: [
+            "Programmatic SEO: Automated meta-tag generation for every city and role",
+            "Instant Indexing: SSG ensures job ads are crawlable by Google in seconds",
+            "Cyrillic Niche: Capturing underserved RU search traffic organically",
+                    ]
+        }
+      ].map((item, index) => (
+        <motion.div 
+          key={index} 
+          initial={{ y: 60, opacity: 0 }} 
+          whileInView={{ y: 0, opacity: 1 }} 
+          viewport={{ once: true, margin: "-50px" }} 
+          transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} 
+          className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-all flex flex-col h-full group"
+        >
+          <div className="text-4xl mb-6 group-hover:rotate-12 transition-transform duration-300">{item.icon}</div>
+          <h3 className="text-2xl font-bold text-black mb-6">{item.title}</h3>
+          
+          <ul className="space-y-4 flex-grow mb-8 font-normal">
+            {item.points.map((point, pIndex) => (
+              <li key={pIndex} className="flex items-start text-slate-600 text-base leading-snug">
+                <span className="text-red-600 mr-2 mt-1.5 shrink-0 text-xs">●</span>
+                {point}
+              </li>
+            ))}
+          </ul>
 
-              <div className="space-y-24 md:space-y-28">
-                {/* Employer Slider */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-extrabold uppercase tracking-tighter text-black flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-xs tracking-normal font-bold">1</span>
-                      Employer Path
-                    </h3>
-                    <AnimatePresence mode="wait">
-                      <motion.div key={empStep} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} transition={{ duration: 0.4 }}>
-                        <h4 className="text-4xl font-black text-black leading-tight tracking-tighter">{employerPhotos[empStep].title}</h4>
-                        <p className="text-slate-500 mt-4 text-xl leading-relaxed font-normal">{employerPhotos[empStep].desc}</p>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                  <div className="flex items-center justify-center gap-6">
-                    <button onClick={() => setEmpStep(p => (p === 0 ? employerPhotos.length - 1 : p - 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronLeft size={48} /></button>
-                    <div className="w-[240px] md:w-[280px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[9/16] bg-white relative">
-                      <AnimatePresence mode="popLayout">
-                        <motion.div key={empStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
-                          <Image src={employerPhotos[empStep].src} alt="Step" fill className="object-cover" />
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
-                    <button onClick={() => setEmpStep(p => (p === employerPhotos.length - 1 ? 0 : p + 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronRight size={48} /></button>
-                  </div>
-                </div>
+          <div className="pt-4 border-t border-slate-50 font-bold text-red-600 text-xs uppercase tracking-widest">
+            {item.highlight}
+          </div>
+        </motion.div>
+      ))}
+    </div>
 
-                {/* Candidate Slider */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                  <div className="flex items-center justify-center gap-6 order-2 lg:order-1">
-                    <button onClick={() => setCandStep(p => (p === 0 ? candidatePhotos.length - 1 : p - 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronLeft size={48} /></button>
-                    <div className="w-[240px] md:w-[280px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[9/16] bg-white relative">
-                      <AnimatePresence mode="popLayout">
-                        <motion.div key={candStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
-                          <Image src={candidatePhotos[candStep].src} alt="Step Candidate" fill className="object-cover" />
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
-                    <button onClick={() => setCandStep(p => (p === candidatePhotos.length - 1 ? 0 : p + 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronRight size={48} /></button>
-                  </div>
-                  <div className="space-y-6 order-1 lg:order-2">
-                    <h3 className="text-xl font-extrabold uppercase tracking-tighter text-black flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-xs tracking-normal font-bold">2</span>
-                      Candidate Path
-                    </h3>
-                    <AnimatePresence mode="wait">
-                      <motion.div key={candStep} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.4 }}>
-                        <h4 className="text-4xl font-black text-black leading-tight tracking-tighter">{candidatePhotos[candStep].title}</h4>
-                        <p className="text-slate-500 mt-4 text-xl leading-relaxed font-normal">{candidatePhotos[candStep].desc}</p>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+    {/* Блок путей (оставлен без изменений) */}
+    <div className="space-y-24 md:space-y-28">
+      {/* Employer Slider */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div className="space-y-6">
+          <h3 className="text-xl font-extrabold uppercase tracking-tighter text-black flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-xs tracking-normal font-bold">1</span>
+            Employer Path
+          </h3>
+          <AnimatePresence mode="wait">
+            <motion.div key={empStep} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} transition={{ duration: 0.4 }}>
+              <h4 className="text-4xl font-black text-black leading-tight tracking-tighter">{employerPhotos[empStep].title}</h4>
+              <p className="text-slate-500 mt-4 text-xl leading-relaxed font-normal">{employerPhotos[empStep].desc}</p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <div className="flex items-center justify-center gap-6">
+          <button onClick={() => setEmpStep(p => (p === 0 ? employerPhotos.length - 1 : p - 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronLeft size={48} /></button>
+          <div className="w-[240px] md:w-[280px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[9/16] bg-white relative">
+            <AnimatePresence mode="popLayout">
+              <motion.div key={empStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
+                <Image src={employerPhotos[empStep].src} alt="Step" fill className="object-cover" />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <button onClick={() => setEmpStep(p => (p === employerPhotos.length - 1 ? 0 : p + 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronRight size={48} /></button>
+        </div>
+      </div>
+
+      {/* Candidate Slider */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div className="flex items-center justify-center gap-6 order-2 lg:order-1">
+          <button onClick={() => setCandStep(p => (p === 0 ? candidatePhotos.length - 1 : p - 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronLeft size={48} /></button>
+          <div className="w-[240px] md:w-[280px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[9/16] bg-white relative">
+            <AnimatePresence mode="popLayout">
+              <motion.div key={candStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
+                <Image src={candidatePhotos[candStep].src} alt="Step Candidate" fill className="object-cover" />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <button onClick={() => setCandStep(p => (p === candidatePhotos.length - 1 ? 0 : p + 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronRight size={48} /></button>
+        </div>
+        <div className="space-y-6 order-1 lg:order-2">
+          <h3 className="text-xl font-extrabold uppercase tracking-tighter text-black flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-xs tracking-normal font-bold">2</span>
+            Candidate Path
+          </h3>
+          <AnimatePresence mode="wait">
+            <motion.div key={candStep} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} transition={{ duration: 0.4 }}>
+              <h4 className="text-4xl font-black text-black leading-tight tracking-tighter">{candidatePhotos[candStep].title}</h4>
+              <p className="text-slate-500 mt-4 text-xl leading-relaxed font-normal">{candidatePhotos[candStep].desc}</p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
           {/* --- SECTION 3: CASE STUDY (Layered Collage) --- */}
           {/* --- SECTION 3: CASE STUDY (Layered Collage) --- */}
