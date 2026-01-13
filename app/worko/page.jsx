@@ -47,15 +47,15 @@ export default function WorkoProject() {
 
   const h1Slides = [
     {
-      title: "Market Pulse: Clean Signal",
-      desc: "Aggregate traffic data showing the inflow from Social Organic and Search Organic channels. It’s not just noise—it's a clear signal of genuine market demand (Четкий сигнал).",
+      title: "Clean Signal",
+      desc: "Aggregate traffic data showing the inflow from Social Organic and Search Organic channels. It’s not just noise—it's a clear signal of genuine market demand.",
       icon: <FiActivity />,
       stat: "Clean Signal",
       src: "/h1_aggregated.png" 
     },
     {
       title: "Active Seeding Phase",
-      desc: "Peak of 320 daily active users driven by manual seeding in niche RU-speaking Facebook groups (10k+ members). Proof of initial market pull.",
+      desc: "Peak of 320 daily active users driven by manual seeding in niche Facebook groups (10k+ members). Proof of initial market pull.",
       icon: <FiTrendingUp />,
       stat: "320 DAU",
       src: "/h1_peak.png" 
