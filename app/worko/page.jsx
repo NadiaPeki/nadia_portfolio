@@ -185,7 +185,7 @@ export default function WorkoProject() {
                 {[
                   { title: "The Invisible 99.8%", desc: "SMBs represent 99.8% of Polish enterprises, generate 45.3% of GDP, and provide 6.7M jobs. Despite this scale, they are priced out of high-cost platforms that prioritize corporate budgets over local business needs.", icon: "📊", highlight: "6.7M Jobs Underserved" },
                   { title: "The Blue-Collar Gap", desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and sales assistants—remains digitally forgotten in a 'high-demand, low-tech' void.", icon: "🛠️", highlight: "The Real Economy" },
-                  { title: "Bureaucracy Paralysis", desc: "Small owners are paralyzed by corporate bureaucracy. Lacking HR departments, they can’t afford time-consuming sales calls, complex pricing tiers, or 20-minute application forms.", icon: "⚡", highlight: "No HR, No Time" }
+                  { title: "Bureaucracy Paralysis", desc: "Small owners are paralyzed by corporate bureaucracy. Lacking HR departments, they can’t afford time-consuming sales calls, complex pricing tiers, or 20-minute application forms.", icon: "⚡", highlight: "No HR, No Time, No Money" }
                 ].map((item, index) => (
                   <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
                     <div className="text-4xl mb-6">{item.icon}</div>
