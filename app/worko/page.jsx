@@ -441,7 +441,7 @@ export default function WorkoProject() {
         <span className="text-red-600">H3.</span> Full Hiring Loop
       </h3>
       <p className="text-slate-400 mt-6 text-xl leading-relaxed">
-        The ultimate proof of concept: One organic employer connected with one organic candidate, resulting in a confirmed hire with 
+       The ultimate proof: Connecting a live vacancy with the real candidate, resulting in a verified hire achieved with 
         {/* Размер шрифта уменьшен до более аккуратного */}
         <span className="block mt-4 text-white font-black text-3xl md:text-4xl tracking-tight">
           <span className="text-red-600">$0</span> Acquisition Cost
@@ -456,7 +456,7 @@ export default function WorkoProject() {
       </div>
       <div className="text-center">
         <div className="text-4xl font-black mb-1">Success Hire</div>
-        <div className="text-red-500 uppercase font-black tracking-[0.2em] text-sm">Verified Outcome</div>
+       
       </div>
     </div>
   </div>
