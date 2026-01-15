@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image'; 
 import { useRef, useState, useEffect } from 'react';
 import { 
+  FiDollarSign,
   FiDatabase, 
   FiClock, 
   FiCheckCircle, 
@@ -364,7 +365,7 @@ export default function WorkoProject() {
               </div>
 
               {/* H2 Validation: Desirability & Retention */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center pt-16 md:pt-24 border-t border-slate-200">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center pt-18 md:pt-28 border-t border-slate-200">
                 <div className="space-y-8">
                   <h3 className="text-2xl md:text-3xl font-black text-black flex items-center gap-3"><span className="text-red-600">H2.</span> Desirability & The VoltEdge Case</h3>
                   <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
@@ -430,18 +431,36 @@ export default function WorkoProject() {
               </div>
 
               {/* H3 Validation: Economic Feasibility */}
-              <div className="mt-16 md:mt-24 p-12 md:p-16 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden">
-                <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
-                  <div className="max-w-xl">
-                    <h3 className="text-2xl md:text-3xl font-black flex items-center gap-3"><span className="text-red-600">H3.</span> Feasibility: The Full Hiring Loop</h3>
-                    <p className="text-slate-400 mt-6 text-xl">The ultimate proof of concept: One organic employer connected with one organic candidate, resulting in a confirmed hire with <span className="text-white font-bold">$0 acquisition cost.</span></p>
-                  </div>
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="w-24 h-24 rounded-full bg-red-600 flex items-center justify-center shadow-2xl shadow-red-600/40"><FiCheckCircle size={48} /></div>
-                    <div className="text-center"><div className="text-4xl font-black">Success Hire</div><div className="text-red-500 uppercase font-bold tracking-widest text-sm">Vitaliy + VoltEdge</div></div>
-                  </div>
-                </div>
-              </div>
+             {/* H3 Validation - MAXIMUM EMPHASIS ON ZERO COST */}
+{/* H3 Validation - Balanced Emphasis */}
+<div className="mt-18 md:mt-28 p-10 md:p-16 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden ring-2 ring-red-600/20">
+  
+  <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
+    <div className="max-w-xl text-center md:text-left">
+      <h3 className="text-2xl md:text-3xl font-black flex items-center justify-center md:justify-start gap-3">
+        <span className="text-red-600">H3.</span> Full Hiring Loop
+      </h3>
+      <p className="text-slate-400 mt-6 text-xl leading-relaxed">
+        The ultimate proof of concept: One organic employer connected with one organic candidate, resulting in a confirmed hire with 
+        {/* Размер шрифта уменьшен до более аккуратного */}
+        <span className="block mt-4 text-white font-black text-3xl md:text-4xl tracking-tight">
+          <span className="text-red-600">$0</span> Acquisition Cost
+        </span>
+      </p>
+    </div>
+
+    {/* Правая карточка осталась без изменений */}
+    <div className="flex flex-col items-center gap-6 bg-white/5 p-10 rounded-[3rem] backdrop-blur-sm border border-white/10 shadow-2xl">
+      <div className="w-24 h-24 rounded-full bg-red-600 flex items-center justify-center shadow-[0_0_50px_rgba(220,38,38,0.5)]">
+        <FiCheckCircle size={56} />
+      </div>
+      <div className="text-center">
+        <div className="text-4xl font-black mb-1">Success Hire</div>
+        <div className="text-red-500 uppercase font-black tracking-[0.2em] text-sm">Verified Outcome</div>
+      </div>
+    </div>
+  </div>
+</div>
 
             </div>
           </section>
