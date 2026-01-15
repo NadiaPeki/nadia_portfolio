@@ -365,7 +365,7 @@ export default function WorkoProject() {
               </div>
 
               {/* H2 Validation: Desirability & Retention */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center pt-18 md:pt-28 border-t border-slate-200">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center pt-20 md:pt-28 border-t border-slate-200">
                 <div className="space-y-8">
                   <h3 className="text-2xl md:text-3xl font-black text-black flex items-center gap-3"><span className="text-red-600">H2.</span> Desirability & The VoltEdge Case</h3>
                   <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
@@ -433,7 +433,7 @@ export default function WorkoProject() {
               {/* H3 Validation: Economic Feasibility */}
              {/* H3 Validation - MAXIMUM EMPHASIS ON ZERO COST */}
 {/* H3 Validation - Balanced Emphasis */}
-<div className="mt-18 md:mt-28 p-10 md:p-16 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden ring-2 ring-red-600/20">
+<div className="mt-20 md:mt-28 p-10 md:p-16 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden ring-2 ring-red-600/20">
   
   <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
     <div className="max-w-xl text-center md:text-left">
