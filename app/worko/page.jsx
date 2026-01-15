@@ -324,45 +324,77 @@ export default function WorkoProject() {
               </div>
 
               {/* H1 Validation Slider */}
-              <div className="mb-0">
-                <div className="mb-10">
-                  <div className="max-w-2xl">
-                    <h3 className="text-2xl md:text-3xl font-black text-black flex items-center gap-3"><span className="text-red-600">H1.</span> Viability: Organic & Multi-Channel Pull</h3>
-                    <p className="text-slate-600 mt-4 text-lg">Validation of our ability to attract high-intent traffic without paid marketing. I tested two phases: Active Seeding (Jan - Feb) and the Autonomous Dormant period (Mar - Oct).</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                  <div className="lg:col-span-4 space-y-8">
-                    <AnimatePresence mode="wait">
-                      <motion.div key={h1Step} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-6">
-                        <div className="w-16 h-16 bg-red-600 text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg shadow-red-200">{h1Slides[h1Step].icon}</div>
-                        <h4 className="text-3xl font-black text-black tracking-tight">{h1Slides[h1Step].title}</h4>
-                        <p className="text-slate-500 text-lg leading-relaxed">{h1Slides[h1Step].desc}</p>
-                        <div className="inline-block px-4 py-2 bg-black text-white rounded-full font-bold text-sm uppercase tracking-widest">{h1Slides[h1Step].stat}</div>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                  <div className="lg:col-span-8">
-                    <div 
-                      onClick={() => handleZoom(h1Slides[h1Step].src)} 
-                      className="relative aspect-[16/9] w-full rounded-[2rem] overflow-hidden bg-white shadow-2xl border border-slate-100 cursor-zoom-in group"
-                    >
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
-                        <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-4xl" />
-                      </div>
-                      <AnimatePresence mode="wait">
-                        <motion.div key={h1Step} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.6 }} className="absolute inset-0">
-                          <Image src={h1Slides[h1Step].src} alt={h1Slides[h1Step].title} fill className="object-cover" />
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center lg:justify-end gap-4 mt-3">
-                  <button onClick={() => setH1Step(p => (p === 0 ? h1Slides.length - 1 : p - 1))} className="p-4 bg-white rounded-full shadow-md hover:text-red-600 transition-all"><FiChevronLeft size={24} /></button>
-                  <button onClick={() => setH1Step(p => (p === h1Slides.length - 1 ? 0 : p + 1))} className="p-4 bg-white rounded-full shadow-md hover:text-red-600 transition-all"><FiChevronRight size={24} /></button>
-                </div>
-              </div>
+            {/* H1 Validation Slider */}
+<div className="mb-0">
+  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    {/* Текстовая колонка с фиксированной min-высотой для мобилок */}
+    <div className="lg:col-span-4 min-h-[300px] md:min-h-[auto] flex flex-col">
+      <AnimatePresence mode="wait">
+        <motion.div 
+          key={h1Step} 
+          initial={{ opacity: 0, x: -20 }} 
+          animate={{ opacity: 1, x: 0 }} 
+          exit={{ opacity: 0, x: 20 }} 
+          transition={{ duration: 0.3 }} 
+          className="space-y-6"
+        >
+          <div className="w-16 h-16 bg-red-600 text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg shadow-red-200">
+            {h1Slides[h1Step].icon}
+          </div>
+          <h4 className="text-3xl font-black text-black tracking-tight">
+            {h1Slides[h1Step].title}
+          </h4>
+          <p className="text-slate-500 text-lg leading-relaxed">
+            {h1Slides[h1Step].desc}
+          </p>
+          <div className="inline-block px-4 py-2 bg-black text-white rounded-full font-bold text-sm uppercase tracking-widest">
+            {h1Slides[h1Step].stat}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+
+    {/* Колонка с картинкой */}
+    <div className="lg:col-span-8">
+      <div 
+        onClick={() => handleZoom(h1Slides[h1Step].src)} 
+        className="relative aspect-[16/9] w-full rounded-[2rem] overflow-hidden bg-white shadow-2xl border border-slate-100 cursor-zoom-in group"
+      >
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
+          <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-4xl" />
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={h1Step} 
+            initial={{ opacity: 0, scale: 0.95 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            exit={{ opacity: 0, scale: 1.05 }} 
+            transition={{ duration: 0.6 }} 
+            className="absolute inset-0"
+          >
+            <Image src={h1Slides[h1Step].src} alt={h1Slides[h1Step].title} fill className="object-cover" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </div>
+  </div>
+
+  {/* Кнопки навигации — вынесены под грид, чтобы их положение было всегда стабильным */}
+  <div className="flex justify-center lg:justify-end gap-4 mt-6">
+    <button 
+      onClick={() => setH1Step(p => (p === 0 ? h1Slides.length - 1 : p - 1))} 
+      className="p-4 bg-white rounded-full shadow-md hover:text-red-600 transition-all active:scale-90"
+    >
+      <FiChevronLeft size={24} />
+    </button>
+    <button 
+      onClick={() => setH1Step(p => (p === h1Slides.length - 1 ? 0 : p + 1))} 
+      className="p-4 bg-white rounded-full shadow-md hover:text-red-600 transition-all active:scale-90"
+    >
+      <FiChevronRight size={24} />
+    </button>
+  </div>
+</div>
 
               {/* H2 Validation: Desirability & Retention */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center pt-20 md:pt-28 border-t border-slate-200">
