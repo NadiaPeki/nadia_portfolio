@@ -16,7 +16,7 @@ import {
   FiUserCheck,
   FiMessageSquare,
   FiTrendingUp,
-  FiSearch,
+  FiSearch, 
   FiMail,
   FiActivity
 } from 'react-icons/fi';
@@ -24,6 +24,7 @@ import {
 export default function WorkoProject() {
   const containerRef = useRef();
   const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomedImage, setZoomedImage] = useState(null);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   
   const [empStep, setEmpStep] = useState(0);
@@ -47,32 +48,32 @@ export default function WorkoProject() {
 
   const h1Slides = [
     {
-      title: "Clean Signal",
+      title: "Organic Demand Signal",
       desc: "Aggregate traffic data showing the inflow from Social Organic and Search Organic channels. It’s not just noise—it's a clear signal of genuine market demand.",
       icon: <FiActivity />,
-      stat: "Clean Signal",
-      src: "/h1_aggregated.png" 
+      stat: "Pure Intent",
+      src: "/ga2.png" 
     },
     {
       title: "Active Seeding Phase",
       desc: "Peak of 320 daily active users driven by manual seeding in niche Facebook groups (10k+ members). Proof of initial market pull.",
       icon: <FiTrendingUp />,
       stat: "320 DAU",
-      src: "/h1_peak.png" 
+      src: "/ga1.png" 
     },
     {
       title: "8-Month Dormant Test",
       desc: "Zero maintenance and zero seeding. The platform continued to attract organic search traffic, proving the evergreen nature of the SSG-SEO architecture.",
       icon: <FiSearch />,
       stat: "Stable Organic Search",
-      src: "/h1_seo.png" 
+      src: "/ga3.png" 
     },
     {
-      title: "Inbound Intent",
+      title: "Evergreen Autonomy",
       desc: "Real job applications received via email during the dormant period. Validation that the traffic is high-intent and converts without intervention.",
       icon: <FiMail />,
       stat: "Live Leads",
-      src: "/h1_leads.png" 
+      src: "/aplic1.png" 
     }
   ];
 
@@ -81,6 +82,11 @@ export default function WorkoProject() {
     { src: "/case4.png", label: "02. Direct Application", desc: "Friction-less candidate response" },
     { src: "/case3.png", label: "03. Verified Feedback", desc: "Employer satisfaction proof" }
   ];
+
+  const handleZoom = (src) => {
+    setZoomedImage(src);
+    setIsZoomed(true);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setIsPageLoaded(true), 1200);
@@ -99,7 +105,7 @@ export default function WorkoProject() {
         <div className="h-full overflow-y-auto overflow-x-hidden scroll-smooth" ref={containerRef}>
           
           {/* --- HERO SECTION --- */}
-          <section className="relative pt-10 pb-12 md:pt-16 md:pb-24">
+          <section className="relative py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
               <div className="flex flex-col items-center text-center gap-8 mb-16">
                 <h1 className="text-6xl md:text-8xl font-black text-black tracking-tight">
@@ -134,8 +140,8 @@ export default function WorkoProject() {
               <div className="relative flex flex-col items-center max-w-5xl mx-auto">
                 {isPageLoaded && (
                   <motion.div 
-                    onClick={() => setIsZoomed(true)}
-                    whileHover={{ scale: 1.2}}
+                    onClick={() => handleZoom('/screen1.png')}
+                    whileHover={{ scale: 1.1}}
                     transition={{ duration: 0.2}}
                     className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-0 group cursor-zoom-in w-20 md:w-32 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30"
                   >
@@ -168,9 +174,9 @@ export default function WorkoProject() {
           </section>
 
           {/* --- SECTION 1: THE CONTEXT --- */}
-          <section id="problem" className="py-12 md:py-24">
+          <section id="problem" className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-              <div className="mb-12 md:mb-16 text-center lg:text-left">
+              <div className="mb-10 md:mb-14 text-center lg:text-left">
                 <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">01. The Context</span>
                 <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">A Broken Hiring Cycle<span className="text-red-600">.</span></h2>
               </div>
@@ -192,9 +198,9 @@ export default function WorkoProject() {
           </section>
 
           {/* --- SECTION 2: STRATEGY --- */}
-          <section id="strategy" className="py-12 md:py-24">
+          <section id="strategy" className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-              <div className="mb-12 md:mb-16 text-center lg:text-left">
+              <div className="mb-10 md:mb-14 text-center lg:text-left">
                 <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">02. Strategy, Methodology & Hypotheses</span>
                 <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">The Lean Experiment<span className="text-red-600">.</span></h2>
                 <p className="mt-6 text-slate-600 text-lg md:text-xl max-w-4xl leading-relaxed">
@@ -222,14 +228,14 @@ export default function WorkoProject() {
           </section>
 
           {/* --- SECTION 3: THE SOLUTION --- */}
-          <section id="solution" className="py-12 md:py-24">
+          <section id="solution" className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-              <div className="mb-16 md:mb-20 text-center lg:text-left">
+              <div className="mb-14 md:mb-18 text-center lg:text-left">
                 <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">03. The Solution</span>
                 <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">Engineering as Marketing<span className="text-red-600">.</span></h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
                 {[
                   { title: "Tech-Driven Economy", icon: "🚀", highlight: "Zero Infrastructure Costs", points: ["Neon (Serverless DB): Zero idle costs with auto-suspend", "Vercel: Scalable hosting at $0 for the MVP phase", "Next.js SSG: Fast page loads + zero server-side compute", "Maintenance-free: Built to run itself autonomously"] },
                   { title: "Radical Simplicity", icon: "📱", highlight: "Zero Barrier Entry", points: ["Employer: Post in < 5 mins with No registration, and No sales calls", "Candidate: One-click applications via direct email contact", "Mobile-first: Optimized for on-the-go hiring, and time-sensitive environments."] },
@@ -246,9 +252,9 @@ export default function WorkoProject() {
                 ))}
               </div>
 
-              <div className="space-y-24 md:space-y-28">
+              <div className="space-y-20 md:space-y-24">
                 {/* Employer Path */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                   <div className="space-y-6">
                     <h3 className="text-xl font-extrabold uppercase tracking-tighter text-black flex items-center gap-2">
                       <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-xs tracking-normal font-bold">1</span> Employer Path
@@ -262,7 +268,10 @@ export default function WorkoProject() {
                   </div>
                   <div className="flex items-center justify-center gap-6">
                     <button onClick={() => setEmpStep(p => (p === 0 ? employerPhotos.length - 1 : p - 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronLeft size={48} /></button>
-                    <div className="w-[240px] md:w-[280px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[9/16] bg-white relative">
+                    <div onClick={() => handleZoom(employerPhotos[empStep].src)} className="w-[240px] md:w-[280px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[9/16] bg-white relative cursor-zoom-in group">
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
+                        <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-3xl" />
+                      </div>
                       <AnimatePresence mode="popLayout">
                         <motion.div key={empStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
                           <Image src={employerPhotos[empStep].src} alt="Step" fill className="object-cover" />
@@ -274,10 +283,13 @@ export default function WorkoProject() {
                 </div>
 
                 {/* Candidate Path */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                   <div className="flex items-center justify-center gap-6 order-2 lg:order-1">
                     <button onClick={() => setCandStep(p => (p === 0 ? candidatePhotos.length - 1 : p - 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronLeft size={48} /></button>
-                    <div className="w-[240px] md:w-[280px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[9/16] bg-white relative">
+                    <div onClick={() => handleZoom(candidatePhotos[candStep].src)} className="w-[240px] md:w-[280px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[9/16] bg-white relative cursor-zoom-in group">
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
+                        <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-3xl" />
+                      </div>
                       <AnimatePresence mode="popLayout">
                         <motion.div key={candStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
                           <Image src={candidatePhotos[candStep].src} alt="Step Candidate" fill className="object-cover" />
@@ -303,19 +315,19 @@ export default function WorkoProject() {
           </section>
 
           {/* --- SECTION 4: VALIDATION --- */}
-          <section id="validation" className="py-12 md:py-24">
+          <section id="validation" className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-              <div className="mb-16 md:mb-20 text-center lg:text-left">
+              <div className="mb-14 md:mb-18 text-center lg:text-left">
                 <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">04. Validation & Results</span>
                 <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">Proving the Hypotheses<span className="text-red-600">.</span></h2>
               </div>
 
               {/* H1 Validation Slider */}
-              <div className="mb-32">
-                <div className="mb-12">
+              <div className="mb-0">
+                <div className="mb-10">
                   <div className="max-w-2xl">
                     <h3 className="text-2xl md:text-3xl font-black text-black flex items-center gap-3"><span className="text-red-600">H1.</span> Viability: Organic & Multi-Channel Pull</h3>
-                    <p className="text-slate-600 mt-4 text-lg">Validation of our ability to attract high-intent traffic without paid marketing. We tested two phases: Active Seeding and the Autonomous Dormant period.</p>
+                    <p className="text-slate-600 mt-4 text-lg">Validation of our ability to attract high-intent traffic without paid marketing. I tested two phases: Active Seeding (Jan - Feb) and the Autonomous Dormant period (Mar - Oct).</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -330,24 +342,29 @@ export default function WorkoProject() {
                     </AnimatePresence>
                   </div>
                   <div className="lg:col-span-8">
-                    <div className="relative aspect-[16/9] w-full rounded-[2rem] overflow-hidden bg-white shadow-2xl border border-slate-100">
+                    <div 
+                      onClick={() => handleZoom(h1Slides[h1Step].src)} 
+                      className="relative aspect-[16/9] w-full rounded-[2rem] overflow-hidden bg-white shadow-2xl border border-slate-100 cursor-zoom-in group"
+                    >
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
+                        <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-4xl" />
+                      </div>
                       <AnimatePresence mode="wait">
                         <motion.div key={h1Step} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.6 }} className="absolute inset-0">
-                          <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300 italic">[Wide Screenshot: {h1Slides[h1Step].title}]</div>
+                          <Image src={h1Slides[h1Step].src} alt={h1Slides[h1Step].title} fill className="object-cover" />
                         </motion.div>
                       </AnimatePresence>
                     </div>
                   </div>
                 </div>
-                {/* Исправленные кнопки: теперь внизу для удобства */}
                 <div className="flex justify-center lg:justify-end gap-4 mt-3">
                   <button onClick={() => setH1Step(p => (p === 0 ? h1Slides.length - 1 : p - 1))} className="p-4 bg-white rounded-full shadow-md hover:text-red-600 transition-all"><FiChevronLeft size={24} /></button>
                   <button onClick={() => setH1Step(p => (p === h1Slides.length - 1 ? 0 : p + 1))} className="p-4 bg-white rounded-full shadow-md hover:text-red-600 transition-all"><FiChevronRight size={24} /></button>
                 </div>
               </div>
 
-              {/* H2 Validation: Desirability & Retention (THE VOLTEDGE CASE SLIDER) */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center pt-24 border-t border-slate-200">
+              {/* H2 Validation: Desirability & Retention */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center pt-16 md:pt-24 border-t border-slate-200">
                 <div className="space-y-8">
                   <h3 className="text-2xl md:text-3xl font-black text-black flex items-center gap-3"><span className="text-red-600">H2.</span> Desirability & The VoltEdge Case</h3>
                   <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
@@ -367,11 +384,16 @@ export default function WorkoProject() {
                   </div>
                 </div>
 
-                {/* H2 SLIDER */}
                 <div className="relative flex flex-col items-center">
                   <div className="flex items-center justify-center gap-6 w-full">
                     <button onClick={() => setH2Step(p => (p === 0 ? 2 : p - 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronLeft size={48} /></button>
-                    <div className="w-[280px] md:w-[320px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[3/4] bg-white relative">
+                    <div 
+                      onClick={() => handleZoom(h2Slides[h2Step].src)}
+                      className="w-[280px] md:w-[320px] rounded-[2.5rem] border-[6px] border-white shadow-2xl overflow-hidden aspect-[3/4] bg-white relative cursor-zoom-in group"
+                    >
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
+                        <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-4xl" />
+                      </div>
                       <AnimatePresence mode="popLayout">
                         <motion.div 
                           key={h2Step} 
@@ -382,7 +404,7 @@ export default function WorkoProject() {
                           className="absolute inset-0 w-full h-full"
                         >
                           <Image 
-                            src={["/success1.png", "/case4.png", "/case3.png"][h2Step]} 
+                            src={h2Slides[h2Step].src} 
                             alt="Validation Step" 
                             fill 
                             className="object-contain p-2" 
@@ -396,10 +418,10 @@ export default function WorkoProject() {
                     <AnimatePresence mode="wait">
                       <motion.div key={h2Step} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
                         <div className="text-sm font-black text-black uppercase tracking-tight">
-                          {["01. Targeted Vacancy", "02. Direct Application", "03. Verified Feedback"][h2Step]}
+                          {h2Slides[h2Step].label}
                         </div>
                         <div className="text-xs text-slate-400 font-medium">
-                          {["Optimized SMB listing", "Friction-less candidate response", "Employer satisfaction proof"][h2Step]}
+                          {h2Slides[h2Step].desc}
                         </div>
                       </motion.div>
                     </AnimatePresence>
@@ -408,7 +430,7 @@ export default function WorkoProject() {
               </div>
 
               {/* H3 Validation: Economic Feasibility */}
-              <div className="mt-32 p-12 md:p-16 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden">
+              <div className="mt-16 md:mt-24 p-12 md:p-16 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden">
                 <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
                   <div className="max-w-xl">
                     <h3 className="text-2xl md:text-3xl font-black flex items-center gap-3"><span className="text-red-600">H3.</span> Feasibility: The Full Hiring Loop</h3>
@@ -424,18 +446,39 @@ export default function WorkoProject() {
             </div>
           </section>
 
-          <section id="results" className="py-20"></section>
+          <section id="results" className="py-16 md:py-24"></section>
         </div>
       </motion.div>
 
-      {/* --- LIGHTBOX MODAL --- */}
-      {isPageLoaded && isZoomed && (
+      {/* --- UNIVERSAL LIGHTBOX MODAL --- */}
+      {isZoomed && (
         <AnimatePresence>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsZoomed(false)} className="fixed top-0 left-0 w-full h-full bg-black z-[99999] flex items-center justify-center p-4 md:p-6 cursor-zoom-out" style={{ zIndex: 99999 }}>
-            <div className="relative max-w-[90vw] md:max-w-[400px] w-full h-[70vh] md:h-[85vh]">
-              <button className="absolute -top-10 -right-2 md:-top-12 md:-right-4 text-red-600 text-4xl md:text-5xl" onClick={(e) => { e.stopPropagation(); setIsZoomed(false); }}><FiX /></button>
-              <div className="w-full h-full rounded-[2rem] md:rounded-[2.5rem] border-[6px] md:border-[10px] border-slate-800 overflow-hidden bg-white shadow-2xl">
-                <motion.img src="/screen1.png" className="w-full h-auto" animate={{ y: ["0%", "-70%", "0%"] }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} />
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }} 
+            onClick={() => setIsZoomed(false)} 
+            className="fixed top-0 left-0 w-full h-full bg-black/95 z-[99999] flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
+          >
+            <div className="relative max-w-[95vw] max-h-[90vh] flex items-center justify-center">
+              <button 
+                className="absolute -top-12 right-0 text-white text-4xl hover:text-red-600 transition-colors" 
+                onClick={(e) => { e.stopPropagation(); setIsZoomed(false); }}
+              >
+                <FiX />
+              </button>
+              
+              <div className={`relative overflow-hidden rounded-2xl bg-white shadow-2xl border-[4px] border-slate-800 ${zoomedImage === '/screen1.png' ? 'w-[320px] md:w-[400px] h-[70vh] md:h-[85vh]' : 'w-full max-w-5xl h-auto flex items-center justify-center'}`}>
+                {zoomedImage === '/screen1.png' ? (
+                  <motion.img 
+                    src={zoomedImage} 
+                    className="w-full h-auto" 
+                    animate={{ y: ["0%", "-70%", "0%"] }} 
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }} 
+                  />
+                ) : (
+                  <img src={zoomedImage} className="max-w-full max-h-[80vh] object-contain" />
+                )}
               </div>
             </div>
           </motion.div>
