@@ -4,22 +4,28 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image'; 
 import { useRef, useState, useEffect } from 'react';
 import { 
-  FiDollarSign,
+  FiTarget,
   FiDatabase, 
   FiClock, 
   FiCheckCircle, 
   FiExternalLink, 
   FiX, 
   FiMaximize2, 
-  FiArrowDown,
-  FiChevronLeft,
-  FiChevronRight,
-  FiUserCheck,
-  FiMessageSquare,
-  FiTrendingUp,
+  FiChevronLeft, 
+  FiChevronRight, 
+  FiUserCheck, 
+  FiTrendingUp, 
   FiSearch, 
-  FiMail,
-  FiActivity
+  FiMail, 
+  FiActivity, 
+  FiGlobe, 
+  FiZap, 
+  FiDollarSign,
+  FiAward,
+  FiAlertCircle,
+  FiCpu,
+  FiLayers,
+  FiSunrise
 } from 'react-icons/fi';
 
 export default function WorkoProject() {
@@ -32,11 +38,12 @@ export default function WorkoProject() {
   const [candStep, setCandStep] = useState(0);
   const [h1Step, setH1Step] = useState(0); 
   const [h2Step, setH2Step] = useState(0); 
+  const [blueStep, setBlueStep] = useState(0);
 
   const employerPhotos = [
-    { title: "01. Main Landing", desc: "The SEO-optimized entry point for specific niches.", src: "/solution1.png" },
+    { title: "01. Main Landing", desc: "The SEO-optimized entry point.", src: "/solution1.png" },
     { title: "02. Fast Start", desc: "Initial job parameters. No registration required yet.", src: "/solution2.png" },
-    { title: "03. Detailed Offer", desc: "Finalizing job details and the 'Zatwierdź' action.", src: "/solution3.png" },
+    { title: "03. Detailed Offer", desc: "Finalizing job details and the 'Zatwierдź' action.", src: "/solution3.png" },
     { title: "04. Trust Loop", desc: "Instant moderation status to manage expectations.", src: "/solution4.png" },
     { title: "05. Result", desc: "The offer is live and indexed for Google search.", src: "/solution5.png" },
   ];
@@ -49,15 +56,15 @@ export default function WorkoProject() {
 
   const h1Slides = [
     {
-      title: "Organic Demand Signal",
-      desc: "Aggregate traffic data showing the inflow from Social Organic and Search Organic channels. It’s not just noise—it's a clear signal of genuine market demand.",
+      title: "Validated Market Pull",
+      desc: "Organic inflow data. While scale reflects an early MVP, it provides a definitive signal of genuine demand. Not noise, but proof of market pull with zero marketing budget.",
       icon: <FiActivity />,
       stat: "Pure Intent",
       src: "/ga2.png" 
     },
     {
       title: "Active Seeding Phase",
-      desc: "Peak of 320 daily active users driven by manual seeding in niche Facebook groups (10k+ members). Proof of initial market pull.",
+      desc: "Peak of 320 daily active users driven by manual seeding in niche RU-speaking Facebook groups (10k+ members). Proof of initial market pull.",
       icon: <FiTrendingUp />,
       stat: "320 DAU",
       src: "/ga1.png" 
@@ -79,10 +86,12 @@ export default function WorkoProject() {
   ];
 
   const h2Slides = [
-    { src: "/success1.png", label: "01. Targeted Vacancy", desc: "Optimized SMB listing" },
-    { src: "/case4.png", label: "02. Direct Application", desc: "Friction-less candidate response" },
-    { src: "/case3.png", label: "03. Verified Feedback", desc: "Employer satisfaction proof" }
+    { src: "/success1.png", label: "01. Targeted Vacancy" },
+    { src: "/case4.png", label: "02. Direct Application"},
+    { src: "/case3.png", label: "03. Verified Feedback" }
   ];
+
+  const blueSlides = ["/blue4.png", "/blue5.png", "/blue1.png"];
 
   const handleZoom = (src) => {
     setZoomedImage(src);
@@ -116,7 +125,7 @@ export default function WorkoProject() {
                   A <span className="text-black font-semibold">Human-Centric MVP</span> for the underserved SMB market. 
                   How I built a job platform in 21 days, validated core business hypotheses, and achieved confirmed hiring success with a 
                   <span className='text-black font-semibold'> total project budget of 15 PLN</span> (domain only) and 
-                  <span className='text-black font-semibold text-red-600'> zero marketing spend</span>.
+                  <span className='font-semibold text-red-600'> zero marketing spend</span>.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mt-4 font-bold">
@@ -159,14 +168,8 @@ export default function WorkoProject() {
                     </div>
                   </motion.div>
                 )}
-                <div className="flex flex-col items-center gap-6 mt-12">
-                  <button 
-                    onClick={() => document.getElementById('problem').scrollIntoView({ behavior: 'smooth' })}
-                    className="px-8 md:px-12 py-4 md:py-5 bg-slate-900 text-white rounded-full font-bold text-base md:text-lg hover:bg-red-600 transition-all flex items-center gap-3 shadow-2xl active:scale-95"
-                  >
-                    Explore Case Study <FiArrowDown />
-                  </button>
-                  <a href="https://worko.pl" target="_blank" className="flex items-center gap-2 text-slate-400 font-bold hover:text-red-600 transition-colors text-xs md:text-sm uppercase tracking-widest">
+                <div className="flex flex-col items-center mt-14">
+                  <a href="https://worko.pl" target="_blank" className="flex items-center gap-2 text-black font-bold hover:text-red-600 transition-colors text-sm md:text-xl uppercase tracking-widest">
                     <FiExternalLink /> Live Preview
                   </a>
                 </div>
@@ -174,7 +177,7 @@ export default function WorkoProject() {
             </div>
           </section>
 
-          {/* --- SECTION 1: THE CONTEXT --- */}
+          {/* --- SECTION 1: CONTEXT --- */}
           <section id="problem" className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
               <div className="mb-10 md:mb-14 text-center lg:text-left">
@@ -184,7 +187,7 @@ export default function WorkoProject() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   { title: "The Invisible 99.8%", desc: "SMBs represent 99.8% of Polish enterprises, generate 45.3% of GDP, and provide 6.7M jobs. Despite this scale, they are priced out of high-cost platforms that prioritize corporate budgets over local business needs.", icon: "📊", highlight: "6.7M Jobs Underserved" },
-                  { title: "The Blue-Collar Gap", desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and sales assistants—remains digitally forgotten in a 'high-demand, low-tech' void.", icon: "🛠️", highlight: "The Real Economy" },
+                  { title: "The Blue-Collar Gap", desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and caregivers digitally forgotten in a 'high-demand, low-tech' void.", icon: "🛠️", highlight: "The Real Economy" },
                   { title: "Bureaucracy Paralysis", desc: "Small owners are paralyzed by corporate bureaucracy. Lacking HR departments, they can’t afford time-consuming sales calls, complex pricing tiers, or 20-minute application forms.", icon: "⚡", highlight: "No HR, No Time, No Money" }
                 ].map((item, index) => (
                   <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
@@ -211,9 +214,9 @@ export default function WorkoProject() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
-                  { title: "Bootstrap DNA", icon: "🧬", highlight: "Tech-Driven Economy", points: ["15 PLN total budget & 21-day sprint to MVP", "Zero infrastructure cost via Neon (Serverless) & Vercel", "Next.js SSG: Turning architecture into a marketing-saving engine", "Full system autonomy confirmed by an 8-month dormant test"] },
-                  { title: "Guerrilla Cold Start", icon: "🏹", highlight: "Network-Driven Launch", points: ["Solved the Cold Start problem via manual seeding in niche groups", "Direct outreach to a network of recruiters & entrepreneurs", "Leveraged 'Early Adopters' to seed initial job supply", "Zero ad spend: Used social capital instead of a marketing budget"] },
-                  { title: "The Strategic Bets", icon: "🎯", highlight: "H1, H2, H3 Validation", points: ["H1 (Organic Growth): SEO strategy generates stable traffic with $0 spend", "H2 (Retention): Radical UX simplicity creates loyalty & repeated use", "H3 (Economic Loop): A functioning match-loop at near-zero CPA", "Success Metric: Real candidate engagement + returning employers"] }
+                  { title: "Bootstrap DNA", icon: "🧬", highlight: "Tech-Driven Economy", points: ["15 PLN total budget & 21-day development sprint to MVP", "Zero infrastructure cost via Neon (Serverless) & Vercel", "Next.js SSG: Turning architecture into a marketing-saving engine", "Full system autonomy confirmed by an 8-month dormant test"] },
+                  { title: "Guerrilla Method", icon: "🏹", highlight: "Network-Driven Launch", points: ["Solved the Cold Start problem via manual seeding in niche groups", "Direct outreach to a network of recruiters & entrepreneurs", "Leveraged 'Early Adopters' to seed initial job supply", "Zero ad spend: Used social capital instead of a marketing budget"] },
+                  { title: "Business Hypotheses", icon: "🎯", highlight: "H1, H2, H3 Validation", points: ["H1 (Viability): SEO strategy generates stable traffic with $0 spend", "H2 (Desirability): Radical UX simplicity creates loyalty & repeated use", "H3 (Feasibility): A functioning match-loop at near-zero CPA", "Success Metric: Real candidate engagement + returning employers"] }
                 ].map((item, index) => (
                   <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
                     <div className="text-4xl mb-6">{item.icon}</div>
@@ -228,7 +231,7 @@ export default function WorkoProject() {
             </div>
           </section>
 
-          {/* --- SECTION 3: THE SOLUTION --- */}
+          {/* --- SECTION 3: SOLUTION --- */}
           <section id="solution" className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
               <div className="mb-14 md:mb-18 text-center lg:text-left">
@@ -328,7 +331,7 @@ export default function WorkoProject() {
                 <div className="mb-10">
                   <div className="max-w-2xl">
                     <h3 className="text-2xl md:text-3xl font-black text-black flex items-center gap-3"><span className="text-red-600">H1.</span> Viability: Organic & Multi-Channel Pull</h3>
-                    <p className="text-slate-600 mt-4 text-lg">Validation of our ability to attract high-intent traffic without paid marketing. I tested two phases: Active Seeding (Jan - Feb) and the Autonomous Dormant period (Mar - Oct).</p>
+                    <p className="text-slate-600 mt-4 text-lg">Validation of the ability to attract high-intent traffic without paid marketing. I tested two phases: Active Seeding (Jan - Feb) and the Autonomous Dormant period (Mar - Oct).</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -404,66 +407,192 @@ export default function WorkoProject() {
                           transition={{ duration: 0.6 }} 
                           className="absolute inset-0 w-full h-full"
                         >
-                          <Image 
-                            src={h2Slides[h2Step].src} 
-                            alt="Validation Step" 
-                            fill 
-                            className="object-contain p-2" 
-                          />
+                          <Image src={h2Slides[h2Step].src} alt="Validation Step" fill className="object-contain p-2" />
                         </motion.div>
                       </AnimatePresence>
                     </div>
                     <button onClick={() => setH2Step(p => (p === 2 ? 0 : p + 1))} className="p-2 hover:text-red-600 transition-colors"><FiChevronRight size={48} /></button>
                   </div>
-                  <div className="mt-6 text-center">
+                  <div className="mt-6 text-center font-bold">
                     <AnimatePresence mode="wait">
                       <motion.div key={h2Step} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
-                        <div className="text-sm font-black text-black uppercase tracking-tight">
-                          {h2Slides[h2Step].label}
-                        </div>
-                        <div className="text-xs text-slate-400 font-medium">
-                          {h2Slides[h2Step].desc}
-                        </div>
+                        <div className="text-sm font-black text-black uppercase tracking-tight">{h2Slides[h2Step].label}</div>
                       </motion.div>
                     </AnimatePresence>
                   </div>
                 </div>
               </div>
 
-              {/* H3 Validation: Economic Feasibility */}
-             {/* H3 Validation - MAXIMUM EMPHASIS ON ZERO COST */}
-{/* H3 Validation - Balanced Emphasis */}
-<div className="mt-20 md:mt-28 p-10 md:p-16 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden ring-2 ring-red-600/20">
-  
-  <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
-    <div className="max-w-xl text-center md:text-left">
-      <h3 className="text-2xl md:text-3xl font-black flex items-center justify-center md:justify-start gap-3">
-        <span className="text-red-600">H3.</span> Full Hiring Loop
-      </h3>
-      <p className="text-slate-400 mt-6 text-xl leading-relaxed">
-       The ultimate proof: Connecting a live vacancy with the real candidate, resulting in a verified hire achieved with 
-        {/* Размер шрифта уменьшен до более аккуратного */}
-        <span className="block mt-4 text-white font-black text-3xl md:text-4xl tracking-tight">
-          <span className="text-red-600">$0</span> Acquisition Cost
-        </span>
-      </p>
-    </div>
-
-    {/* Правая карточка осталась без изменений */}
-    <div className="flex flex-col items-center gap-6 bg-white/5 p-10 rounded-[3rem] backdrop-blur-sm border border-white/10 shadow-2xl">
-      <div className="w-24 h-24 rounded-full bg-red-600 flex items-center justify-center shadow-[0_0_50px_rgba(220,38,38,0.5)]">
-        <FiCheckCircle size={56} />
-      </div>
-      <div className="text-center">
-        <div className="text-4xl font-black mb-1">Success Hire</div>
-       
-      </div>
-    </div>
-  </div>
-</div>
-
+              {/* H3 Block */}
+              <div className="mt-20 md:mt-28 p-10 md:p-16 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden ring-2 ring-red-600/20">
+                <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
+                  <div className="max-w-xl text-center md:text-left">
+                    <h3 className="text-2xl md:text-3xl font-black flex items-center justify-center md:justify-start gap-3"><span className="text-red-600">H3.</span> Full Hiring Loop</h3>
+                    <p className="text-slate-400 mt-6 text-xl leading-relaxed">
+                      The ultimate proof: Connecting a live vacancy with the real candidate, resulting in a verified hire achieved with 
+                      <span className="block mt-4 text-white font-black text-3xl md:text-4xl tracking-tight">
+                        <span className="text-red-600">$0</span> Acquisition Cost
+                      </span>
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-center gap-6 bg-white/5 p-10 rounded-[3rem] backdrop-blur-sm border border-white/10 shadow-2xl">
+                    <div className="w-24 h-24 rounded-full bg-red-600 flex items-center justify-center shadow-[0_0_50px_rgba(220,38,38,0.5)]">
+                      <FiCheckCircle size={56} />
+                    </div>
+                    <div className="text-center"><div className="text-4xl font-black mb-1">Success Hire</div></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
+
+          {/* --- SECTION 5: BLUE OCEAN STRATEGY --- */}
+          <section id="blue-ocean" className="py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+              <div className="mb-14 md:mb-18 text-center lg:text-left">
+                <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">05. Blue Ocean Strategy</span>
+                <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">Capturing the Underserved<span className="text-red-600">.</span></h2>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="lg:col-span-4 space-y-10">
+                  <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-normal text-center lg:text-left">
+                    <p>
+                      Instead of competing with corporate giants for high-CPC Polish keywords, I identified a <span className="text-black font-bold italic">Cyrillic Blue Ocean</span>. 
+                    </p>
+                    <p>
+                      By optimizing for Russian-speaking queries within the Polish job market, Worko achieved <span className="text-black font-black">Top 10 ranking</span> for high-intent requests. This strategy allowed us to capture a massive audience while spending exactly <span className="text-red-600 font-bold">0 PLN</span> on advertising.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 md:gap-4">
+                    <div className="p-4 md:p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col items-center lg:items-start text-center lg:text-left">
+                      <FiTrendingUp className="text-red-600 text-lg md:text-2xl mb-2 md:mb-3" />
+                      <div className="text-[10px] md:text-sm font-bold text-black uppercase tracking-widest mb-1 opacity-60">SEO Rank</div>
+                      <div className="text-xs md:text-xl font-black text-slate-900 leading-tight">Top 10 Google Rank</div>
+                    </div>
+                    <div className="p-4 md:p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col items-center lg:items-start text-center lg:text-left">
+                      <FiDollarSign className="text-red-600 text-lg md:text-2xl mb-2 md:mb-3" />
+                      <div className="text-[10px] md:text-sm font-bold text-black uppercase tracking-widest mb-1 opacity-60">Efficiency</div>
+                      <div className="text-xs md:text-xl font-black text-slate-900 leading-tight">Zero CAC Growth</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-8">
+                  <div className="relative group flex items-center gap-4 md:gap-6">
+                    <button onClick={() => setBlueStep(p => (p === 0 ? blueSlides.length - 1 : p - 1))} className="p-2 md:p-4 bg-slate-50 rounded-full hover:text-red-600 transition-all shrink-0"><FiChevronLeft size={24} className="md:w-8 md:h-8" /></button>
+                    <div 
+                      onClick={() => handleZoom(blueSlides[blueStep])}
+                      className="relative w-full h-[250px] md:h-[480px] bg-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden cursor-zoom-in group/zoom"
+                    >
+                      <div className="absolute inset-0 bg-black/0 group-hover/zoom:bg-black/5 transition-colors z-10 flex items-center justify-center">
+                        <FiMaximize2 className="text-red-600 opacity-0 group-hover/zoom:opacity-100 text-3xl md:text-4xl transition-all scale-75 group-hover/zoom:scale-100" />
+                      </div>
+                      
+                      <AnimatePresence mode="wait">
+                        <motion.div 
+                          key={blueStep}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.5 }}
+                          className="absolute inset-0"
+                        >
+                          <Image src={blueSlides[blueStep]} alt="SEO Proof" fill className="object-contain p-2 md:p-4" />
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+                    <button onClick={() => setBlueStep(p => (p === blueSlides.length - 1 ? 0 : p + 1))} className="p-2 md:p-4 bg-slate-50 rounded-full hover:text-red-600 transition-all shrink-0"><FiChevronRight size={24} className="md:w-8 md:h-8" /></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* --- SECTION 6: CONCLUSIONS & LEARNINGS --- */}
+         {/* --- SECTION 6: CONCLUSIONS & LEARNINGS --- */}
+<section id="conclusions" className="py-16 md:py-24">
+  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    <div className="mb-12 text-center lg:text-left">
+      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">06. Conclusions & Learnings</span>
+      <h2 className="text-4xl md:text-5xl font-black text-black mt-2 tracking-tight">The Verdict<span className="text-red-600">.</span></h2>
+    </div>
+
+    {/* Summary Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div className="p-8 rounded-[2.5rem] bg-slate-900 text-white shadow-xl">
+        <FiAward className="text-red-600 text-4xl mb-6" />
+        <h3 className="text-2xl font-black mb-3">Hypothesis: Valid</h3>
+        <p className="text-slate-400 leading-relaxed">
+          The match-loop works. A real hire via zero-budget SEO proves the model's viability for the SMB market.
+        </p>
+      </div>
+      <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
+        <FiZap className="text-red-600 text-4xl mb-6" />
+        <h3 className="text-2xl font-black text-black mb-3">Dormant Test</h3>
+        <p className="text-slate-500 leading-relaxed">
+          8 months of zero maintenance confirmed the "Evergreen" nature of the SSG-SEO architecture.
+        </p>
+      </div>
+      <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
+        <FiGlobe className="text-red-600 text-4xl mb-6" />
+        <h3 className="text-2xl font-black text-black mb-3">Blue Ocean</h3>
+        <p className="text-slate-500 leading-relaxed">
+          Niche Cyrillic search intent is a massive, underserved entry point into the Polish labor market.
+        </p>
+      </div>
+    </div>
+
+    {/* The Critical Lesson (Apply Button) */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+      <div className="p-8 md:p-12 rounded-[3rem] bg-red-600 text-white shadow-2xl shadow-red-200">
+        <div className="flex items-center gap-4 mb-6">
+          <FiAlertCircle className="text-4xl text-black" />
+          <h3 className="text-3xl font-black tracking-tighter uppercase">My Main Regret</h3>
+        </div>
+        <p className="text-xl md:text-2xl leading-tight font-medium">
+          "I failed to track the <strong>'Apply'</strong> button click. While I have email evidence of successful leads, I don't have the exact conversion volume. 
+          <span className="block mt-4 text-black font-black italic">This missing event is my biggest professional lesson and a mistake I still rue today.</span>"
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+          <FiLayers className="text-red-600 text-2xl mb-4" />
+          <h4 className="text-lg font-black text-slate-900">Cold Start</h4>
+          <p className="text-slate-500 text-sm">Manual seeding isn't scalable. API-driven liquidity is mandatory for growth.</p>
+        </div>
+        <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+          <FiTarget className="text-red-600 text-2xl mb-4" />
+          <h4 className="text-lg font-black text-slate-900">Business-First Mindset</h4>
+          <p className="text-slate-500 text-sm">Every product decision is strictly subordinated to market demand and business survival.</p>
+        </div>
+        <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+          <FiCpu className="text-red-600 text-2xl mb-4" />
+          <h4 className="text-lg font-black text-slate-900">Tech Choice</h4>
+          <p className="text-slate-500 text-sm">Next.js SSG is a marketing tool, not just a framework. Speed = SEO Rank.</p>
+        </div>
+        <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+          <FiSunrise className="text-red-600 text-2xl mb-4" />
+          <h4 className="text-lg font-black text-slate-900">The Curiosity Engine</h4>
+          <p className="text-slate-500 text-sm">Inquisitiveness fuels evolution. Obsessing over the “Why” to find value in routine and turn uncertainty into discovery.</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Final Statement */}
+    <div className="p-10 md:p-16 rounded-[4rem] bg-slate-900 text-white relative overflow-hidden text-center lg:text-left">
+      <div className="relative z-10 max-w-4xl">
+        <h3 className="text-4xl md:text-5xl font-black text-red-600 tracking-tighter uppercase mb-6 italic">Intellectual Honesty.</h3>
+        <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-90">
+          Data is ruthless. Facing the weaknesses of my own product was the hardest but most valuable part of this experiment. Worko proves that in the AI era, <span className="text-white font-bold">Curiosity + Technology &gt; Traditional Barriers</span>. I'm ready to bring this "Bootstrap DNA" to a professional team.
+        </p>
+      </div>
+      <FiCpu className="absolute -bottom-10 -right-10 text-[15rem] text-white/5 rotate-12" />
+    </div>
+  </div>
+</section>
 
           <section id="results" className="py-16 md:py-24"></section>
         </div>
