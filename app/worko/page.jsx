@@ -43,7 +43,7 @@ export default function WorkoProject() {
   const employerPhotos = [
     { title: "01. Main Landing", desc: "The SEO-optimized entry point.", src: "/solution1.png" },
     { title: "02. Fast Start", desc: "Initial job parameters. No registration required yet.", src: "/solution2.png" },
-    { title: "03. Detailed Offer", desc: "Finalizing job details and the 'Zatwierдź' action.", src: "/solution3.png" },
+    { title: "03. Detailed Offer", desc: "Finalizing job details and the &apos;Zatwierдź&apos; action.", src: "/solution3.png" },
     { title: "04. Trust Loop", desc: "Instant moderation status to manage expectations.", src: "/solution4.png" },
     { title: "05. Result", desc: "The offer is live and indexed for Google search.", src: "/solution5.png" },
   ];
@@ -124,8 +124,8 @@ export default function WorkoProject() {
                 <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
                   A <span className="text-black font-semibold">Human-Centric MVP</span> for the underserved SMB market. 
                   How I built a job platform in 21 days, validated core business hypotheses, and achieved confirmed hiring success with a 
-                  <span className='text-black font-semibold'> total project budget of 15 PLN</span> (domain only) and 
-                  <span className='font-semibold text-red-600'> zero marketing spend</span>.
+                  <span className="text-black font-semibold"> total project budget of 15 PLN</span> (domain only) and 
+                  <span className="font-semibold text-red-600"> zero marketing spend</span>.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mt-4 font-bold">
@@ -161,6 +161,7 @@ export default function WorkoProject() {
                     <div className="w-full h-full overflow-hidden">
                       <motion.img
                         src="/screen1.png"
+                        alt="Worko Preview"
                         className="w-full h-auto"
                         animate={{ y: ["0%", "-50%", "0%"] }}
                         transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
@@ -187,7 +188,7 @@ export default function WorkoProject() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   { title: "The Invisible 99.8%", desc: "SMBs represent 99.8% of Polish enterprises, generate 45.3% of GDP, and provide 6.7M jobs. Despite this scale, they are priced out of high-cost platforms that prioritize corporate budgets over local business needs.", icon: "📊", highlight: "6.7M Jobs Underserved" },
-                  { title: "The Blue-Collar Gap", desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and caregivers digitally forgotten in a 'high-demand, low-tech' void.", icon: "🛠️", highlight: "The Real Economy" },
+                  { title: "The Blue-Collar Gap", desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and caregivers digitally forgotten in a &apos;high-demand, low-tech&apos; void.", icon: "🛠️", highlight: "The Real Economy" },
                   { title: "Bureaucracy Paralysis", desc: "Small owners are paralyzed by corporate bureaucracy. Lacking HR departments, they can’t afford time-consuming sales calls, complex pricing tiers, or 20-minute application forms.", icon: "⚡", highlight: "No HR, No Time, No Money" }
                 ].map((item, index) => (
                   <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
@@ -215,7 +216,7 @@ export default function WorkoProject() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   { title: "Bootstrap DNA", icon: "🧬", highlight: "Tech-Driven Economy", points: ["15 PLN total budget & 21-day development sprint to MVP", "Zero infrastructure cost via Neon (Serverless) & Vercel", "Next.js SSG: Turning architecture into a marketing-saving engine", "Full system autonomy confirmed by an 8-month dormant test"] },
-                  { title: "Guerrilla Method", icon: "🏹", highlight: "Network-Driven Launch", points: ["Solved the Cold Start problem via manual seeding in niche groups", "Direct outreach to a network of recruiters & entrepreneurs", "Leveraged 'Early Adopters' to seed initial job supply", "Zero ad spend: Used social capital instead of a marketing budget"] },
+                  { title: "Guerrilla Method", icon: "🏹", highlight: "Network-Driven Launch", points: ["Solved the Cold Start problem via manual seeding in niche groups", "Direct outreach to a network of recruiters & entrepreneurs", "Leveraged &apos;Early Adopters&apos; to seed initial job supply", "Zero ad spend: Used social capital instead of a marketing budget"] },
                   { title: "Business Hypotheses", icon: "🎯", highlight: "H1, H2, H3 Validation", points: ["H1 (Viability): SEO strategy generates stable traffic with $0 spend", "H2 (Desirability): Radical UX simplicity creates loyalty & repeated use", "H3 (Feasibility): A functioning match-loop at near-zero CPA", "Success Metric: Real candidate engagement + returning employers"] }
                 ].map((item, index) => (
                   <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
@@ -511,88 +512,87 @@ export default function WorkoProject() {
           </section>
 
           {/* --- SECTION 6: CONCLUSIONS & LEARNINGS --- */}
-         {/* --- SECTION 6: CONCLUSIONS & LEARNINGS --- */}
-<section id="conclusions" className="py-16 md:py-24">
-  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-    <div className="mb-12 text-center lg:text-left">
-      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">06. Conclusions & Learnings</span>
-      <h2 className="text-4xl md:text-5xl font-black text-black mt-2 tracking-tight">The Verdict<span className="text-red-600">.</span></h2>
-    </div>
+          <section id="conclusions" className="py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+              <div className="mb-12 text-center lg:text-left">
+                <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">06. Conclusions & Learnings</span>
+                <h2 className="text-4xl md:text-5xl font-black text-black mt-2 tracking-tight">The Verdict<span className="text-red-600">.</span></h2>
+              </div>
 
-    {/* Summary Cards */}
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      <div className="p-8 rounded-[2.5rem] bg-slate-900 text-white shadow-xl">
-        <FiAward className="text-red-600 text-4xl mb-6" />
-        <h3 className="text-2xl font-black mb-3">Hypothesis: Valid</h3>
-        <p className="text-slate-400 leading-relaxed">
-          The match-loop works. A real hire via zero-budget SEO proves the model's viability for the SMB market.
-        </p>
-      </div>
-      <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
-        <FiZap className="text-red-600 text-4xl mb-6" />
-        <h3 className="text-2xl font-black text-black mb-3">Dormant Test</h3>
-        <p className="text-slate-500 leading-relaxed">
-          8 months of zero maintenance confirmed the Evergreen nature of the SSG-SEO architecture.
-        </p>
-      </div>
-      <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
-        <FiGlobe className="text-red-600 text-4xl mb-6" />
-        <h3 className="text-2xl font-black text-black mb-3">Blue Ocean</h3>
-        <p className="text-slate-500 leading-relaxed">
-          Niche Cyrillic search intent is a massive, underserved entry point into the Polish labor market.
-        </p>
-      </div>
-    </div>
+              {/* Summary Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="p-8 rounded-[2.5rem] bg-slate-900 text-white shadow-xl">
+                  <FiAward className="text-red-600 text-4xl mb-6" />
+                  <h3 className="text-2xl font-black mb-3">Hypothesis: Valid</h3>
+                  <p className="text-slate-400 leading-relaxed">
+                    The match-loop works. A real hire via zero-budget SEO proves the model&apos;s viability for the SMB market.
+                  </p>
+                </div>
+                <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
+                  <FiZap className="text-red-600 text-4xl mb-6" />
+                  <h3 className="text-2xl font-black text-black mb-3">Dormant Test</h3>
+                  <p className="text-slate-500 leading-relaxed">
+                    8 months of zero maintenance confirmed the Evergreen nature of the SSG-SEO architecture.
+                  </p>
+                </div>
+                <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
+                  <FiGlobe className="text-red-600 text-4xl mb-6" />
+                  <h3 className="text-2xl font-black text-black mb-3">Blue Ocean</h3>
+                  <p className="text-slate-500 leading-relaxed">
+                    Niche Cyrillic search intent is a massive, underserved entry point into the Polish labor market.
+                  </p>
+                </div>
+              </div>
 
-    {/* The Critical Lesson (Apply Button) */}
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-      <div className="p-8 md:p-12 rounded-[3rem] bg-red-600 text-white shadow-2xl shadow-red-200">
-        <div className="flex items-center gap-4 mb-6">
-          <FiAlertCircle className="text-4xl text-black" />
-          <h3 className="text-3xl font-black tracking-tighter uppercase">My Main Regret</h3>
-        </div>
-        <p className="text-xl md:text-2xl leading-tight font-medium">
-          "I failed to track the <strong>'Apply'</strong> button click. While I have email evidence of successful leads, I don't have the exact conversion volume. 
-          <span className="block mt-4 text-black font-black italic">This missing event is my biggest professional lesson and a mistake I still rue today.</span>"
-        </p>
-      </div>
+              {/* The Critical Lesson (Apply Button) */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+                <div className="p-8 md:p-12 rounded-[3rem] bg-red-600 text-white shadow-2xl shadow-red-200">
+                  <div className="flex items-center gap-4 mb-6">
+                    <FiAlertCircle className="text-4xl text-black" />
+                    <h3 className="text-3xl font-black tracking-tighter uppercase">My Main Regret</h3>
+                  </div>
+                  <p className="text-xl md:text-2xl leading-tight font-medium">
+                    &quot;I failed to track the <strong>&apos;Apply&apos;</strong> button click. While I have email evidence of successful leads, I don&apos;t have the exact conversion volume. 
+                    <span className="block mt-4 text-black font-black italic">This missing event is my biggest professional lesson and a mistake I still rue today.</span>&quot;
+                  </p>
+                </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
-          <FiLayers className="text-red-600 text-2xl mb-4" />
-          <h4 className="text-lg font-black text-slate-900">Cold Start</h4>
-          <p className="text-slate-500 text-sm">Manual seeding isn't scalable. API-driven liquidity is mandatory for growth.</p>
-        </div>
-        <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
-          <FiTarget className="text-red-600 text-2xl mb-4" />
-          <h4 className="text-lg font-black text-slate-900">Business-First Mindset</h4>
-          <p className="text-slate-500 text-sm">Every product decision is strictly subordinated to market demand and business survival.</p>
-        </div>
-        <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
-          <FiCpu className="text-red-600 text-2xl mb-4" />
-          <h4 className="text-lg font-black text-slate-900">Tech Choice</h4>
-          <p className="text-slate-500 text-sm">Next.js SSG is a marketing tool, not just a framework. Speed = SEO Rank.</p>
-        </div>
-        <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
-          <FiSunrise className="text-red-600 text-2xl mb-4" />
-          <h4 className="text-lg font-black text-slate-900">The Curiosity Engine</h4>
-          <p className="text-slate-500 text-sm">Inquisitiveness fuels evolution. Obsessing over the “Why” to find value in routine and turn uncertainty into discovery.</p>
-        </div>
-      </div>
-    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+                    <FiLayers className="text-red-600 text-2xl mb-4" />
+                    <h4 className="text-lg font-black text-slate-900">Cold Start</h4>
+                    <p className="text-slate-500 text-sm">Manual seeding isn&apos;t scalable. API-driven liquidity is mandatory for growth.</p>
+                  </div>
+                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+                    <FiTarget className="text-red-600 text-2xl mb-4" />
+                    <h4 className="text-lg font-black text-slate-900">Business-First Mindset</h4>
+                    <p className="text-slate-500 text-sm">Every product decision is strictly subordinated to market demand and business survival.</p>
+                  </div>
+                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+                    <FiCpu className="text-red-600 text-2xl mb-4" />
+                    <h4 className="text-lg font-black text-slate-900">Tech Choice</h4>
+                    <p className="text-slate-500 text-sm">Next.js SSG is a marketing tool, not just a framework. Speed = SEO Rank.</p>
+                  </div>
+                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+                    <FiSunrise className="text-red-600 text-2xl mb-4" />
+                    <h4 className="text-lg font-black text-slate-900">The Curiosity Engine</h4>
+                    <p className="text-slate-500 text-sm">Inquisitiveness fuels evolution. Obsessing over the &quot;Why&quot; to find value in routine and turn uncertainty into discovery.</p>
+                  </div>
+                </div>
+              </div>
 
-    {/* Final Statement */}
-    <div className="p-10 md:p-16 rounded-[4rem] bg-slate-900 text-white relative overflow-hidden text-center lg:text-left">
-      <div className="relative z-10 max-w-4xl">
-        <h3 className="text-4xl md:text-5xl font-black text-red-600 tracking-tighter uppercase mb-6 italic">Intellectual Honesty.</h3>
-        <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-90">
-          Data is ruthless. Facing the weaknesses of my own product was the hardest but most valuable part of this experiment. Worko proves that in the AI era, <span className="text-white font-bold">Curiosity + Technology &gt; Traditional Barriers</span>. I'm ready to bring this "Bootstrap DNA" to a professional team.
-        </p>
-      </div>
-      <FiCpu className="absolute -bottom-10 -right-10 text-[15rem] text-white/5 rotate-12" />
-    </div>
-  </div>
-</section>
+              {/* Final Statement */}
+              <div className="p-10 md:p-16 rounded-[4rem] bg-slate-900 text-white relative overflow-hidden text-center lg:text-left">
+                <div className="relative z-10 max-w-4xl">
+                  <h3 className="text-4xl md:text-5xl font-black text-red-600 tracking-tighter uppercase mb-6 italic">Intellectual Honesty.</h3>
+                  <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-90">
+                    Data is ruthless. Facing the weaknesses of my own product was the hardest but most valuable part of this experiment. Worko proves that in the AI era, <span className="text-white font-bold">Curiosity + Technology &gt; Traditional Barriers</span>. I&apos;m ready to bring this &quot;Bootstrap DNA&quot; to a professional team.
+                  </p>
+                </div>
+                <FiCpu className="absolute -bottom-10 -right-10 text-[15rem] text-white/5 rotate-12" />
+              </div>
+            </div>
+          </section>
 
           <section id="results" className="py-16 md:py-24"></section>
         </div>
@@ -620,12 +620,21 @@ export default function WorkoProject() {
                 {zoomedImage === '/screen1.png' ? (
                   <motion.img 
                     src={zoomedImage} 
+                    alt="Zoomed Screenshot"
                     className="w-full h-auto" 
                     animate={{ y: ["0%", "-70%", "0%"] }} 
                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }} 
                   />
                 ) : (
-                  <img src={zoomedImage} className="max-w-full max-h-[80vh] object-contain" />
+                  <div className="relative w-full h-[80vh]">
+                    <Image 
+                      src={zoomedImage} 
+                      alt="Project Screenshot"
+                      fill
+                      className="object-contain"
+                      unoptimized 
+                    />
+                  </div>
                 )}
               </div>
             </div>
