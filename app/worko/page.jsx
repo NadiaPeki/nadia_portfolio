@@ -485,7 +485,7 @@ export default function WorkoProject() {
                     <button onClick={() => setBlueStep(p => (p === 0 ? blueSlides.length - 1 : p - 1))} className="p-2 md:p-4 bg-slate-50 rounded-full hover:text-red-600 transition-all shrink-0"><FiChevronLeft size={24} className="md:w-8 md:h-8" /></button>
                     <div 
                       onClick={() => handleZoom(blueSlides[blueStep])}
-                      className="relative w-full h-[250px] md:h-[480px] bg-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden cursor-zoom-in group/zoom"
+                      className="relative w-full h-[250px] md:h-[450px] bg-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden cursor-zoom-in group/zoom"
                     >
                       <div className="absolute inset-0 bg-black/0 group-hover/zoom:bg-black/5 transition-colors z-10 flex items-center justify-center">
                         <FiMaximize2 className="text-red-600 opacity-0 group-hover/zoom:opacity-100 text-3xl md:text-4xl transition-all scale-75 group-hover/zoom:scale-100" />
