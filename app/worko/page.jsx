@@ -532,7 +532,7 @@ export default function WorkoProject() {
         <FiZap className="text-red-600 text-4xl mb-6" />
         <h3 className="text-2xl font-black text-black mb-3">Dormant Test</h3>
         <p className="text-slate-500 leading-relaxed">
-          8 months of zero maintenance confirmed the "Evergreen" nature of the SSG-SEO architecture.
+          8 months of zero maintenance confirmed the Evergreen nature of the SSG-SEO architecture.
         </p>
       </div>
       <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
