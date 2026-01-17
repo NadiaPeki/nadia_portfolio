@@ -675,7 +675,7 @@ export default function WorkoProject() {
                 
                <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
         I’m looking for a team that values high-performance architecture, 
-        business-first engineering, and the "Bootstrap DNA" of doing more with less.
+        business-first engineering, and the Bootstrap DNA of doing more with less.
       </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8">
