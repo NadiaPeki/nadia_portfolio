@@ -516,7 +516,7 @@ export default function WorkoProject() {
             <div className="container mx-auto px-4 md:px-6 max-w-6xl">
               <div className="mb-12 text-center lg:text-left">
                 <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">06. Conclusions & Learnings</span>
-                <h2 className="text-4xl md:text-5xl font-black text-black mt-2 tracking-tight">The Verdict<span className="text-red-600">.</span></h2>
+                <h2 className="text-4xl md:text-6xl font-black text-black mt-2 tracking-tight">The Verdict<span className="text-red-600">.</span></h2>
               </div>
 
               {/* Summary Cards */}
@@ -616,7 +616,7 @@ export default function WorkoProject() {
                 <FiX />
               </button>
               
-              <div className={`relative overflow-hidden rounded-2xl bg-white shadow-2xl border-[4px] border-slate-800 ${zoomedImage === '/screen1.png' ? 'w-[320px] md:w-[400px] h-[70vh] md:h-[85vh]' : 'w-full max-w-5xl h-auto flex items-center justify-center'}`}>
+              <div className={`relative overflow-hidden rounded-2xl bg-white shadow-2xl border-[4px] border-slate-800 ${zoomedImage === '/screen1.png' ? 'w-[320px] md:w-[400px] h-[70vh] md:h-[85vh]' : 'w-full max-w-5xl h-auto flex items-center justify-center p-2'}`}>
                 {zoomedImage === '/screen1.png' ? (
                   <motion.img 
                     src={zoomedImage} 
@@ -626,15 +626,11 @@ export default function WorkoProject() {
                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }} 
                   />
                 ) : (
-                  <div className="relative w-full h-[80vh]">
-                    <Image 
-                      src={zoomedImage} 
-                      alt="Project Screenshot"
-                      fill
-                      className="object-contain"
-                      unoptimized 
-                    />
-                  </div>
+                  <img 
+                    src={zoomedImage} 
+                    alt="Worko Detail" 
+                    className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-lg" 
+                  />
                 )}
               </div>
             </div>
