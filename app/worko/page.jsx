@@ -33,6 +33,7 @@ export default function WorkoProject() {
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomedImage, setZoomedImage] = useState(null);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [modalImageLoaded, setModalImageLoaded] = useState(false);
   
   const [empStep, setEmpStep] = useState(0);
   const [candStep, setCandStep] = useState(0);
@@ -94,6 +95,7 @@ export default function WorkoProject() {
   const blueSlides = ["/blue4.png", "/blue5.png", "/blue1.png"];
 
   const handleZoom = (src) => {
+    setModalImageLoaded(false);
     setZoomedImage(src);
     setIsZoomed(true);
   };
@@ -279,7 +281,7 @@ export default function WorkoProject() {
                       </div>
                       <AnimatePresence mode="popLayout">
                         <motion.div key={empStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
-                          <Image src={employerPhotos[empStep].src} alt="Step" fill className="object-cover" />
+                          <Image src={employerPhotos[empStep].src} alt="Step" fill className="object-cover" priority unoptimized />
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -297,7 +299,7 @@ export default function WorkoProject() {
                       </div>
                       <AnimatePresence mode="popLayout">
                         <motion.div key={candStep} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
-                          <Image src={candidatePhotos[candStep].src} alt="Step Candidate" fill className="object-cover" />
+                          <Image src={candidatePhotos[candStep].src} alt="Step Candidate" fill className="object-cover" priority unoptimized />
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -356,7 +358,7 @@ export default function WorkoProject() {
                       </div>
                       <AnimatePresence mode="wait">
                         <motion.div key={h1Step} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.6 }} className="absolute inset-0">
-                          <Image src={h1Slides[h1Step].src} alt={h1Slides[h1Step].title} fill className="object-cover" />
+                          <Image src={h1Slides[h1Step].src} alt={h1Slides[h1Step].title} fill className="object-cover" priority unoptimized />
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -408,7 +410,7 @@ export default function WorkoProject() {
                           transition={{ duration: 0.6 }} 
                           className="absolute inset-0 w-full h-full"
                         >
-                          <Image src={h2Slides[h2Step].src} alt="Validation Step" fill className="object-contain p-2" />
+                          <Image src={h2Slides[h2Step].src} alt="Validation Step" fill className="object-contain p-2" priority unoptimized />
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -500,7 +502,7 @@ export default function WorkoProject() {
                           transition={{ duration: 0.5 }}
                           className="absolute inset-0"
                         >
-                          <Image src={blueSlides[blueStep]} alt="SEO Proof" fill className="object-contain p-2 md:p-4" />
+                          <Image src={blueSlides[blueStep]} alt="SEO Proof" fill className="object-contain p-2 md:p-4" priority unoptimized />
                         </motion.div>
                       </AnimatePresence>
                     </div>
@@ -532,7 +534,7 @@ export default function WorkoProject() {
                   <FiZap className="text-red-600 text-4xl mb-6" />
                   <h3 className="text-2xl font-black text-black mb-3">Dormant Test</h3>
                   <p className="text-slate-500 leading-relaxed">
-                    8 months of zero maintenance confirmed the Evergreen nature of the SSG-SEO architecture.
+                    8 months of zero maintenance confirmed the evergreen nature of the SSG-SEO architecture.
                   </p>
                 </div>
                 <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
@@ -558,22 +560,22 @@ export default function WorkoProject() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiLayers className="text-red-600 text-2xl mb-4" />
                     <h4 className="text-lg font-black text-slate-900">Cold Start</h4>
                     <p className="text-slate-500 text-sm">Manual seeding isn&apos;t scalable. API-driven liquidity is mandatory for growth.</p>
                   </div>
-                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiTarget className="text-red-600 text-2xl mb-4" />
                     <h4 className="text-lg font-black text-slate-900">Business-First Mindset</h4>
                     <p className="text-slate-500 text-sm">Every product decision is strictly subordinated to market demand and business survival.</p>
                   </div>
-                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiCpu className="text-red-600 text-2xl mb-4" />
                     <h4 className="text-lg font-black text-slate-900">Tech Choice</h4>
                     <p className="text-slate-500 text-sm">Next.js SSG is a marketing tool, not just a framework. Speed = SEO Rank.</p>
                   </div>
-                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white">
+                  <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiSunrise className="text-red-600 text-2xl mb-4" />
                     <h4 className="text-lg font-black text-slate-900">The Curiosity Engine</h4>
                     <p className="text-slate-500 text-sm">Inquisitiveness fuels evolution. Obsessing over the &quot;Why&quot; to find value in routine and turn uncertainty into discovery.</p>
@@ -594,13 +596,111 @@ export default function WorkoProject() {
             </div>
           </section>
 
-          <section id="results" className="py-16 md:py-24"></section>
+          {/* --- SECTION 07: SEARCH ENGINE PROOF --- */}
+          {/* --- SECTION 07: SEARCH ENGINE PROOF --- */}
+<section id="gsc-proof" className="py-16 md:py-24 border-t border-slate-100">
+  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    <div className="mb-10 md:mb-14 text-center lg:text-left">
+      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">07. SEO Breakthrough</span>
+      <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">Punching Above Weight<span className="text-red-600">.</span></h2>
+      <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+  <div className="lg:col-span-2 space-y-8">
+ <div className="space-y-2">
+  <p className="text-slate-600 text-lg md:text-2xl leading-tight tracking-tight">
+    Validation of autonomous organic growth: Average position <span className='text-slate-800'>18.1</span>  → 
+    <span className="text-black font-black italic underline decoration-red-600 decoration-2 underline-offset-8 ml-2">9.3</span>
+  </p>
+  <p className="text-[11px] font-bold uppercase tracking-widest text-black">
+    Period: Nov 01, 2025 – Jan 15, 2026
+  </p>
+</div>
+
+  <div className="space-y-5">
+    <p className="text-slate-500 text-base md:text-xl leading-relaxed font-normal">
+      Achieved with <span className="text-black font-semibold italic">minimal content updates</span> — proving that Worko can scale and compete side-by-side with giants like <span className="text-black font-bold">Pracuj.pl</span> and <span className="text-black font-bold">OLX</span> on the Google First Page.
+    </p>
+    
+    <p className="text-slate-500 text-base md:text-xl leading-relaxed font-normal">
+      Confirmed <span className="text-red-600 font-black">6.9% CTR</span> at position #9 — more than double the industry standard, validating the raw power of the underlying SEO architecture and the <span className="text-black font-bold">genuine product value</span> for the underserved audience.
+    </p>
+  </div>
+</div>
+        <div className="bg-slate-900 p-8 rounded-[2.5rem] text-white flex flex-col justify-center shadow-2xl">
+          <div className="text-xs font-bold uppercase tracking-widest text-red-600 mb-2">Market Outperformance</div>
+          <div className="text-5xl font-black italic">2.2x</div>
+          <p className="text-sm opacity-70 mt-2 leading-tight">Higher CTR than the global average for the Top 10 bracket.</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Dormant Phase */}
+      <div className="space-y-4">
+         <div className="flex justify-between items-center px-2 font-bold uppercase text-[10px] tracking-widest text-slate-400">
+           <span>Phase 1: Dormant Test (Mar 1 - Oct 31, 2025)</span>
+           <span>Avg. Pos: 18.1</span>
+         </div>
+         <div onClick={() => handleZoom('/gsc1.png')} className="relative aspect-video rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm cursor-zoom-in group grayscale opacity-60 hover:opacity-100 transition-all">
+            <Image src="/gsc1.png" alt="GSC Dormant Phase" fill className="object-cover" unoptimized />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 flex items-center justify-center transition-colors">
+              <FiMaximize2 className="text-white opacity-0 group-hover:opacity-100 text-2xl" />
+            </div>
+         </div>
+      </div>
+
+      {/* Current Phase */}
+      <div className="space-y-4">
+         <div className="flex justify-between items-center px-2 font-bold uppercase text-[10px] tracking-widest text-red-600">
+           <span>Phase 2: Now 1, 2025 - Jan 15, 2026</span>
+           <span>Avg. Pos: 9.3</span>
+         </div>
+         <div onClick={() => handleZoom('/gsc3.png')} className="relative aspect-video rounded-3xl overflow-hidden border-2 border-red-600 shadow-xl shadow-red-100 cursor-zoom-in group">
+            <Image src="/gsc3.png" alt="GSC Recent Performance" fill className="object-cover" unoptimized />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 flex items-center justify-center transition-colors">
+              <FiMaximize2 className="text-white opacity-0 group-hover:opacity-100 text-2xl" />
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</section>
+{/* --- FINAL CTA SECTION --- */}
+{/* --- FINAL CONTACT SECTION --- */}
+          <section className="py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
+              <div className="space-y-12">
+               <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-tight">
+        Ready to build something <span className="text-red-600 italic">impactful</span>?
+      </h2>
+                
+               <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
+        I’m looking for a team that values high-performance architecture, 
+        business-first engineering, and the "Bootstrap DNA" of doing more with less.
+      </p>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8">
+                  <a 
+                    href="mailto:your-email@example.com" 
+                    className="px-12 py-6 bg-black text-white rounded-full font-bold text-xl hover:bg-red-600 transition-all shadow-2xl shadow-slate-200"
+                  >
+                    Contact Me
+                  </a>
+                  
+                  <div className="flex gap-8">
+                    <a href="#" className="text-black font-black uppercase tracking-widest text-sm hover:text-red-600 transition-colors">LinkedIn</a>
+                    <a href="#" className="text-black font-black uppercase tracking-widest text-sm hover:text-red-600 transition-colors">CV</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
         </div>
       </motion.div>
 
       {/* --- UNIVERSAL LIGHTBOX MODAL --- */}
-      {isZoomed && (
-        <AnimatePresence>
+      <AnimatePresence>
+        {isZoomed && (
           <motion.div 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
@@ -609,34 +709,42 @@ export default function WorkoProject() {
             className="fixed top-0 left-0 w-full h-full bg-black/95 z-[99999] flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
           >
             <div className="relative max-w-[95vw] max-h-[90vh] flex items-center justify-center">
-              <button 
-                className="absolute -top-12 right-0 text-white text-4xl hover:text-red-600 transition-colors" 
-                onClick={(e) => { e.stopPropagation(); setIsZoomed(false); }}
+              {/* Все элементы внутри модалки скрыты, пока картинка не загружена */}
+              <motion.div 
+                animate={{ opacity: modalImageLoaded ? 1 : 0 }} 
+                className="relative flex items-center justify-center"
               >
-                <FiX />
-              </button>
-              
-              <div className={`relative overflow-hidden rounded-2xl bg-white shadow-2xl border-[4px] border-slate-800 ${zoomedImage === '/screen1.png' ? 'w-[320px] md:w-[400px] h-[70vh] md:h-[85vh]' : 'w-full max-w-5xl h-auto flex items-center justify-center p-2'}`}>
-                {zoomedImage === '/screen1.png' ? (
-                  <motion.img 
-                    src={zoomedImage} 
-                    alt="Zoomed Screenshot"
-                    className="w-full h-auto" 
-                    animate={{ y: ["0%", "-70%", "0%"] }} 
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }} 
-                  />
-                ) : (
-                  <img 
-                    src={zoomedImage} 
-                    alt="Worko Detail" 
-                    className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-lg" 
-                  />
-                )}
-              </div>
+                <button 
+                  className="absolute -top-12 right-0 text-white text-4xl hover:text-red-600 transition-colors" 
+                  onClick={(e) => { e.stopPropagation(); setIsZoomed(false); }}
+                >
+                  <FiX />
+                </button>
+                
+                <div className={`relative overflow-hidden rounded-2xl bg-white shadow-2xl border-[4px] border-slate-800 ${zoomedImage === '/screen1.png' ? 'w-[320px] md:w-[400px] h-[70vh] md:h-[85vh]' : 'w-full max-w-5xl h-auto flex items-center justify-center p-2'}`}>
+                  {zoomedImage === '/screen1.png' ? (
+                    <motion.img 
+                      src={zoomedImage} 
+                      alt="Zoomed Screenshot"
+                      className="w-full h-auto" 
+                      onLoad={() => setModalImageLoaded(true)}
+                      animate={{ y: ["0%", "-70%", "0%"] }} 
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }} 
+                    />
+                  ) : (
+                    <img 
+                      src={zoomedImage} 
+                      alt="Worko Detail" 
+                      onLoad={() => setModalImageLoaded(true)}
+                      className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-lg" 
+                    />
+                  )}
+                </div>
+              </motion.div>
             </div>
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
     </>
   );
 }
