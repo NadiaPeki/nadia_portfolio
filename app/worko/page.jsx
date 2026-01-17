@@ -598,7 +598,7 @@ export default function WorkoProject() {
 
           {/* --- SECTION 07: SEARCH ENGINE PROOF --- */}
           {/* --- SECTION 07: SEARCH ENGINE PROOF --- */}
-<section id="gsc-proof" className="py-16 md:py-24 border-t border-slate-100">
+<section id="gsc-proof" className="py-16 md:py-24">
   <div className="container mx-auto px-4 md:px-6 max-w-6xl">
     <div className="mb-10 md:mb-14 text-center lg:text-left">
       <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">07. SEO Breakthrough</span>
