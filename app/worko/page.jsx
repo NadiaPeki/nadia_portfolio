@@ -591,7 +591,7 @@ export default function WorkoProject() {
                     Data is ruthless. Facing the weaknesses of my own product was the hardest but most valuable part of this experiment. Worko proves that in the AI era, <span className="text-white font-bold">Curiosity + Technology &gt; Traditional Barriers</span>. I&apos;m ready to bring this &quot;Bootstrap DNA&quot; to a professional team.
                   </p>
                 </div>
-                <FiCpu className="absolute -bottom-10 -right-10 text-[15rem] text-white/5 rotate-12" />
+              
               </div>
             </div>
           </section>
