@@ -44,7 +44,7 @@ export default function WorkoProject() {
   const employerPhotos = [
     { title: "01. Main Landing", desc: "The SEO-optimized entry point.", src: "/solution1.png" },
     { title: "02. Fast Start", desc: "Initial job parameters. No registration required yet.", src: "/solution2.png" },
-    { title: "03. Detailed Offer", desc: "Finalizing job details and the &apos;Zatwierдź&apos; action.", src: "/solution3.png" },
+    { title: "03. Detailed Offer", desc: "Finalizing job details and the \"Zatwierdź\" action.", src: "/solution3.png" },
     { title: "04. Trust Loop", desc: "Instant moderation status to manage expectations.", src: "/solution4.png" },
     { title: "05. Result", desc: "The offer is live and indexed for Google search.", src: "/solution5.png" },
   ];
@@ -125,8 +125,8 @@ export default function WorkoProject() {
                 </h1>
                 <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
                   A <span className="text-black font-semibold">Human-Centric MVP</span> for the underserved SMB market. 
-                  How I built a job platform in 21 days, validated core business hypotheses, and achieved confirmed hiring success with a 
-                  <span className="text-black font-semibold"> total project budget of 15 PLN</span> (domain only) and 
+                  How I built a job platform in 21 days, reached <span className="text-black font-black italic underline decoration-red-600 decoration-4 underline-offset-4">#9 position on Google with a 6.9% CTR</span>, and achieved confirmed hiring success with a 
+                  <span className="text-black font-semibold"> total project budget of 15 PLN</span> and 
                   <span className="font-semibold text-red-600"> zero marketing spend</span>.
                 </p>
 
@@ -152,7 +152,7 @@ export default function WorkoProject() {
               <div className="relative flex flex-col items-center max-w-5xl mx-auto">
                 {isPageLoaded && (
                   <motion.div 
-                    onClick={() => handleZoom('/screen1.png')}
+                    onClick={() => handleZoom("/screen1.png")}
                     whileHover={{ scale: 1.1}}
                     transition={{ duration: 0.2}}
                     className="absolute right-2 bottom-2 md:right-[-15px] md:bottom-0 group cursor-zoom-in w-20 md:w-32 rounded-[0.8rem] md:rounded-[1.2rem] border-[3px] md:border-[5px] border-slate-900 overflow-hidden shadow-2xl bg-white aspect-[9/19] z-30"
@@ -190,7 +190,7 @@ export default function WorkoProject() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   { title: "The Invisible 99.8%", desc: "SMBs represent 99.8% of Polish enterprises, generate 45.3% of GDP, and provide 6.7M jobs. Despite this scale, they are priced out of high-cost platforms that prioritize corporate budgets over local business needs.", icon: "📊", highlight: "6.7M Jobs Underserved" },
-                  { title: "The Blue-Collar Gap", desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and caregivers digitally forgotten in a &apos;high-demand, low-tech&apos; void.", icon: "🛠️", highlight: "The Real Economy" },
+                  { title: "The Blue-Collar Gap", desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and caregivers digitally forgotten in a \"high-demand, low-tech\" void.", icon: "🛠️", highlight: "The Real Economy" },
                   { title: "Bureaucracy Paralysis", desc: "Small owners are paralyzed by corporate bureaucracy. Lacking HR departments, they can’t afford time-consuming sales calls, complex pricing tiers, or 20-minute application forms.", icon: "⚡", highlight: "No HR, No Time, No Money" }
                 ].map((item, index) => (
                   <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
@@ -211,14 +211,14 @@ export default function WorkoProject() {
                 <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">02. Strategy, Methodology & Hypotheses</span>
                 <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">The Lean Experiment<span className="text-red-600">.</span></h2>
                 <p className="mt-6 text-slate-600 text-lg md:text-xl max-w-4xl leading-relaxed">
-                  I adopted an <span className="text-black font-semibold">entrepreneurial mindset</span> to validate the lifecycle of a two-sided job platform. By applying extreme constraints — <span className="text-black font-semibold">minimum budget and maximum creativity</span> — I proved that Worko can attract, retain, and connect users with zero marketing spend.
+                  I adopted an <span className="text-black font-semibold">"entrepreneurial mindset"</span> to validate the lifecycle of a two-sided job platform. By applying extreme constraints — <span className="text-black font-semibold">minimum budget and maximum creativity</span> — I proved that Worko can attract, retain, and connect users with zero marketing spend.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   { title: "Bootstrap DNA", icon: "🧬", highlight: "Tech-Driven Economy", points: ["15 PLN total budget & 21-day development sprint to MVP", "Zero infrastructure cost via Neon (Serverless) & Vercel", "Next.js SSG: Turning architecture into a marketing-saving engine", "Full system autonomy confirmed by an 8-month dormant test"] },
-                  { title: "Guerrilla Method", icon: "🏹", highlight: "Network-Driven Launch", points: ["Solved the Cold Start problem via manual seeding in niche groups", "Direct outreach to a network of recruiters & entrepreneurs", "Leveraged &apos;Early Adopters&apos; to seed initial job supply", "Zero ad spend: Used social capital instead of a marketing budget"] },
+                  { title: "Guerrilla Method", icon: "🏹", highlight: "Network-Driven Launch", points: ["Solved the Cold Start problem via manual seeding in niche groups", "Direct outreach to a network of recruiters & entrepreneurs", "Leveraged \"Early Adopters\" to seed initial job supply", "Zero ad spend: Used social capital instead of a marketing budget"] },
                   { title: "Business Hypotheses", icon: "🎯", highlight: "H1, H2, H3 Validation", points: ["H1 (Viability): SEO strategy generates stable traffic with $0 spend", "H2 (Desirability): Radical UX simplicity creates loyalty & repeated use", "H3 (Feasibility): A functioning match-loop at near-zero CPA", "Success Metric: Real candidate engagement + returning employers"] }
                 ].map((item, index) => (
                   <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
@@ -340,7 +340,7 @@ export default function WorkoProject() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                   <div className="lg:col-span-4 space-y-8">
                     <AnimatePresence mode="wait">
-                      <motion.div key={h1Step} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="space-y-6">
+                      <motion.div key={h1Step} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} transition={{ duration: 0.4 }} className="space-y-6">
                         <div className="w-16 h-16 bg-red-600 text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg shadow-red-200">{h1Slides[h1Step].icon}</div>
                         <h4 className="text-3xl font-black text-black tracking-tight">{h1Slides[h1Step].title}</h4>
                         <p className="text-slate-500 text-lg leading-relaxed">{h1Slides[h1Step].desc}</p>
@@ -356,8 +356,8 @@ export default function WorkoProject() {
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
                         <FiMaximize2 className="text-red-600 opacity-0 group-hover:opacity-100 text-4xl" />
                       </div>
-                      <AnimatePresence mode="wait">
-                        <motion.div key={h1Step} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.6 }} className="absolute inset-0">
+                      <AnimatePresence mode="popLayout">
+                        <motion.div key={h1Step} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full">
                           <Image src={h1Slides[h1Step].src} alt={h1Slides[h1Step].title} fill className="object-cover" priority unoptimized />
                         </motion.div>
                       </AnimatePresence>
@@ -407,7 +407,7 @@ export default function WorkoProject() {
                           initial={{ opacity: 0 }} 
                           animate={{ opacity: 1 }} 
                           exit={{ opacity: 0 }} 
-                          transition={{ duration: 0.6 }} 
+                          transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }} 
                           className="absolute inset-0 w-full h-full"
                         >
                           <Image src={h2Slides[h2Step].src} alt="Validation Step" fill className="object-contain p-2" priority unoptimized />
@@ -461,7 +461,7 @@ export default function WorkoProject() {
                 <div className="lg:col-span-4 space-y-10">
                   <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-normal text-center lg:text-left">
                     <p>
-                      Instead of competing with corporate giants for high-CPC Polish keywords, I identified a <span className="text-black font-bold italic">Cyrillic Blue Ocean</span>. 
+                      Instead of competing with corporate giants for high-CPC Polish keywords, I identified a <span className="text-black font-bold italic">"Cyrillic Blue Ocean"</span>. 
                     </p>
                     <p>
                       By optimizing for Russian-speaking queries within the Polish job market, Worko achieved <span className="text-black font-black">Top 10 ranking</span> for high-intent requests. This strategy allowed us to capture a massive audience while spending exactly <span className="text-red-600 font-bold">0 PLN</span> on advertising.
@@ -493,14 +493,14 @@ export default function WorkoProject() {
                         <FiMaximize2 className="text-red-600 opacity-0 group-hover/zoom:opacity-100 text-3xl md:text-4xl transition-all scale-75 group-hover/zoom:scale-100" />
                       </div>
                       
-                      <AnimatePresence mode="wait">
+                      <AnimatePresence mode="popLayout">
                         <motion.div 
                           key={blueStep}
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.5 }}
-                          className="absolute inset-0"
+                          transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }}
+                          className="absolute inset-0 w-full h-full"
                         >
                           <Image src={blueSlides[blueStep]} alt="SEO Proof" fill className="object-contain p-2 md:p-4" priority unoptimized />
                         </motion.div>
@@ -527,7 +527,7 @@ export default function WorkoProject() {
                   <FiAward className="text-red-600 text-4xl mb-6" />
                   <h3 className="text-2xl font-black mb-3">Hypothesis: Valid</h3>
                   <p className="text-slate-400 leading-relaxed">
-                    The match-loop works. A real hire via zero-budget SEO proves the model&apos;s viability for the SMB market.
+                    The match-loop works. A real hire via zero-budget SEO proves the model's viability for the SMB market.
                   </p>
                 </div>
                 <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
@@ -554,8 +554,8 @@ export default function WorkoProject() {
                     <h3 className="text-3xl font-black tracking-tighter uppercase">My Main Regret</h3>
                   </div>
                   <p className="text-xl md:text-2xl leading-tight font-medium">
-                    &quot;I failed to track the <strong>&apos;Apply&apos;</strong> button click. While I have email evidence of successful leads, I don&apos;t have the exact conversion volume. 
-                    <span className="block mt-4 text-black font-black italic">This missing event is my biggest professional lesson and a mistake I still rue today.</span>&quot;
+                    "I failed to track the <strong>"Apply"</strong> button click. While I have email evidence of successful leads, I don't have the exact conversion volume. 
+                    <span className="block mt-4 text-black font-black italic">This missing event is my biggest professional lesson and a mistake I still rue today.</span>"
                   </p>
                 </div>
 
@@ -563,7 +563,7 @@ export default function WorkoProject() {
                   <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiLayers className="text-red-600 text-2xl mb-4" />
                     <h4 className="text-lg font-black text-slate-900">Cold Start</h4>
-                    <p className="text-slate-500 text-sm">Manual seeding isn&apos;t scalable. API-driven liquidity is mandatory for growth.</p>
+                    <p className="text-slate-500 text-sm">Manual seeding isn't scalable. API-driven liquidity is mandatory for growth.</p>
                   </div>
                   <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiTarget className="text-red-600 text-2xl mb-4" />
@@ -578,7 +578,7 @@ export default function WorkoProject() {
                   <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiSunrise className="text-red-600 text-2xl mb-4" />
                     <h4 className="text-lg font-black text-slate-900">The Curiosity Engine</h4>
-                    <p className="text-slate-500 text-sm">Inquisitiveness fuels evolution. Obsessing over the &quot;Why&quot; to find value in routine and turn uncertainty into discovery.</p>
+                    <p className="text-slate-500 text-sm">Inquisitiveness fuels evolution. Obsessing over the "Why" to find value in routine and turn uncertainty into discovery.</p>
                   </div>
                 </div>
               </div>
@@ -588,96 +588,91 @@ export default function WorkoProject() {
                 <div className="relative z-10 max-w-4xl">
                   <h3 className="text-4xl md:text-5xl font-black text-red-600 tracking-tighter uppercase mb-6 italic">Intellectual Honesty.</h3>
                   <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-90">
-                    Data is ruthless. Facing the weaknesses of my own product was the hardest but most valuable part of this experiment. Worko proves that in the AI era, <span className="text-white font-bold">Curiosity + Technology &gt; Traditional Barriers</span>. I&apos;m ready to bring this &quot;Bootstrap DNA&quot; to a professional team.
+                    Data is ruthless. Facing the weaknesses of my own product was the hardest but most valuable part of this experiment. Worko proves that in the AI era, <span className="text-white font-bold">Curiosity + Technology &gt; Traditional Barriers</span>. I'm ready to bring this "Bootstrap DNA" to a professional team.
                   </p>
                 </div>
-              
               </div>
             </div>
           </section>
 
           {/* --- SECTION 07: SEARCH ENGINE PROOF --- */}
-          {/* --- SECTION 07: SEARCH ENGINE PROOF --- */}
-<section id="gsc-proof" className="py-16 md:py-24">
-  <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-    <div className="mb-10 md:mb-14 text-center lg:text-left">
-      <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">07. SEO Breakthrough</span>
-      <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">Punching Above Weight<span className="text-red-600">.</span></h2>
-      <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-  <div className="lg:col-span-2 space-y-8">
- <div className="space-y-2">
-  <p className="text-slate-600 text-lg md:text-2xl leading-tight tracking-tight">
-    Validation of autonomous organic growth: Average position <span className='text-slate-800'>18.1</span>  → 
-    <span className="text-black font-black italic underline decoration-red-600 decoration-2 underline-offset-8 ml-2">9.3</span>
-  </p>
-  <p className="text-[11px] font-bold uppercase tracking-widest text-black">
-    Period: Nov 01, 2025 – Jan 15, 2026
-  </p>
-</div>
+          <section id="gsc-proof" className="py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+              <div className="mb-10 md:mb-14 text-center lg:text-left">
+                <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">07. SEO Breakthrough</span>
+                <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">Punching Above Weight<span className="text-red-600">.</span></h2>
+                <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                  <div className="lg:col-span-2 space-y-8">
+                    <div className="space-y-2">
+                      <p className="text-slate-600 text-lg md:text-2xl leading-tight tracking-tight">
+                        Validation of autonomous organic growth: Average position <span className='text-slate-800'>18.1</span>  → 
+                        <span className="text-black font-black italic underline decoration-red-600 decoration-2 underline-offset-8 ml-2">9.3</span>
+                      </p>
+                      <p className="text-[11px] font-bold uppercase tracking-widest text-black">
+                        Period: Nov 01, 2025 – Jan 15, 2026
+                      </p>
+                    </div>
 
-  <div className="space-y-5">
-    <p className="text-slate-500 text-base md:text-xl leading-relaxed font-normal">
-      Achieved with <span className="text-black font-semibold italic">minimal content updates</span> — proving that Worko can scale and compete side-by-side with giants like <span className="text-black font-bold">Pracuj.pl</span> and <span className="text-black font-bold">OLX</span> on the Google First Page.
-    </p>
-    
-    <p className="text-slate-500 text-base md:text-xl leading-relaxed font-normal">
-      Confirmed <span className="text-red-600 font-black">6.9% CTR</span> at position #9 — more than double the industry standard, validating the raw power of the underlying SEO architecture and the <span className="text-black font-bold">genuine product value</span> for the underserved audience.
-    </p>
-  </div>
-</div>
-        <div className="bg-slate-900 p-8 rounded-[2.5rem] text-white flex flex-col justify-center shadow-2xl">
-          <div className="text-xs font-bold uppercase tracking-widest text-red-600 mb-2">Market Outperformance</div>
-          <div className="text-5xl font-black italic">2.2x</div>
-          <p className="text-sm opacity-70 mt-2 leading-tight">Higher CTR than the global average for the Top 10 bracket.</p>
-        </div>
-      </div>
-    </div>
+                    <div className="space-y-5">
+                      <p className="text-slate-500 text-base md:text-xl leading-relaxed font-normal">
+                        Achieved with <span className="text-black font-semibold italic">minimal content updates</span> — proving that Worko can scale and compete side-by-side with giants like <span className="text-black font-bold">Pracuj.pl</span> and <span className="text-black font-bold">OLX</span> on the Google First Page.
+                      </p>
+                      <p className="text-slate-500 text-base md:text-xl leading-relaxed font-normal">
+                        Confirmed <span className="text-red-600 font-black">6.9% CTR</span> at position #9 — more than double the industry standard, validating the raw power of the underlying SEO architecture and the <span className="text-black font-bold">genuine product value</span> for the underserved audience.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="bg-slate-900 p-8 rounded-[2.5rem] text-white flex flex-col justify-center shadow-2xl">
+                    <div className="text-xs font-bold uppercase tracking-widest text-red-600 mb-2">Market Outperformance</div>
+                    <div className="text-5xl font-black italic">2.2x</div>
+                    <p className="text-sm opacity-70 mt-2 leading-tight">Higher CTR than the global average for the Top 10 bracket.</p>
+                  </div>
+                </div>
+              </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Dormant Phase */}
-      <div className="space-y-4">
-         <div className="flex justify-between items-center px-2 font-bold uppercase text-[10px] tracking-widest text-slate-400">
-           <span>Phase 1: Dormant Test (Mar 1 - Oct 31, 2025)</span>
-           <span>Avg. Pos: 18.1</span>
-         </div>
-         <div onClick={() => handleZoom('/gsc1.png')} className="relative aspect-video rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm cursor-zoom-in group grayscale opacity-60 hover:opacity-100 transition-all">
-            <Image src="/gsc1.png" alt="GSC Dormant Phase" fill className="object-cover" unoptimized />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 flex items-center justify-center transition-colors">
-              <FiMaximize2 className="text-white opacity-0 group-hover:opacity-100 text-2xl" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Dormant Phase */}
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center px-2 font-bold uppercase text-[10px] tracking-widest text-slate-400">
+                    <span>Dormant Test (Mar 1 - Oct 31, 2025)</span>
+                    <span>Avg. Pos: 18.1</span>
+                  </div>
+                  <div onClick={() => handleZoom("/gsc1.png")} className="relative aspect-video rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm cursor-zoom-in group grayscale opacity-60 hover:opacity-100 transition-all">
+                    <Image src="/gsc1.png" alt="GSC Dormant Phase" fill className="object-cover" unoptimized />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 flex items-center justify-center transition-colors">
+                      <FiMaximize2 className="text-white opacity-0 group-hover:opacity-100 text-2xl" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Current Phase */}
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center px-2 font-bold uppercase text-[10px] tracking-widest text-red-600">
+                    <span>Now 1, 2025 - Jan 15, 2026</span>
+                    <span>Avg. Pos: 9.3</span>
+                  </div>
+                  <div onClick={() => handleZoom("/gsc3.png")} className="relative aspect-video rounded-3xl overflow-hidden border-2 border-red-600 shadow-xl shadow-red-100 cursor-zoom-in group">
+                    <Image src="/gsc3.png" alt="GSC Recent Performance" fill className="object-cover" unoptimized />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 flex items-center justify-center transition-colors">
+                      <FiMaximize2 className="text-white opacity-0 group-hover:opacity-100 text-2xl" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-         </div>
-      </div>
+          </section>
 
-      {/* Current Phase */}
-      <div className="space-y-4">
-         <div className="flex justify-between items-center px-2 font-bold uppercase text-[10px] tracking-widest text-red-600">
-           <span>Phase 2: Now 1, 2025 - Jan 15, 2026</span>
-           <span>Avg. Pos: 9.3</span>
-         </div>
-         <div onClick={() => handleZoom('/gsc3.png')} className="relative aspect-video rounded-3xl overflow-hidden border-2 border-red-600 shadow-xl shadow-red-100 cursor-zoom-in group">
-            <Image src="/gsc3.png" alt="GSC Recent Performance" fill className="object-cover" unoptimized />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 flex items-center justify-center transition-colors">
-              <FiMaximize2 className="text-white opacity-0 group-hover:opacity-100 text-2xl" />
-            </div>
-         </div>
-      </div>
-    </div>
-  </div>
-</section>
-{/* --- FINAL CTA SECTION --- */}
-{/* --- FINAL CONTACT SECTION --- */}
+          {/* --- FINAL CONTACT SECTION --- */}
           <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
               <div className="space-y-12">
-               <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-tight">
-        Ready to build something <span className="text-red-600 italic">impactful</span>?
-      </h2>
-                
-               <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
-        I’m looking for a team that values high-performance architecture, 
-        business-first engineering, and the Bootstrap DNA of doing more with less.
-      </p>
-
+                <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-tight">
+                  Ready to build something <span className="text-red-600 italic">impactful</span>?
+                </h2>
+                <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
+                  I’m looking for a team that values high-performance architecture, 
+                  business-first engineering, and the Bootstrap DNA of doing more with less.
+                </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8">
                   <a 
                     href="mailto:your-email@example.com" 
@@ -685,7 +680,6 @@ export default function WorkoProject() {
                   >
                     Contact Me
                   </a>
-                  
                   <div className="flex gap-8">
                     <a href="#" className="text-black font-black uppercase tracking-widest text-sm hover:text-red-600 transition-colors">LinkedIn</a>
                     <a href="#" className="text-black font-black uppercase tracking-widest text-sm hover:text-red-600 transition-colors">CV</a>
@@ -709,7 +703,6 @@ export default function WorkoProject() {
             className="fixed top-0 left-0 w-full h-full bg-black/95 z-[99999] flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
           >
             <div className="relative max-w-[95vw] max-h-[90vh] flex items-center justify-center">
-              {/* Все элементы внутри модалки скрыты, пока картинка не загружена */}
               <motion.div 
                 animate={{ opacity: modalImageLoaded ? 1 : 0 }} 
                 className="relative flex items-center justify-center"
@@ -720,9 +713,8 @@ export default function WorkoProject() {
                 >
                   <FiX />
                 </button>
-                
-                <div className={`relative overflow-hidden rounded-2xl bg-white shadow-2xl border-[4px] border-slate-800 ${zoomedImage === '/screen1.png' ? 'w-[320px] md:w-[400px] h-[70vh] md:h-[85vh]' : 'w-full max-w-5xl h-auto flex items-center justify-center p-2'}`}>
-                  {zoomedImage === '/screen1.png' ? (
+                <div className={`relative overflow-hidden rounded-2xl bg-white shadow-2xl border-[4px] border-slate-800 ${zoomedImage === "/screen1.png" ? "w-[320px] md:w-[400px] h-[70vh] md:h-[85vh]" : "w-full max-w-5xl h-auto flex items-center justify-center p-2"}`}>
+                  {zoomedImage === "/screen1.png" ? (
                     <motion.img 
                       src={zoomedImage} 
                       alt="Zoomed Screenshot"
