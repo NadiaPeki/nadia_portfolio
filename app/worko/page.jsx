@@ -190,7 +190,7 @@ export default function WorkoProject() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                   { title: "The Invisible 99.8%", desc: "SMBs represent 99.8% of Polish enterprises, generate 45.3% of GDP, and provide 6.7M jobs. Despite this scale, they are priced out of high-cost platforms that prioritize corporate budgets over local business needs.", icon: "📊", highlight: "6.7M Jobs Underserved" },
-                  { title: "The Blue-Collar Gap", desc: "While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and caregivers digitally forgotten in a \"high-demand, low-tech\" void.", icon: "🛠️", highlight: "The Real Economy" },
+                  { title: "The Blue-Collar Gap", desc: `While tech giants focus on IT and management, the backbone of the economy—drivers, electricians, and caregivers digitally forgotten in a "high-demand, low-tech" void.`, icon: "🛠️", highlight: "The Real Economy" },
                   { title: "Bureaucracy Paralysis", desc: "Small owners are paralyzed by corporate bureaucracy. Lacking HR departments, they can’t afford time-consuming sales calls, complex pricing tiers, or 20-minute application forms.", icon: "⚡", highlight: "No HR, No Time, No Money" }
                 ].map((item, index) => (
                   <motion.div key={index} initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-red-100/30 transition-shadow flex flex-col h-full">
@@ -211,7 +211,7 @@ export default function WorkoProject() {
                 <span className="text-red-600 font-bold uppercase tracking-widest text-lg md:text-xl">02. Strategy, Methodology & Hypotheses</span>
                 <h2 className="text-3xl md:text-5xl font-black text-black mt-2 tracking-tight">The Lean Experiment<span className="text-red-600">.</span></h2>
                 <p className="mt-6 text-slate-600 text-lg md:text-xl max-w-4xl leading-relaxed">
-                  I adopted an <span className="text-black font-semibold">"entrepreneurial mindset"</span> to validate the lifecycle of a two-sided job platform. By applying extreme constraints — <span className="text-black font-semibold">minimum budget and maximum creativity</span> — I proved that Worko can attract, retain, and connect users with zero marketing spend.
+                  I adopted an <span className="text-black font-semibold">{"\"entrepreneurial mindset\""}</span> to validate the lifecycle of a two-sided job platform. By applying extreme constraints — <span className="text-black font-semibold">minimum budget and maximum creativity</span> — I proved that Worko can attract, retain, and connect users with zero marketing spend.
                 </p>
               </div>
 
@@ -461,7 +461,7 @@ export default function WorkoProject() {
                 <div className="lg:col-span-4 space-y-10">
                   <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-normal text-center lg:text-left">
                     <p>
-                      Instead of competing with corporate giants for high-CPC Polish keywords, I identified a <span className="text-black font-bold italic">"Cyrillic Blue Ocean"</span>. 
+                      Instead of competing with corporate giants for high-CPC Polish keywords, I identified a <span className="text-black font-bold italic">{"\"Cyrillic Blue Ocean\""}</span>. 
                     </p>
                     <p>
                       By optimizing for Russian-speaking queries within the Polish job market, Worko achieved <span className="text-black font-black">Top 10 ranking</span> for high-intent requests. This strategy allowed us to capture a massive audience while spending exactly <span className="text-red-600 font-bold">0 PLN</span> on advertising.
@@ -527,7 +527,7 @@ export default function WorkoProject() {
                   <FiAward className="text-red-600 text-4xl mb-6" />
                   <h3 className="text-2xl font-black mb-3">Hypothesis: Valid</h3>
                   <p className="text-slate-400 leading-relaxed">
-                    The match-loop works. A real hire via zero-budget SEO proves the model's viability for the SMB market.
+                    The match-loop works. A real hire via zero-budget SEO proves the {"model's"} viability for the SMB market.
                   </p>
                 </div>
                 <div className="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm">
@@ -554,8 +554,8 @@ export default function WorkoProject() {
                     <h3 className="text-3xl font-black tracking-tighter uppercase">My Main Regret</h3>
                   </div>
                   <p className="text-xl md:text-2xl leading-tight font-medium">
-                    "I failed to track the <strong>"Apply"</strong> button click. While I have email evidence of successful leads, I don't have the exact conversion volume. 
-                    <span className="block mt-4 text-black font-black italic">This missing event is my biggest professional lesson and a mistake I still rue today.</span>"
+                    {"\"I failed to track the "} <strong>{"\"Apply\""}</strong> {" button click. While I have email evidence of successful leads, I don't have the exact conversion volume. "}
+                    <span className="block mt-4 text-black font-black italic">{"This missing event is my biggest professional lesson and a mistake I still rue today."}</span>{"\""}
                   </p>
                 </div>
 
@@ -563,7 +563,7 @@ export default function WorkoProject() {
                   <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiLayers className="text-red-600 text-2xl mb-4" />
                     <h4 className="text-lg font-black text-slate-900">Cold Start</h4>
-                    <p className="text-slate-500 text-sm">Manual seeding isn't scalable. API-driven liquidity is mandatory for growth.</p>
+                    <p className="text-slate-500 text-sm">{"Manual seeding isn't scalable. API-driven liquidity is mandatory for growth."}</p>
                   </div>
                   <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiTarget className="text-red-600 text-2xl mb-4" />
@@ -578,7 +578,7 @@ export default function WorkoProject() {
                   <div className="p-8 rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <FiSunrise className="text-red-600 text-2xl mb-4" />
                     <h4 className="text-lg font-black text-slate-900">The Curiosity Engine</h4>
-                    <p className="text-slate-500 text-sm">Inquisitiveness fuels evolution. Obsessing over the "Why" to find value in routine and turn uncertainty into discovery.</p>
+                    <p className="text-slate-500 text-sm">{"Inquisitiveness fuels evolution. Obsessing over the \"Why\" to find value in routine and turn uncertainty into discovery."}</p>
                   </div>
                 </div>
               </div>
@@ -588,7 +588,7 @@ export default function WorkoProject() {
                 <div className="relative z-10 max-w-4xl">
                   <h3 className="text-4xl md:text-5xl font-black text-red-600 tracking-tighter uppercase mb-6 italic">Intellectual Honesty.</h3>
                   <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-90">
-                    Data is ruthless. Facing the weaknesses of my own product was the hardest but most valuable part of this experiment. Worko proves that in the AI era, <span className="text-white font-bold">Curiosity + Technology &gt; Traditional Barriers</span>. I'm ready to bring this "Bootstrap DNA" to a professional team.
+                    {"Data is ruthless. Facing the weaknesses of my own product was the hardest but most valuable part of this experiment. Worko proves that in the AI era, "} <span className="text-white font-bold">{"Curiosity + Technology > Traditional Barriers"}</span>. {"I'm ready to bring this \"Bootstrap DNA\" to a professional team."}
                   </p>
                 </div>
               </div>
@@ -605,7 +605,7 @@ export default function WorkoProject() {
                   <div className="lg:col-span-2 space-y-8">
                     <div className="space-y-2">
                       <p className="text-slate-600 text-lg md:text-2xl leading-tight tracking-tight">
-                        Validation of autonomous organic growth: Average position <span className='text-slate-800'>18.1</span>  → 
+                        Validation of autonomous organic growth: Average position <span className='text-slate-800'>18.1</span>  → 
                         <span className="text-black font-black italic underline decoration-red-600 decoration-2 underline-offset-8 ml-2">9.3</span>
                       </p>
                       <p className="text-[11px] font-bold uppercase tracking-widest text-black">
@@ -670,8 +670,7 @@ export default function WorkoProject() {
                   Ready to build something <span className="text-red-600 italic">impactful</span>?
                 </h2>
                 <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
-                  I’m looking for a team that values high-performance architecture, 
-                  business-first engineering, and the Bootstrap DNA of doing more with less.
+                  {"I’m looking for a team that values high-performance architecture, business-first engineering, and the Bootstrap DNA of doing more with less."}
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8">
                   <a 
